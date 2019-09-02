@@ -12,7 +12,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Accessors(chain=true)
 @ToString
-public class Collection {
+public class Collections {
     private Integer id;     //收藏编号
 
 
