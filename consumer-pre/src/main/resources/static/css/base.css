@@ -1,249 +1,948 @@
 @charset "utf-8";
-/* 公共样式 */
-body {font-size: 14px; font-family: "Microsoft YaHei","微软雅黑";	color: #333333;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;-webkit-tap-highlight-color:rgba(0,0,0,0);}
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0}
-input,select,textarea{font-size:100%}
-table{border-collapse:collapse;border-spacing:0}
-fieldset,img{border:0}
-abbr,acronym{border:0;font-variant:normal}
-del{text-decoration:line-through}
-address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:normal}
-ol,ul{list-style:none}
-caption,th{text-align:left}
-h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}
-q:before,q:after{content:''}
-button{outline:0;border:none;}
-a:hover{text-decoration:none}
-ins,a{text-decoration:none}
-textarea {resize: none;}
-iframe,img {border:0;}
-ul,ol {list-style:none;}
-a{color: #333333;text-decoration: none;}
-input[type="text"],[type="password"],[type="button"], input[type="submit"], input[type="reset"] {
-	-webkit-appearance: none;
-	outline: none;
+html {
+    overflow-x: auto;
+    overflow-y: scroll;
 }
-select{
-	/*-webkit-appearance: none;去掉select的下箭头*/
-	outline: none;
-}
-textarea {  -webkit-appearance: none;}
-/***全局公共样式 - 开始***/
-.h_10{
-	height: 10px;
-}
-.h_30{
-	height: 30px;
-}
-.h_500{
-	height: 500px !important;
-}
-.no_mr{
-	margin-right: 0px !important;
-}
-.no_mb{
-	margin-bottom: 0px !important;
-}
-.no_bb{
-	border-bottom: 0px !important;
-}
-iframe{
-	display: block;
-    border: 0px;
-}
-img{
-	display: block;
-}
-.form_check_box{
-	line-height: 40px;
-	position: absolute;
-	top: 0;
-	right: 10px;
-	font-size: 12px;
-	color: #dd0322;
-}
-.cBody{
-	height: 100%;
-	padding: 10px;
-	display: block;
-	overflow-y: auto;
-	position: relative;
-}
-i.bt{
-	float: left;
-	height: 38px;
-	line-height: 38px;
-	color: #9f191f;
-	font-size: 20px;
-}
-/***全局公共样式 - 结束***/
 
+body, dl, dt, dd, ul, ol, li, pre, form, fieldset, input, p, blockquote, th, td, menu {
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+}
 
-/***子页面公共样式 - 开始***/
-.shortInput{
-	width: 40% !important;
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    font-weight: 400;
 }
-/***子页面公共样式 - 结束***/
 
+body {
+    background-color: #FFFFFF;
+    color: #333;
+    font: normal 12px/1.5 'Arial', 'SimSun', 'Tahoma', 'Helvetica', 'sans-serif';
+    padding: 0 10px;
+    text-align: left;
+}
 
-/***图片放大缩小 - 开始***/
-.imgBig{
-	position: absolute;
-	top: 8px;
-	left: 8px;
-	z-index: 1000;
-	box-shadow: 0 0 10px #888;
-	-webkit-box-shadow: 0 0 10px #888;
-	-moz-box-shadow: 0 0 10px #888;
-	-o-box-shadow: 0 0 10px #888;
+select {
+    font-size: 12px;
 }
-.imgSmall{
-	position: static;
-	box-shadow: none;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	-o-box-shadow: none;
-}
-/***图片放大缩小 - 结束***/
 
-/***打印模版样式 - 开始***/
-.printTable th, .printTable td{
-	border-color: #999 !important;
+fieldset, img {
+    border: 0 none;
 }
-.printTable .textCenter{
-	text-align: center;
-}
-.printTable .font20{
-	font-size: 20px;
-	font-weight: 600;
-}
-.printTable .printName{
-	text-align: center;
-	font-size: 24px;
-	font-weight: 500;
-	padding: 20px 0;
-	color: #333;
-	border-bottom: 0;
-}
-.printTable .printSmallName{
-	text-align: center;
-	font-size: 14px;
-	padding: 0;
-	color: #333;
-	border-top: 0;
-	border-bottom: 0;
-}
-.printTable .printDis{
-	border-top: 0;
-	border-bottom: 0;
-}
-.printTable .printDis span{
-	float: left;
-	width: 50%;
-	font-size: 16px;
-	color: #333;
-	line-height: 40px;
-}
-.printTable .printDis span.right{
-	text-align: right;
-}
-.printTable .printOperator{
-	border-top: 0;
-}
-.printTable .printOperator span{
-	float: left;
-	width: 50%;
-	font-size: 16px;
-	color: #333;
-	line-height: 40px;
-}
-.printTable .printOperator .three{
-	float: left;
-	font-size: 16px;
-	color: #333;
-	line-height: 40px;
-}
-.printTable .printOperator span.right{
-	text-align: right;
-}
-/***打印模版样式 - 结束***/
 
-/***复写纸3层打印模版样式 - 开始***/
-.printTable_fxz3 th, .printTable_fxz3 td{
-	border-color: #999 !important;
-	color: #222;
-	padding: 2px 5px !important;
+fieldset {
+    margin: 0;
+    padding: 0;
 }
-.printTable_fxz3 .textCenter{
-	text-align: center;
-}
-.printTable_fxz3 .font20{
-	font-size: 18px;
-	font-weight: 600;
-}
-.printTable_fxz3 .printName{
-	text-align: center;
-	font-size: 18px;
-	font-weight: 500;
-	padding: 10px 0;
-	color: #000;
-	border-bottom: 0;
-}
-.printTable_fxz3 .printSmallName{
-	text-align: center;
-	font-size: 14px;
-	padding: 0;
-	color: #333;
-	border-top: 0;
-	border-bottom: 0;
-	line-height: 16px;
-	padding: 0px 10px !important;
-}
-.printTable_fxz3 .printDis{
-	border-top: 0;
-	border-bottom: 0;
-	padding: 0px 5px !important;
-}
-.printTable_fxz3 .printDis span{
-	float: left;
-	width: 50%;
-	font-size: 14px;
-	color: #000;
-	line-height: 22px;
-}
-.printTable_fxz3 .printDis span.right{
-	text-align: right;
-}
-.printTable_fxz3 .printOperator{
-	border-top: 0;
-}
-.printTable_fxz3 .printOperator span{
-	float: left;
-	width: 50%;
-	font-size: 16px;
-	color: #333;
-	line-height: 40px;
-}
-.printTable_fxz3 .printOperator .three{
-	float: left;
-	font-size: 14px;
-	color: #000;
-	line-height: 26px;
-}
-.printTable_fxz3 .printOperator span.right{
-	text-align: right;
-}
-/***复写纸3层打印模版样式 - 结束***/
 
-/***自定义滚动条样式修改 - 开始***/
-.mCSB_container {
-    overflow: visible !important;
+fieldset p {
+    margin: 0;
+    padding: 0 0 0 8px;
 }
-/***自定义滚动条样式修改 - 结束***/
 
-/***table操作iconfont - 开始***/
-.operationICONBut {
-	font-size: 18px;
-	margin-right: 3px;
+address, caption, em, strong, th, i {
+    font-style: normal;
+    font-weight: 400;
 }
-/***table操作iconfont - 结束***/
+
+table caption {
+    margin-left: -1px;
+}
+
+hr {
+    height: 1px;
+    border: none;
+    border-top: 1px solid #C5D2DC;
+    margin: 0;
+    *margin: 0 0 -14px 0;
+    float: none;
+    *float: left;
+    display: block;
+}
+
+ol, ul, li {
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+}
+
+caption, th {
+    text-align: left;
+}
+
+q:before, q:after, blockquote:before, blockquote:after {
+    content: "";
+}
+
+html, body {
+    -webkit-text-size-adjust: none;
+}
+
+/*html { overflow:-moz-scrollbars-vertical; } Always show Firefox scrollbar*/
+table, table td, table th {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+    outline: none;
+    cursor: pointer;
+}
+
+a:hover {
+    color: #F00;
+    text-decoration: underline
+}
+
+/*颜色样式*/
+.black {
+    color: #000;
+}
+
+.red {
+    color: #f00;
+}
+
+.green {
+    color: #2e963d;
+}
+
+.red-d {
+    color: #c00;
+}
+
+.blue {
+    color: #0066cc;
+}
+
+.gray {
+    color: #ccc;
+}
+
+.highlight {
+    color: #F00;
+}
+
+.light {
+    color: #F60;
+}
+
+.lowlight {
+    color: #999
+}
+
+.color-bk {
+    color: #000
+}
+
+.color-r, .sidelink.color-r {
+    color: #f00
+}
+
+a:hover.color-r, a:hover.sidelink.color-r {
+    color: #f00
+}
+
+.color-rc, .sidelink.color-rc {
+    color: #C00
+}
+
+a:hover.color-rc, a:hover.sidelink.color-rc {
+    color: #C00
+}
+
+.color-b, .sidelink.color-b {
+    color: #0066CC
+}
+
+a:hover.color-b, a:hover.sidelink.color-b {
+    color: #0066CC
+}
+
+.color-g, .sidelink.color-g {
+    color: #009900
+}
+
+a:hover.color-g, a:hover.sidelink.color-g {
+    color: #009900
+}
+
+.color-p, .sidelink.color-p {
+    color: #9900cc
+}
+
+a:hover.color-p, a:hover.sidelink.color-p {
+    color: #9900cc
+}
+
+.color-o, .sidelink.color-o {
+    color: #fa621e
+}
+
+a:hover.color-o, a:hover.sidelink.color-o {
+    color: #fa621e
+}
+
+/*文字排版*/
+.f10 {
+    font-size: 10px;
+}
+
+.f12 {
+    font-size: 12px;
+}
+
+.f13 {
+    font-size: 13px;
+}
+
+.f14 {
+    font-size: 14px;
+}
+
+.f16 {
+    font-size: 16px;
+}
+
+.f18 {
+    font-size: 18px;
+}
+
+.f20 {
+    font-size: 20px;
+}
+
+.f24 {
+    font-size: 24px;
+}
+
+.f26 {
+    font-size: 26px;
+}
+
+.fb {
+    font-weight: 700;
+}
+
+.fn {
+    font-weight: 400;
+}
+
+.t2 {
+    text-indent: 2em;
+}
+
+.lh150 {
+    line-height: 150%;
+}
+
+.lh180 {
+    line-height: 180%;
+}
+
+.lh200 {
+    line-height: 200%;
+}
+
+.tdu {
+    text-decoration: underline;
+}
+
+.tdn {
+    text-decoration: none;
+}
+
+.tdlt {
+    text-decoration: line-through;
+}
+
+.arial {
+    font-family: arial;
+}
+
+/*字体*/
+.SimSun {
+    font-family: 'SimSun';
+}
+
+.yahei {
+    font-family: '微软雅黑';
+}
+
+/*定位*/
+.tl {
+    text-align: left;
+}
+
+.tc {
+    text-align: center;
+}
+
+.tr {
+    text-align: right;
+}
+
+.bc {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.fl {
+    float: left;
+    display: inline;
+}
+
+.fr {
+    float: right;
+    display: inline;
+}
+
+.vt {
+    vertical-align: top;
+}
+
+.vm {
+    vertical-align: middle;
+}
+
+.vb {
+    vertical-align: bottom;
+}
+
+.pr {
+    position: relative;
+}
+
+.pa {
+    position: absolute;
+}
+
+.db {
+    display: block;
+}
+
+.dbin {
+    display: inline-block;
+}
+
+.zoom {
+    zoom: 1;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.hide {
+    display: none;
+}
+
+/*清除浮动*/
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix {
+    display: inline-block;
+}
+
+/* Hides from IE-mac \*/
+* html .clearfix {
+    zoom: 1;
+}
+
+.clearfix {
+    display: block;
+}
+
+/* End hide from IE-mac */
+.cb {
+    clear: both;
+}
+
+/*长度高度*/
+.w50 {
+    width: 50px;
+}
+
+.w100 {
+    width: 100px;
+}
+
+.w120 {
+    width: 120px;
+}
+
+.w130 {
+    width: 130px;
+}
+
+.w150 {
+    width: 150px;
+}
+
+.w180 {
+    width: 180px;
+}
+
+.w200 {
+    width: 200px;
+}
+
+.w220 {
+    width: 220px;
+}
+
+.w300 {
+    width: 300px;
+}
+
+.w400 {
+    width: 400px;
+}
+
+.w500 {
+    width: 500px;
+}
+
+.w {
+    width: 100%;
+}
+
+.h20 {
+    height: 20px;
+}
+
+.h25 {
+    height: 25px;
+}
+
+.h30 {
+    height: 30px;
+}
+
+.h50 {
+    height: 50px;
+}
+
+.h80 {
+    height: 80px;
+}
+
+.h100 {
+    height: 100px;
+}
+
+.h200 {
+    height: 200px;
+}
+
+.h {
+    height: 100%;
+}
+
+/*边距*/
+.ma {
+    margin: 0 auto;
+}
+
+.m0 {
+    margin: 0px;
+}
+
+.m5 {
+    margin: 5px;
+}
+
+.m8 {
+    margin: 8px;
+}
+
+.m10 {
+    margin: 10px;
+}
+
+.mt2 {
+    margin-top: 2px;
+}
+
+.mt3 {
+    margin-top: 3px;
+}
+
+.mt5 {
+    margin-top: 5px;
+}
+
+.mt8 {
+    margin-top: 8px;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.mt15 {
+    margin-top: 15px;
+}
+
+.mt20 {
+    margin-top: 20px;
+}
+
+.mt30 {
+    margin-top: 30px;
+}
+
+.mt50 {
+    margin-top: 50px;
+}
+
+.mb5 {
+    margin-bottom: 5px;
+}
+
+.mb8 {
+    margin-bottom: 8px;
+}
+
+.mb10 {
+    margin-bottom: 10px;
+}
+
+.mb15 {
+    margin-bottom: 15px;
+}
+
+.mb20 {
+    margin-bottom: 20px;
+}
+
+.mb30 {
+    margin-bottom: 30px;
+}
+
+.mb50 {
+    margin-bottom: 50px;
+}
+
+.mb60 {
+    margin-bottom: 60px;
+}
+
+.ml2 {
+    margin-left: 2px;
+}
+
+.ml3 {
+    margin-left: 3px;
+}
+
+.ml5 {
+    margin-left: 5px;
+}
+
+.ml8 {
+    margin-left: 8px;
+}
+
+.ml10 {
+    margin-left: 10px;
+}
+
+.ml13 {
+    margin-left: 13px;
+}
+
+.ml15 {
+    margin-left: 15px;
+}
+
+.ml20 {
+    margin-left: 20px;
+}
+
+.ml30 {
+    margin-left: 30px;
+}
+
+.ml40 {
+    margin-left: 40px;
+}
+
+.ml50 {
+    margin-left: 50px;
+}
+
+.ml60 {
+    margin-left: 60px;
+}
+
+.ml70 {
+    margin-left: 70px;
+}
+
+.ml100 {
+    margin-left: 100px;
+}
+
+.ml135 {
+    margin-left: 135px;
+}
+
+.ml300 {
+    margin-left: 300px;
+}
+
+.ml400 {
+    margin-left: 400px;
+}
+
+.mr5 {
+    margin-right: 5px;
+}
+
+.mr8 {
+    margin-right: 8px;
+}
+
+.mr10 {
+    margin-right: 10px;
+}
+
+.mr15 {
+    margin-right: 15px;
+}
+
+.mr20 {
+    margin-right: 20px;
+}
+
+.mr30 {
+    margin-right: 30px;
+}
+
+.mr50 {
+    margin-right: 50px;
+}
+
+.mr100 {
+    margin-right: 100px;
+}
+
+.p5 {
+    padding: 5px;
+}
+
+.p8 {
+    padding: 8px;
+}
+
+.p10 {
+    padding: 10px;
+}
+
+.p15 {
+    padding: 15px;
+}
+
+.p20 {
+    padding: 20px;
+}
+
+.p30 {
+    padding: 30px;
+}
+
+.pt2 {
+    padding-top: 2px;
+}
+
+.pt3 {
+    padding-top: 3px;
+}
+
+.pt5 {
+    padding-top: 5px;
+}
+
+.pt8 {
+    padding-top: 8px;
+}
+
+.pt10 {
+    padding-top: 10px;
+}
+
+.pt15 {
+    padding-top: 15px;
+}
+
+.pt20 {
+    padding-top: 20px;
+}
+
+.pt30 {
+    padding-top: 30px;
+}
+
+.pt40 {
+    padding-top: 40px;
+}
+
+.pt50 {
+    padding-top: 50px;
+}
+
+.pt70 {
+    padding-top: 70px;
+}
+
+.pt100 {
+    padding-top: 100px;
+}
+
+.pb5 {
+    padding-bottom: 5px;
+}
+
+.pb8 {
+    padding-bottom: 8px;
+}
+
+.pb10 {
+    padding-bottom: 10px;
+}
+
+.pb15 {
+    padding-bottom: 15px;
+}
+
+.pb20 {
+    padding-bottom: 20px;
+}
+
+.pb30 {
+    padding-bottom: 30px;
+}
+
+.pb50 {
+    padding-bottom: 50px;
+}
+
+.pb100 {
+    padding-bottom: 100px;
+}
+
+.pl1 {
+    padding-left: 1px;
+}
+
+.pl5 {
+    padding-left: 5px;
+}
+
+.pl8 {
+    padding-left: 8px;
+}
+
+.pl10 {
+    padding-left: 10px;
+}
+
+.pl15 {
+    padding-left: 15px;
+}
+
+.pl20 {
+    padding-left: 20px;
+}
+
+.pl30 {
+    padding-left: 30px;
+}
+
+.pl50 {
+    padding-left: 50px;
+}
+
+.pl100 {
+    padding-left: 100px;
+}
+
+.pl120 {
+    padding-left: 120px;
+}
+
+.pr5 {
+    padding-right: 5px;
+}
+
+.pr8 {
+    padding-right: 8px;
+}
+
+.pr10 {
+    padding-right: 10px;
+}
+
+.pr15 {
+    padding-right: 15px;
+}
+
+.pr20 {
+    padding-right: 20px;
+}
+
+.pr30 {
+    padding-right: 30px;
+}
+
+.pr50 {
+    padding-right: 50px;
+}
+
+.pr100 {
+    padding-right: 100px;
+}
+
+/*定位*/
+.top0 {
+    top: 0;
+}
+
+.b1, .b2, .b3, .b4, .b5, .b6 {
+    height: 1px;
+    font-size: 1px;
+    overflow: hidden;
+    display: block;
+}
+
+.b1, .b6 {
+    margin: 0 3px;
+}
+
+.b2, .b5 {
+    margin: 0 2px;
+    border-right: 2px solid;
+    border-left: 2px solid;
+}
+
+.b3, .b4 {
+    margin: 0 1px;
+    border-right: 1px solid;
+    border-left: 1px solid;
+    height: 2px;
+}
+
+.color1 .b2, .color1 .b3, .color1 .b4, .color1 .b5, .color1 .mid {
+    border-color: #ccd0d3;
+}
+
+.color2 .b2, .color2 .b3, .color2 .b4, .color2 .b5, .color2 .mid {
+    border-color: #aaaaaa;
+}
+
+.color1 .b1, .color1 .b6 {
+    background: #ccd0d3;
+}
+
+.color2 .b1, .color2 .b6 {
+    background: #aec7e5;
+}
+
+.color1 .b2, .color1 .b3, .color1 .b4, .color1 .b5, .color1 .mid {
+    background: #f4f4f4;
+}
+
+.color2 .b2, .color2 .b3, .color2 .b4, .color2 .b5, .color2 .mid {
+    background: #e7f7d7;
+}
+
+/* html5*/
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+}
+
+body {
+    line-height: 1;
+    font-size: 12px
+}
+
+section, article, aside, header, footer, nav, dialog, figure, hgroup {
+    display: block;
+}
+
+figure {
+    margin: 0;
+}
+
+.loading {
+    background: url(../image/loadingv3.gif) no-repeat scroll 50% 50%;
+    height: 32px;
+    width: 32px;
+    display: block;
+    margin: 0 auto
+}
+
+.transparent { /*仅仅作为图片透明时引用的样式名*/
+}
+
+.cor {
+    behavior: url(../image/ie-css3.jpg) \0;
+}
+
+/*IE6的弹出层*/
+.overlay {
+    _position: absolute;
+    _top: 0;
+    _left: 0;
+    _z-index: 9999;
+    opacity: 0.6;
+    _background: #000;
+    _width: 100%;
+    _height: 100%
+}
+
+/* 去除chrome输入框焦点效果 */
+input, button, select, textarea {
+    outline: none
+}
+
+/*ie6居中显示层的样式*/
+.chagetop {
+    left: expression(eval(document.documentElement.scrollLeft+ (document.documentElement.clientWidth-this.offsetWidth)/2));
+    top: expression(eval(document.documentElement.scrollTop+ (document.documentElement.clientHeight-this.offsetHeight)/2));
+    z-index: 9999999;
+}
+
+/*遮罩*/
+.overlay {
+    background: #000;
+    cursor: pointer;
+    display: block;
+    filter: alpha(opacity=60);
+    opacity: 0.6;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: expression(eval(document.documentElement.scrollLeft));
+    top: expression(eval(document.documentElement.scrollTop));
+    z-index: 9999998;
+    width: 100%
+}
