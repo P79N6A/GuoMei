@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
+
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
@@ -11,27 +12,23 @@
 		<title>国美后台管理</title>
 
 		<!-- 公共样式 开始 -->
-		<link rel="shortcut icon" href="images/favicon.ico"/>
-		<link rel="bookmark" href="images/favicon.ico"/>
-		<link rel="stylesheet" type="text/css" href="css/base.css">
-		<link rel="stylesheet" type="text/css" href="css/iconfont.css">
-		<script type="text/javascript" src="framework/jquery-1.11.3.min.js" ></script>
-		<link rel="stylesheet" type="text/css" href="layui/css/layui.css">
-	    <!--[if lt IE 9]>
-	      	<script src="framework/html5shiv.min.js"></script>
-	      	<script src="framework/respond.min.js"></script>
-	    <![endif]-->
-		<script type="text/javascript" src="layui/layui.js"></script>
+		<link rel="shortcut icon" href="/images/favicon.ico" />
+		<link rel="bookmark" href="/images/favicon.ico"/>
+		<link rel="stylesheet" type="text/css" href="/css/base.css" >
+		<link rel="stylesheet" type="text/css" href="/css/iconfont.css" >
+		<script type="text/javascript" src="/framework/jquery-1.11.3.min.js"  ></script>
+		<link rel="stylesheet" type="text/css" href="/layui/css/layui.css" >
+		<script type="text/javascript" src="/layui/layui.js" ></script>
 		<!-- 滚动条插件 -->
-		<link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.css">
-		<script src="framework/jquery-ui-1.10.4.min.js"></script>
-		<script src="framework/jquery.mousewheel.min.js"></script>
-		<script src="framework/jquery.mCustomScrollbar.min.js"></script>
-		<script src="framework/cframe.js"></script><!-- 仅供所有子页面使用 -->
+		<link rel="stylesheet" type="text/css" href="/css/jquery.mCustomScrollbar.css" >
+		<script src="/framework/jquery-ui-1.10.4.min.js" ></script>
+		<script src="/framework/jquery.mousewheel.min.js" ></script>
+		<script src="/framework/jquery.mCustomScrollbar.min.js" ></script>
+		<script src="/framework/cframe.js" ></script><!-- 仅供所有子页面使用 -->
 		<!-- 公共样式 结束 -->
 		
-		<link rel="stylesheet" type="text/css" href="css/frameStyle.css">
-		<script type="text/javascript" src="framework/frame.js" ></script>
+		<link rel="stylesheet" type="text/css" href="/css/frameStyle.css" >
+		<script type="text/javascript" src="/framework/frame.js" ></script>
 		
 	</head>
 
@@ -39,7 +36,7 @@
 		<!-- 左侧菜单 - 开始 -->
 		<div class="frameMenu">
 		    <div class="logo">
-		        <img src="images/logo.jpg"/>
+		        <img src="/images/logo.jpg" />
 		        <div class="logoText">
 		            <h1>国美后台管理</h1>
 		            <p>GuoMei</p>
@@ -51,35 +48,34 @@
 		        	<li>
 		                <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-liuliangyunpingtaitubiao03 left"></i>用户管理<i class="iconfont icon-dajiantouyou right"></i></a>
 		                <dl>
-		                	<dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/agent/agent_add.html',this)">添加用户</a></dt>
-		                	<dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/agent/agent_list.html',this)">用户管理</a></dt>
-							<dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/agent/agent_list.html',this)">会员管理</a></dt>
+		                	<dt><a href="javascript:void(0)" onclick="menuCAClick('/tgls/agent/agent_add.html',this)" >添加用户</a></dt>
+		                	<dt><a href="javascript:void(0)" onclick="menuCAClick('/tgls/agent/agent_list.html',this)">用户管理</a></dt>
+							<dt><a href="javascript:void(0)" onclick="menuCAClick('/tgls/agent/agent_list.html',this)">会员管理</a></dt>
 		                </dl>
 		            </li>
 		        	<li>
 		                <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-shangpin left"></i>商品管理<i class="iconfont icon-dajiantouyou right"></i></a>
 		                <dl>
-
-		                	<dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/goodsManage/goods_list.html',this)">商品列表</a></dt>
-							<dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/goodsManage/goodsType_list.html',this)">分类列表</a></dt>
-							<dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/goodsManage/goods_add.html',this)">添加商品</a></dt>
-							<dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/goodsManage/goods_list.html',this)">会员商品</a></dt>
-							<dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/goodsManage/goods_list.html',this)">秒杀商品</a></dt>
-							<dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/comment.html',this)">商品评论</a></dt>
+		                	<dt><a href="javascript:void(0)" onclick="menuCAClick('/tgls/goodsManage/goodsType_list.html',this)">分类列表</a></dt>
+		                	<dt><a href="javascript:void(0)" onclick="menuCAClick('/tgls/goodsManage/goods_list.html',this)">商品列表</a></dt>
+		                	<dt><a href="javascript:void(0)" onclick="menuCAClick('/tgls/goodsManage/goods_add.html',this)">添加商品</a></dt>
+							<dt><a href="javascript:void(0)" onclick="menuCAClick('/tgls/goodsManage/goods_list.html',this)">会员商品</a></dt>
+							<dt><a href="javascript:void(0)" onclick="menuCAClick('/tgls/goodsManage/goods_list.html',this)">秒杀商品</a></dt>
+							<dt><a href="javascript:void(0)" onclick="menuCAClick('/tgls/comment.html',this)">商品评论</a></dt>
 		                </dl>
 		            </li>
 					<li>
 						<a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-liuliangyunpingtaitubiao03 left"></i>订单管理<i class="iconfont icon-dajiantouyou right"></i></a>
 						<dl>
-							<dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/goodsManage/goods_list.html',this)">订单列表</a></dt>
-							<dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/reportForm/reportForm1.html',this)">订单统计报表</a></dt>
+							<dt><a href="javascript:void(0)" onclick="menuCAClick('/tgls/goodsManage/goods_list.html',this)">订单列表</a></dt>
+							<dt><a href="javascript:void(0)" onclick="menuCAClick('/tgls/reportForm/reportForm1.html',this)">订单统计报表</a></dt>
 						</dl>
 					</li>
 					<li>
 						<a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-yingyongzhongxin left"></i>新闻管理<i class="iconfont icon-dajiantouyou right"></i></a>
 						<dl>
-							<dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/Journalism.html',this)">新闻列表</a></dt>
-							<dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/reportForm/add_Journalism.html',this)">添加新闻</a></dt>
+							<dt><a href="javascript:void(0)" onclick="menuCAClick('/tgls/Journalism.html',this)">新闻列表</a></dt>
+							<dt><a href="javascript:void(0)" onclick="menuCAClick('/tgls/reportForm/add_Journalism.html',this)">添加新闻</a></dt>
 						</dl>
 					</li>
 		        </ul>
@@ -89,11 +85,11 @@
 		<div class="main">
 			<!-- 头部栏 - 开始 -->
 			<div class="frameTop">
-				<img class="jt" src="images/top_jt.png"/>
+				<img class="jt" src="/images/top_jt.png" />
 				<div class="topMenu">
 					<ul>
-						<li><a href="javascript:void(0)" onclick="menuCAClick('tgls/modify_password.html',this)"><i class="iconfont icon-yonghu1"></i>管理员</a></li>
-						<li><a href="javascript:void(0)" onclick="menuCAClick('tgls/modify_password.html',this)"><i class="iconfont icon-xiugaimima"></i>修改密码</a></li>
+						<li><a href="javascript:void(0)" onclick="menuCAClick('/tgls/modify_password.html',this)"><i class="iconfont icon-yonghu1"></i>管理员</a></li>
+						<li><a href="javascript:void(0)" onclick="menuCAClick('/tgls/modify_password.html',this)"><i class="iconfont icon-xiugaimima"></i>修改密码</a></li>
 						<li><a href="login.html"><i class="iconfont icon-084tuichu"></i>注销</a></li>
 					</ul>
 				</div>
@@ -106,7 +102,7 @@
 					<span><i class="iconfont icon-xianshiqi"></i>后台首页</span>
 				</div>
 				<div class="con">
-					<iframe id="mainIframe" src="tgls/qdAPI.html" scrolling="no"></iframe>
+					<iframe id="mainIframe" src="/tgls/qdAPI.html" scrolling="no" ></iframe>
 				</div>
 			</div>
 			<!-- 核心区域 - 结束 -->

@@ -27,9 +27,6 @@ eureka:
       defaultZone: http://localhost:6001/eureka
 
 
-#注释后hystrix服务降级不可用
-feign:
-  hystrix:
-    enabled: true
+
 
 
