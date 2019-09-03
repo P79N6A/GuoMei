@@ -7,20 +7,16 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="comm" />
-        <module name="consumer-back" />
         <module name="consumer-pre" />
         <module name="eureka-server" />
-        <module name="product-server" />
         <module name="users-server" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="consumer-back" options="" />
       <module name="consumer-pre" options="" />
       <module name="eureka-server" options="" />
-      <module name="product-server" options="" />
       <module name="users-server" options="" />
     </option>
   </component>
