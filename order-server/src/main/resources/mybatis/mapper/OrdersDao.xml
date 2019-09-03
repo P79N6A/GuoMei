@@ -2,24 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.guomei.dao.GoodsDao">
+<mapper namespace="com.guomei.dao.OrdersDao">
 
     <resultMap type="Goods" id="Goods">
 
         <id column="goods_id" property="id"/>
         <!-- column:数据库字段  property:实体类属性  -->
-        <result column="shop_id" property="shopId"/>
-        <result column="brand_id" property="bid"/>
-        <result column="goods_title" property="title"/>
-        <result column="goods_sub_title" property="subTitle"/>
-        <result column="goods_main_img" property="mainImg"/>
-        <result column="goods_des_img" property="desImg"/>
-        <result column="goods_des" property="describe"/>
-        <result column="goods_price" property="stock"/>
-        <result column="goods_state" property="state"/>
-        <result column="goods_seckill" property="seckill"/>
+        <result column="order_id" property="id"/>
+        <result column="address_id" property="adressId"/>
+        <result column="pay_date" property="payDate"/>
+        <result column="order_time" property="orderTime"/>
+        <result column="order_total" property="total"/>
+        <result column="order_status" property="status"/>
+        <result column="order_no" property="orderNo"/>
     </resultMap>
 
+    <select id="orderList" resultType="map">
+        SELECT a.`address_name`,a.`address_detail`,o.`order_no`,o.`order_status`,s.`goods_id`,o.`order_total`,o.`order_time`
+        FROM orders o
+                 INNER JOIN order_detail s ON s.`order_id`=o.order_id
+                 INNER JOIN  address a ON a.`address_id`=o.`address_id`
+    </select>
 
 
 </mapper>
