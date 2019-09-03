@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
@@ -48,7 +47,7 @@
 				<script>
 					layui.use('form', function() {
 						var form = layui.form;
-				
+
 						//监听提交
 						form.on('submit(formDemo)', function(data) {
 							layer.msg(JSON.stringify(data.field));
@@ -57,7 +56,7 @@
 					});
 				</script>
 			</div>
-			
+
 			<table class="layui-table">
 				<thead>
 					<tr>
@@ -96,14 +95,14 @@
 					</tr>
 				</tbody>
 			</table>
-			
+
 			<!-- layUI 分页模块 -->
 			<div id="pages"></div>
 			<script>
 				layui.use(['laypage', 'layer'], function() {
 					var laypage = layui.laypage,
 						layer = layui.layer;
-				
+
 					//总页数大于页码总数
 					laypage.render({
 					    elem: 'pages'
