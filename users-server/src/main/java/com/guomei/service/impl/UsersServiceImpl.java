@@ -20,7 +20,7 @@ public class UsersServiceImpl implements UsersService {
 
 
     @Override
-    public List<Users> findAll() {
-        return usersDao.findAll();
+    public Users adminLogin(Users users) {
+        return usersDao.adminLogin(users);
     }
 }

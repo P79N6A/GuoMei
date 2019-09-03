@@ -14,13 +14,20 @@
         <module name="users-server" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="comm" target="1.8" />
+      <module name="consumer-back" target="1.8" />
+      <module name="consumer-pre" target="1.8" />
+      <module name="eureka-server" target="1.8" />
+      <module name="GuoMei" target="1.8" />
+      <module name="product-server" target="1.8" />
+      <module name="users-server" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="consumer-back" options="" />
       <module name="consumer-pre" options="" />
       <module name="eureka-server" options="" />
-      <module name="product-server" options="" />
       <module name="users-server" options="" />
     </option>
   </component>

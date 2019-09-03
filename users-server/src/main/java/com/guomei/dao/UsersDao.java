@@ -7,5 +7,8 @@ import java.util.List;
 
 @Mapper
 public interface UsersDao {
-    List<Users> findAll();
+
+
+    //管理员后台登录
+    Users adminLogin(Users users );
 }
