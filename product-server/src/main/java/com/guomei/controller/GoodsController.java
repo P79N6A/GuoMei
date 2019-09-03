@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("Back/Goods")
@@ -20,5 +21,16 @@ public class GoodsController {
     public List<Goods> findAll(){
         return goodsService.findAll();
     }
+
+
+    @ResponseBody
+    @RequestMapping("findCategory")
+    public Map<String,Object> findCategory(){
+
+        return null;
+    }
+
+
+
 
 }

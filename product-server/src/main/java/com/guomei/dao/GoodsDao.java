@@ -9,7 +9,6 @@ import java.util.List;
 @Mapper
 public interface GoodsDao {
 
-    @Select("select * from goods")
     List<Goods> findAll();
 
 }
