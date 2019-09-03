@@ -7,11 +7,22 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="comm" />
+        <module name="consumer-back" />
         <module name="consumer-pre" />
         <module name="eureka-server" />
+        <module name="product-server" />
         <module name="users-server" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="comm" target="1.8" />
+      <module name="consumer-back" target="1.8" />
+      <module name="consumer-pre" target="1.8" />
+      <module name="eureka-server" target="1.8" />
+      <module name="GuoMei" target="1.8" />
+      <module name="product-server" target="1.8" />
+      <module name="users-server" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
