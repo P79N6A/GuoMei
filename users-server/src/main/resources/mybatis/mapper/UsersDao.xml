@@ -11,8 +11,10 @@
     </resultMap>
 
 
-    <select id="findAll" resultMap="Users">
-        select * from users
+
+    <select   id="adminLogin" resultMap="Users">
+        SELECT  * FROM  users  WHERE  user_name =#{userName}  AND  user_pwd=#{passWord}  AND  user_role=1
     </select>
+
 
 </mapper>

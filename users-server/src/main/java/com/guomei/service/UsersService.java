@@ -9,5 +9,7 @@ import java.util.List;
 @Service
 @Transactional
 public interface UsersService {
-    List<Users> findAll();
+
+
+    Users adminLogin(Users users );
 }
