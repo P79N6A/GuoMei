@@ -11,8 +11,8 @@ import lombok.experimental.Accessors;
 @Accessors(chain=true)
 @ToString
 public class UserInfo {
-    private Integer id;
-    private Integer uid;
-    private Integer  gid;
-    private Integer sid;
+    private Integer id; //编号
+    private Integer uid; //用户编号
+    private Integer  gid; //成长值表
+    private Integer sid; //美豆积分值
 }
