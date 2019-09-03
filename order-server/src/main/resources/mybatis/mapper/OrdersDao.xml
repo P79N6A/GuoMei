@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.guomei.dao.GoodsDao">
+
+    <resultMap type="Goods" id="Goods">
+
+        <id column="goods_id" property="id"/>
+        <!-- column:数据库字段  property:实体类属性  -->
+        <result column="shop_id" property="shopId"/>
+        <result column="brand_id" property="bid"/>
+        <result column="goods_title" property="title"/>
+        <result column="goods_sub_title" property="subTitle"/>
+        <result column="goods_main_img" property="mainImg"/>
+        <result column="goods_des_img" property="desImg"/>
+        <result column="goods_des" property="describe"/>
+        <result column="goods_price" property="stock"/>
+        <result column="goods_state" property="state"/>
+        <result column="goods_seckill" property="seckill"/>
+    </resultMap>
+
+
+
+</mapper>
