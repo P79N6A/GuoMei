@@ -11,6 +11,12 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>comm</module>
+        <module>consumer-back</module>
+        <module>consumer-pre</module>
+        <module>eureka-server</module>
+        <module>order-server</module>
+        <module>product-server</module>
+        <module>users-server</module>
     </modules>
 
 
