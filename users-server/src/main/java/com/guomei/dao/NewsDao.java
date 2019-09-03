@@ -1,5 +1,8 @@
 package com.guomei.dao;
 
-public interface NewsDao {
+import com.guomei.pojo.News;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
+public interface NewsDao extends MongoRepository<News,String> {
+        public News findByTitle(String title);
 }
