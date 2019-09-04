@@ -44,23 +44,20 @@
 <body>
 <div class="mCS_no_scrollbar" id="bodys">
     <form id="addForm" class="layui-form" action="">
-
+        <div class="layui-form-item"></div>
         <div class="layui-form-item">
-            <label class="layui-form-label">收货人</label>
-            <div class="layui-input-block">
-                <input type="text" name="userName" required lay-verify="required" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">状态</label>
+            <label class="layui-form-label">父分类</label>
             <div class="layui-input-inline">
                 <select name="provid" id="provid" lay-filter="provid">
                     <option value="1">待付款</option>
-                    <option value="2">待发货</option>
-                    <option value="3">已发货</option>
-                    <option value="4">已完成</option>
-                    <option value="0">已取消</option>
+
                 </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">分类名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="categoryName" required lay-verify="required" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
@@ -87,23 +84,34 @@
                 var updateFrame = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
                 parent.layer.close(updateFrame);  //再改变当前层的标题
             });
-            form.verify({
-                //数组的两个值分别代表：[正则匹配、匹配不符时的提示文字]
-                ZHCheck: [
-                    /^[\u0391-\uFFE5]+$/
-                    ,'只允许输入中文'
-                ]
-            });
-            // //拖拽上传
-            // upload.render({
-            //     elem: '#goodsPic',
-            //     url: '/upload/',
-            //     done: function(res) {
-            //         console.log(res)
-            //     }
-            // });
         });
     </script>
+
+    <script language="javascript">
+
+        $(function(){
+            var url = GetRequest();
+            $.getJSON("","cid="+url.cid,function(json){
+
+            });
+        })
+
+        function GetRequest() {
+            var url = location.search; //获取url中"?"符后的字串
+            var theRequest = new Object();
+            if (url.indexOf("?") != -1) {
+                var str = url.substr(1);
+                strs = str.split("&");
+                for(var i = 0; i < strs.length; i ++) {
+                    theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+                }
+            }
+            return theRequest;
+        }
+    </script>
+
+
+
 </div>
 </body>
 
