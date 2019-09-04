@@ -28,26 +28,26 @@ public class CategoryController {
         return categoryService.findCategory(null);
     }
 
-    @RequestMapping("updateCategoryInfo/{cid}/{level}")
+    @RequestMapping("updateCategoryInfo/{cid}/{parentId}")
     @ResponseBody
-    public Map<String, Object> updateCategoryInfo(@PathVariable("cid") Integer cid,@PathVariable("level") Integer level) {
+    public Map<String, Object> updateCategoryInfo(@PathVariable("cid") Integer cid, @PathVariable("parentId") Integer parentId) {
         Map<String, Object> map = new HashMap<>();
         Map<String, Object> param = new HashMap<>();//调用dao的参数
-        Category category = categoryService.findCategoryParent(cid);
-        if (category != null) { //表示当前分类有父分类
+        //查询当前分类相关信息
+        param.put("cid", cid);
+        List<Category> myCategory = categoryService.findCategory(param);
+        map.put("myCategory", myCategory.get(0));
+        //查询当前分类是否有父分类
+        Category category = categoryService.findCategoryParent(parentId);
+        if (category != null) {
+            param.remove("cid");//清空
             map.put("parentCategory", category);
+            param.put("level", category.getCLevel());
             //查询父分类同级别的分类信息
-            param.put("level",level);
-            //拿到和父分类同一级别的分类
             List<Category> parentBrother = categoryService.findCategory(param);
             map.put("parentBrother", parentBrother);
-        } else {
-            //没有父分类,表示为根栏目
-            //返回当前分类
-            param.put("cid", cid);
-            List<Category> myCategory = categoryService.findCategory(param);
-            map.put("myCategory", myCategory);
-        }
+        } else
+            map.put("flag", "myRoot");
         return map;
     }
 }

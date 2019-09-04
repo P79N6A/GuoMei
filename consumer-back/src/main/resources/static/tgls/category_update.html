@@ -49,14 +49,11 @@
         <div class="layui-form-item">
             <label class="layui-form-label">父分类</label>
             <div class="layui-input-inline">
-                <select name="categoryList" id="provid" lay-filter="provid">
-                    <option value="1">待付款</option>
-
-                </select>
+                <select id="categoryList" name="categoryList" id="provid" lay-filter="provid"></select>
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">分类名称</label>
+            <label class="layui-form-label" id="cname">分类名称</label>
             <div class="layui-input-block">
                 <input type="text" name="categoryName" required lay-verify="required" autocomplete="off"
                        class="layui-input">
@@ -72,28 +69,43 @@
 
 
     <script>
-        layui.use(['upload', 'form'], function () {
-            var form = layui.form;
-            // var upload = layui.upload;
-            var layer = layui.layer;
+        layui.use(['jquery', 'form', 'layer'], function () {
+            var layer = layui.layer,
+                $ = layui.jquery,
+                form = layui.form;
             layer.ready(function () {
                 $("#bodys").css("");
             })
 
             //页面一加载就发送ajax
             $(function () {
-                var re  = GetRequest();
-                alert(re.clevel);
+                var re = GetRequest();
                 $.ajax({
-                    url: "../../Goods/updateCategoryInfo/"+re.cid+"/"+re.clevel+"",
+                    url: "../../Goods/updateCategoryInfo/" + re.cid + "/" + re.parentId + "",
                     type: "get",
                     dataType: "json",
                     success: function (data) {
                         //表单初始赋值
-                        form.val('cateFrom', {
-                            "categoryName":data.parentCategory.name,
-                            "categoryList":data.categoryList
-                        });
+                        if(data.myCategory.clevel == 4){ //表示是品牌
+                            $("#cname").text("品牌名称");
+                        }
+                        $("input[name='categoryName']").val(data.myCategory.name);
+                        if(data.parentBrother != null){
+                            var select = "";
+                            $.each(data.parentBrother,function(index,value){
+                                if(data.parentCategory.cid == value.cid){
+                                    select+="<option selected value="+value.cid+">"+value.name+"</option>";
+                                }else{
+                                    select+="<option value="+value.cid+">"+value.name+"</option>";
+                                }
+                            });
+                            $("#categoryList").append(select)
+                        }
+                        if(data.flag == 'myRoot'){
+                            $("#categoryList").append("<option value="+data.myCategory.cid+">根栏目</option>")
+                        }
+                        //重新渲染select
+                        form.render('select');
                     }
                 });
 
@@ -120,7 +132,6 @@
             }
         });
     </script>
-
 
 
 </div>

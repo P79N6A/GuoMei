@@ -81,9 +81,9 @@
                     field: 'isMenu', width: 150, align: 'center', templet: function (d) {
 
                         if (d.parentId == 0) {
-                            return '<button class="layui-btn layui-btn-xs"  onclick="updateBut('+d.cid+','+d.clevel+') ">修改</button>';
+                            return '<button class="layui-btn layui-btn-xs"  onclick="updateBut('+d.cid+','+d.parentId+') ">修改</button>';
                         } else {
-                            return '<button class="layui-btn layui-btn-xs"  onclick="updateBut('+d.cid+','+d.clevel+')">修改</button><button class="layui-btn layui-btn-xs">删除</button>';
+                            return '<button class="layui-btn layui-btn-xs"  onclick="updateBut('+d.cid+','+d.parentId+')">修改</button><button class="layui-btn layui-btn-xs">删除</button>';
                         }
                     }, title: '操作'
                 }
@@ -126,7 +126,7 @@
     });
     //修改按钮
     var updateFrame = null;
-    function updateBut(cid,clevel){
+    function updateBut(cid,parentId){
         layui.use('layer', function() {
             //iframe层-父子操作
             updateFrame = layer.open({
@@ -135,7 +135,7 @@
                 area: ['100%', '100%'],
                 scrollbar: false,	//默认：true,默认允许浏览器滚动，如果设定scrollbar: false，则屏蔽
                 maxmin: true,
-                content: '../category_update.html?cid='+cid+'&clevel='+clevel
+                content: '../category_update.html?cid='+cid+'&parentId='+parentId
             });
         });
     }
