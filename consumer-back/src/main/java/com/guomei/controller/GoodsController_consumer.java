@@ -21,6 +21,7 @@ public class GoodsController_consumer {
     @RequestMapping("findCategory")
     public String findCategory(){
         String json ="{\"data\":"+goodsService.findCategory()+"}";
+        System.out.println("json = " + json);
         return  json;
     }
 }

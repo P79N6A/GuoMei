@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/GuoMei.iml" filepath="$PROJECT_DIR$/GuoMei.iml" />
+      <module fileurl="file://$PROJECT_DIR$/comm/comm.iml" filepath="$PROJECT_DIR$/comm/comm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/consumer-back/consumer-back.iml" filepath="$PROJECT_DIR$/consumer-back/consumer-back.iml" />
+      <module fileurl="file://$PROJECT_DIR$/consumer-pre/consumer-pre.iml" filepath="$PROJECT_DIR$/consumer-pre/consumer-pre.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-server/eureka-server.iml" filepath="$PROJECT_DIR$/eureka-server/eureka-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/order-server/order-server.iml" filepath="$PROJECT_DIR$/order-server/order-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/product-server/product-server.iml" filepath="$PROJECT_DIR$/product-server/product-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/users-server/users-server.iml" filepath="$PROJECT_DIR$/users-server/users-server.iml" />
+    </modules>
+  </component>
+</project>
