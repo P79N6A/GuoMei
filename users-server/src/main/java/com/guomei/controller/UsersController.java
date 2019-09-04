@@ -4,10 +4,7 @@ import com.guomei.pojo.Users;
 import com.guomei.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,8 +16,14 @@ public class UsersController {
 
 
     @RequestMapping("/adminLogin")
-    @ResponseBody
     public Users adminLogin(@RequestBody Users users){
         return  usersService.adminLogin(users);
     }
+
+    @RequestMapping("/findUsers")
+    public List<Users> findUsers(String userName) {
+        return usersService.findUsers(userName);
+    }
+
+
 }
