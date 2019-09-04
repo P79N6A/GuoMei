@@ -18,7 +18,7 @@ public class GoodsController_consumer {
     private GoodsService goodsService;
 
     @ResponseBody
-    @RequestMapping("findAllCategory")
+    @RequestMapping("findCategory")
     public String findCategory(){
         String json ="{\"data\":"+goodsService.findCategory()+"}";
         return  json;
