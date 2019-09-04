@@ -17,6 +17,6 @@ public class Category {
 
     private Integer  parentId;     //分类父编号
 
-    private Integer parentLevel;     //分类级层
+    private Integer level;     //分类级层
 
 }
