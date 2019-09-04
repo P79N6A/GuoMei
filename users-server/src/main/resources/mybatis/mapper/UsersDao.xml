@@ -8,6 +8,14 @@
         <id column="user_id" property="id"/>
         <result column="user_name" property="userName"/>
         <result column="user_pwd" property="passWord"/>
+        <result column="user_sex" property="sex"/>
+        <result column="user_birthday" property="birthday"/>
+        <result column="user_phone" property="phone"/>
+        <result column="user_email" property="email"/>
+        <result column="user_address" property="address"/>
+        <result column="user_headimg" property="headImg"/>
+        <result column="user_time" property="time"/>
+        <result column="user_role" property="role"/>
     </resultMap>
 
 
@@ -15,6 +23,19 @@
     <select   id="adminLogin" resultMap="Users">
         SELECT  * FROM  users  WHERE  user_name =#{userName}  AND  user_pwd=#{passWord}  AND  user_role=1
     </select>
+
+
+    <select id="findUsers" resultMap="Users">
+        SELECT * FROM   users
+        <where>
+            <if test="userName!=null and  ''!=userName">
+                user_name  LIKE   concat('%',#{userName},'%')
+            </if>
+        </where>
+    </select>
+
+
+
 
 
 </mapper>

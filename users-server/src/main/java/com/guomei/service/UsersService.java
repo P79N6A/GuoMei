@@ -1,6 +1,7 @@
 package com.guomei.service;
 
 import com.guomei.pojo.Users;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,5 +12,9 @@ import java.util.List;
 public interface UsersService {
 
 
-    Users adminLogin(Users users );
+    Users adminLogin(Users users);
+
+    List<Users> findUsers(String userName);
+
+
 }

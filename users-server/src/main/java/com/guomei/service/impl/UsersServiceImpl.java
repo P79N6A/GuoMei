@@ -4,6 +4,7 @@ package com.guomei.service.impl;
 import com.guomei.dao.UsersDao;
 import com.guomei.pojo.Users;
 import com.guomei.service.UsersService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,4 +24,11 @@ public class UsersServiceImpl implements UsersService {
     public Users adminLogin(Users users) {
         return usersDao.adminLogin(users);
     }
+
+    @Override
+    public List<Users> findUsers(String userName) {
+        return usersDao.findUsers(userName);
+    }
+
+
 }
