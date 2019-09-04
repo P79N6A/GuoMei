@@ -39,102 +39,124 @@
 				<form class="layui-form" action="">
 					<div class="layui-form-item">
 						<div class="layui-input-inline">
-							<input type="text" name="name" required lay-verify="required" placeholder="输入分管名称" autocomplete="off" class="layui-input">
+							<input type="text" name="userName" required  placeholder="输入用户名" autocomplete="off" class="layui-input">
 						</div>
-						<button class="layui-btn" lay-submit lay-filter="formDemo">检索</button>
+						<button class="layui-btn" lay-submit lay-filter="formDemo">查询</button>
 					</div>
 				</form>
-
-				<script>
-					layui.use('form', function() {
-						var form = layui.form;
-				
-						//监听提交
-						form.on('submit(formDemo)', function(data) {
-							layer.msg(JSON.stringify(data.field));
-							return false;
-						});
-					});
-				</script>
 			</div>
-			
-			<table class="layui-table">
-				<thead>
-					<tr>
-						<th>分管名称</th>
-						<th>分管编码</th>
-						<th>所属区域</th>
-						<th>负责人</th>
-						<th>登录名</th>
-						<th>联系方式</th>
-						<th>传真</th>
-						<th>邮箱</th>
-						<th>操作</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>龙九山</td>
-						<td>DLS201802281450280741</td>
-						<td>无锡市</td>
-						<td>龙九山</td>
-						<td>龙九山</td>
-						<td>18600001111</td>
-						<td>028-6666666</td>
-						<td>123456789@qq.com</td>
-						<td>
-							<button class="layui-btn layui-btn-xs">修改</button>
-							<button class="layui-btn layui-btn-xs">删除</button>
-						</td>
-					</tr>
-					<tr>
-						<td>龙九山</td>
-						<td>DLS201802281450280741</td>
-						<td>无锡市</td>
-						<td>龙九山</td>
-						<td>龙九山</td>
-						<td>18600001111</td>
-						<td>028-6666666</td>
-						<td>123456789@qq.com</td>
-						<td>
-							<button class="layui-btn layui-btn-xs">修改</button>
-							<button class="layui-btn layui-btn-xs">删除</button>
-						</td>
-					</tr>
-					<tr>
-						<td>龙九山</td>
-						<td>DLS201802281450280741</td>
-						<td>无锡市</td>
-						<td>龙九山</td>
-						<td>龙九山</td>
-						<td>18600001111</td>
-						<td>028-6666666</td>
-						<td>123456789@qq.com</td>
-						<td>
-							<button class="layui-btn layui-btn-xs">修改</button>
-							<button class="layui-btn layui-btn-xs">删除</button>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+
+			<script type="text/html" id="barDemo">
+				<a class="layui-btn layui-btn-xs" lay-event="edit">修改</a>
+				<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+			</script>
+
+			<table class="layui-hide" id="table" lay-filter="test"></table>
 			
 			<!-- layUI 分页模块 -->
 			<div id="pages"></div>
 			<script>
-				layui.use(['laypage', 'layer'], function() {
-					var laypage = layui.laypage,
-						layer = layui.layer;
-				
-					//总页数大于页码总数
-					laypage.render({
-					    elem: 'pages'
-					    ,count: 100
-					    ,layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
-					    ,jump: function(obj){
-					      console.log(obj)
-					    }
-					});
+				layui.use(['laypage', 'layer','table'], function() {
+					var laypage = layui.laypage,  //分页
+						layer = layui.layer ,  //弹层
+						table = layui.table , //表格
+                        form = layui.form;
+
+//执行一个 table 实例
+                    table.render({
+                        elem: '#table'
+                        ,height: 420
+                        ,url: '/users/back/findUsers?userName='+null //数据接口
+                        ,cellMinWidth: 60 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+                        ,page: true //开启分页
+
+                        ,cols: [[ //表头
+							{field: 'id', title: 'ID',fixed: 'left', sort: true,width:60}
+                            ,{field: 'userName', title: '用户名',width:80}
+                            ,{field: 'sex', title: '性别', sort: true,width:80}
+                            ,{field: 'birthday', title: '生日',width:125}
+                            ,{field: 'phone', title: '手机号码',width:150}
+                            ,{field: 'email', title: '邮箱',width:180}
+                            ,{field: 'address', title: '家庭住址',width:150}
+                            ,{field: 'headImg', title: '头像图片',width:150}
+                            ,{field: 'time', title: '注册时间',width:125}
+                            ,{fixed: 'right', title:'操作', toolbar: '#barDemo',width:120}
+                        ]]
+                    });
+
+                    //根据用户名模糊查询
+                    form.on('submit(formDemo)', function(data) {
+                        table.render({
+                            elem: '#table'
+                            ,height: 420
+                            ,url: '/users/back/findUsers?userName='+$("input[name=userName]").val() //数据接口
+                            ,page: true //开启分页
+
+                            ,cols: [[ //表头
+                                {field: 'id', title: 'ID', sort: true,width:30}
+                                ,{field: 'userName', title: '用户名',width:30}
+                                ,{field: 'sex', title: '性别', sort: true,width:30}
+                                ,{field: 'birthday', title: '生日',width:80}
+                                ,{field: 'phone', title: '手机号码',width:80}
+                                ,{field: 'email', title: '邮箱',width:80}
+                                ,{field: 'address', title: '家庭住址',width:80}
+                                ,{field: 'headImg', title: '头像图片',width:80}
+                                ,{field: 'time', title: '注册时间',width:80}
+                                ,{fixed: 'right', title:'操作', toolbar: '#barDemo',width:100}
+                            ]]
+                        });
+                        return false;
+                    });
+
+
+
+
+                    //监听行工具事件
+                    table.on('tool(test)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+                        var data = obj.data //获得当前行数据
+                            ,layEvent = obj.event; //获得 lay-event 对应的值
+                        if(layEvent === 'del'){
+                            layer.confirm('真的删除行么', function(index){
+                                obj.del(); //删除对应行（tr）的DOM结构
+                                layer.close(index);
+                                //向服务端发送删除指令
+
+$.post();
+
+
+
+                            });
+                        } else if(layEvent === 'edit'){
+                            layer.msg('修改操作');
+                        }
+                    });
+
+                    //分页
+                    laypage.render({
+                        elem: 'table' //分页容器的id
+                        ,count: 100 //总页数
+                        ,skin: '#1E9FFF' //自定义选中色值
+                        //,skip: true //开启跳页
+                        ,jump: function(obj, first){
+                            if(!first){
+                                layer.msg('第'+ obj.curr +'页', {offset: 'b'});
+                            }
+                        }
+                    });
+
+
+
+
+
+
+
 				});
+
+
+
+
+
+
 			</script>
 		</div>
 	</body>
