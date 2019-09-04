@@ -17,6 +17,6 @@ public interface GoodsService {
     String findCategory();
 
     @RequestMapping("Back/Category/updateCategoryInfo/{cid}")
-    String updateCategoryInfo(@PathVariable("cid")Integer cid);
+    String updateCategoryInfo(@PathVariable("cid")Integer cid,@PathVariable("level") Integer level);
 
 }
