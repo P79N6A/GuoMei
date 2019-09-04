@@ -18,9 +18,4 @@
         <result column="goods_seckill" property="seckill"/>
     </resultMap>
 
-
-    <select id="findCategory" resultType="category">
-        SELECT category_id AS cid,category_name AS `name`,category_parent_id AS parentId ,category_level as cLevel FROM category
-    </select>
-
 </mapper>
