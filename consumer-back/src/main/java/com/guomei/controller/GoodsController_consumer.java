@@ -1,5 +1,6 @@
 package com.guomei.controller;
 
+import com.guomei.pojo.Category;
 import com.guomei.pojo.Goods;
 import com.guomei.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +17,10 @@ public class GoodsController_consumer {
     @Autowired
     private GoodsService goodsService;
 
-    @RequestMapping("list")
     @ResponseBody
-    public List<Goods> findAll(){
-        return goodsService.findAll();
+    @RequestMapping("findCategory")
+    public String findCategory(){
+        String json ="{\"data\":"+goodsService.findCategory()+"}";
+        return  json;
     }
-
-
 }
