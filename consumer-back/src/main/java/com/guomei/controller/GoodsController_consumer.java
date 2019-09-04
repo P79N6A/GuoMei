@@ -27,11 +27,11 @@ public class GoodsController_consumer {
         return  json;
     }
 
-    @RequestMapping("updateCategoryInfo/{cid}/{level}")
+    @RequestMapping("updateCategoryInfo/{cid}/{parentId}")
     @ResponseBody
-    public String updateCategoryInfo(@PathVariable("cid")Integer cid,@PathVariable("level") Integer level){
+    public String updateCategoryInfo(@PathVariable("cid")Integer cid,@PathVariable("parentId") Integer parentId){
 
-        return goodsService.updateCategoryInfo(cid,level);
+        return goodsService.updateCategoryInfo(cid,parentId);
     }
 
 }
