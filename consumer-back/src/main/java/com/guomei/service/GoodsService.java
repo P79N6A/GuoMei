@@ -11,7 +11,7 @@ import java.util.List;
 @FeignClient("product-server")
 public interface GoodsService {
 
-    @RequestMapping("Back/Goods/findCategory")
+    @RequestMapping("Back/Goods/findAllCategory")
     String findCategory();
 
 }
