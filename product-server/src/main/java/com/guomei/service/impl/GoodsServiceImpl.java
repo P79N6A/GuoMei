@@ -1,6 +1,7 @@
 package com.guomei.service.impl;
 
 import com.guomei.dao.GoodsDao;
+import com.guomei.pojo.Category;
 import com.guomei.pojo.Goods;
 import com.guomei.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +17,8 @@ public class GoodsServiceImpl implements GoodsService {
     @Autowired
     private GoodsDao goodsDao;
 
-
     @Override
-    public List<Goods> findAll() {
-        return goodsDao.findAll();
+    public List<Category> findCategory() {
+        return goodsDao.findCategory();
     }
 }
