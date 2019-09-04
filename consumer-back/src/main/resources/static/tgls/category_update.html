@@ -8,13 +8,13 @@
     <meta name="renderer" content="webkit">
     <!--国产浏览器高速模式-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="国美电器" />
+    <meta name="author" content="国美电器"/>
     <!-- 作者 -->
-    <meta name="revised" content="国美电器.v3, 2019/05/01" />
+    <meta name="revised" content="国美电器.v3, 2019/05/01"/>
     <!-- 定义页面的最新版本 -->
-    <meta name="description" content="网站简介" />
+    <meta name="description" content="网站简介"/>
     <!-- 网站简介 -->
-    <meta name="keywords" content="搜索关键字，以半角英文逗号隔开" />
+    <meta name="keywords" content="搜索关键字，以半角英文逗号隔开"/>
 
     <!-- 公共样式 开始 -->
     <link rel="stylesheet" type="text/css" href="../../css/base.css">
@@ -31,10 +31,11 @@
     <!-- 公共样式 结束 -->
 
     <style>
-        .layui-form-label{
+        .layui-form-label {
             width: 100px;
         }
-        .layui-input-block{
+
+        .layui-input-block {
             margin-left: 130px;
         }
     </style>
@@ -43,12 +44,12 @@
 
 <body>
 <div class="mCS_no_scrollbar" id="bodys">
-    <form id="addForm" class="layui-form" action="">
+    <form id="addForm" class="layui-form" lay-filter="cateFrom" action="">
         <div class="layui-form-item"></div>
         <div class="layui-form-item">
             <label class="layui-form-label">父分类</label>
             <div class="layui-input-inline">
-                <select name="provid" id="provid" lay-filter="provid">
+                <select name="categoryList" id="provid" lay-filter="provid">
                     <option value="1">待付款</option>
 
                 </select>
@@ -57,7 +58,8 @@
         <div class="layui-form-item">
             <label class="layui-form-label">分类名称</label>
             <div class="layui-input-block">
-                <input type="text" name="categoryName" required lay-verify="required" autocomplete="off" class="layui-input">
+                <input type="text" name="categoryName" required lay-verify="required" autocomplete="off"
+                       class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
@@ -70,7 +72,7 @@
 
 
     <script>
-        layui.use(['upload','form'], function() {
+        layui.use(['upload', 'form'], function () {
             var form = layui.form;
             // var upload = layui.upload;
             var layer = layui.layer;
@@ -78,36 +80,45 @@
                 $("#bodys").css("");
             })
 
+            //页面一加载就发送ajax
+            $(function () {
+                var re  = GetRequest();
+                alert(re.clevel);
+                $.ajax({
+                    url: "../../Goods/updateCategoryInfo/"+re.cid+"/"+re.clevel+"",
+                    type: "get",
+                    dataType: "json",
+                    success: function (data) {
+                        //表单初始赋值
+                        form.val('cateFrom', {
+                            "categoryName":data.parentCategory.name,
+                            "categoryList":data.categoryList
+                        });
+                    }
+                });
+
+            })
+
             //监听提交
             //解决了layui.open弹窗从内部关闭这个弹窗的问题
-            form.on('submit(submitBut)', function(data) {
+            form.on('submit(submitBut)', function (data) {
                 var updateFrame = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
                 parent.layer.close(updateFrame);  //再改变当前层的标题
             });
-        });
-    </script>
 
-    <script language="javascript">
-
-        $(function(){
-            var url = GetRequest();
-            $.getJSON("","cid="+url.cid,function(json){
-
-            });
-        })
-
-        function GetRequest() {
-            var url = location.search; //获取url中"?"符后的字串
-            var theRequest = new Object();
-            if (url.indexOf("?") != -1) {
-                var str = url.substr(1);
-                strs = str.split("&");
-                for(var i = 0; i < strs.length; i ++) {
-                    theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+            function GetRequest() {
+                var url = location.search; //获取url中"?"符后的字串
+                var theRequest = new Object();
+                if (url.indexOf("?") != -1) {
+                    var str = url.substr(1);
+                    strs = str.split("&");
+                    for (var i = 0; i < strs.length; i++) {
+                        theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+                    }
                 }
+                return theRequest;
             }
-            return theRequest;
-        }
+        });
     </script>
 
 
