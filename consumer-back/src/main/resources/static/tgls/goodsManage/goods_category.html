@@ -20,6 +20,25 @@
             border-color: #009E94;
         }
     </style>
+    <!-- 公共样式 开始 -->
+    <link rel="stylesheet" type="text/css" href="../../css/base.css">
+    <link rel="stylesheet" type="text/css" href="../../css/iconfont.css">
+    <script type="text/javascript" src="../../framework/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../layui/css/layui.css">
+    <script type="text/javascript" src="../../layui/layui.js"></script>
+    <!-- 滚动条插件 -->
+    <link rel="stylesheet" type="text/css" href="../../css/jquery.mCustomScrollbar.css">
+    <script src="../../framework/jquery-ui-1.10.4.min.js"></script>
+    <script src="../../framework/jquery.mousewheel.min.js"></script>
+    <script src="../../framework/jquery.mCustomScrollbar.min.js"></script>
+    <script src="../../framework/cframe.js"></script><!-- 仅供所有子页面使用 -->
+    <!-- 公共样式 结束 -->
+
+    <style>
+        .layui-table img {
+            max-width: none;
+        }
+    </style>
 </head>
 <body>
 <div class="layui-container">
@@ -31,7 +50,6 @@
     &nbsp;&nbsp;
     <input id="edt-search" type="text" placeholder="输入关键字" style="width: 120px;"/>&nbsp;&nbsp;
     <button class="layui-btn" id="btn-search">&nbsp;&nbsp;搜索&nbsp;&nbsp;</button>
-
     <table id="auth-table" class="layui-table" lay-filter="auth-table"></table>
 </div>
 <script type="text/javascript" src="../../layui/layui.js"></script>
@@ -62,11 +80,11 @@
                     field: 'isMenu', width: 150, align: 'center', templet: function (d) {
 
                         if (d.parentId == 0) {
-                            return '<span class="layui-badge layui-bg-blue">目录</span>';
+                            return '<button class="layui-btn layui-btn-xs"  onclick="updateBut('+d.cid+') ">修改</button>';
                         } else {
-                            return '<span class="layui-badge-rim">菜单</span>';
+                            return '<button class="layui-btn layui-btn-xs"  onclick="updateBut('+d.cid+')">修改</button><button class="layui-btn layui-btn-xs">删除</button>';
                         }
-                    }, title: '类型'
+                    }, title: '操作'
                 }
             ]],
             done: function () {
@@ -105,6 +123,21 @@
             }
         });
     });
+    //修改按钮
+    var updateFrame = null;
+    function updateBut(cid){
+        layui.use('layer', function() {
+            //iframe层-父子操作
+            updateFrame = layer.open({
+                title: "商品分类修改",
+                type: 2,
+                area: ['100%', '100%'],
+                scrollbar: false,	//默认：true,默认允许浏览器滚动，如果设定scrollbar: false，则屏蔽
+                maxmin: true,
+                content: '../category_update.html?cid='+cid
+            });
+        });
+    }
 </script>
 <style>
 
