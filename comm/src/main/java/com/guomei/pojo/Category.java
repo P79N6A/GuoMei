@@ -3,6 +3,8 @@ package com.guomei.pojo;
 import lombok.*;
 import lombok.experimental.Accessors;
 
+import java.util.List;
+
 //商品分类表
 @Setter
 @Getter
@@ -18,5 +20,7 @@ public class Category {
     private Integer  parentId;     //分类父编号
 
     private Integer cLevel;     //分类级层
+
+    private List<Category> myCategory; //存放当前父分类下的子分类
 
 }
