@@ -57,6 +57,7 @@
             <div class="layui-input-block">
                 <input type="text" name="categoryName" required lay-verify="required" autocomplete="off"
                        class="layui-input">
+                <input type="hidden" name="cid" id="cid">
             </div>
         </div>
         <div class="layui-form-item">
@@ -75,8 +76,7 @@
                 form = layui.form;
             layer.ready(function () {
                 $("#bodys").css("");
-            })
-
+            });
             //页面一加载就发送ajax
             $(function () {
                 var re = GetRequest();
@@ -86,23 +86,24 @@
                     dataType: "json",
                     success: function (data) {
                         //表单初始赋值
-                        if(data.myCategory.clevel == 4){ //表示是品牌
+                        if (data.myCategory.clevel == 4) { //表示是品牌
                             $("#cname").text("品牌名称");
                         }
                         $("input[name='categoryName']").val(data.myCategory.name);
-                        if(data.parentBrother != null){
+                        $("#cid").val(data.myCategory.cid);
+                        if (data.parentBrother != null) {
                             var select = "";
-                            $.each(data.parentBrother,function(index,value){
-                                if(data.parentCategory.cid == value.cid){
-                                    select+="<option selected value="+value.cid+">"+value.name+"</option>";
-                                }else{
-                                    select+="<option value="+value.cid+">"+value.name+"</option>";
+                            $.each(data.parentBrother, function (index, value) {
+                                if (data.parentCategory.cid == value.cid) {
+                                    select += "<option selected value=" + value.cid + ">" + value.name + "</option>";
+                                } else {
+                                    select += "<option value=" + value.cid + ">" + value.name + "</option>";
                                 }
                             });
                             $("#categoryList").append(select)
                         }
-                        if(data.flag == 'myRoot'){
-                            $("#categoryList").append("<option value="+data.myCategory.cid+">根栏目</option>")
+                        if (data.flag == 'myRoot') {
+                            $("#categoryList").append("<option value=" + data.myCategory.parentId + ">根栏目</option>")
                         }
                         //重新渲染select
                         form.render('select');
@@ -114,8 +115,26 @@
             //监听提交
             //解决了layui.open弹窗从内部关闭这个弹窗的问题
             form.on('submit(submitBut)', function (data) {
-                var updateFrame = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-                parent.layer.close(updateFrame);  //再改变当前层的标题
+                if (data.fieId != null) {
+                    return;
+                } else {
+                    $.ajax({
+                        url: '../../Goods/updateCategory',
+                        method: 'post',
+                        data: data.field,
+                        dataType: 'JSON',
+                        success: function (res) {
+                            if (res.code = "success") {
+                                layer.msg('修改成功', {time:600}, function(){
+                                    layer.close(layer.index); //关闭当前窗口
+                                    window.parent.location.reload(); //刷新父窗口数据
+                                });
+                            } else
+                                layer.msg(res.msg);//输出错误消息
+                        }
+                    });
+                }
+                return false;
             });
 
             function GetRequest() {
