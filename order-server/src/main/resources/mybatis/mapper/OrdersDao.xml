@@ -4,24 +4,47 @@
 
 <mapper namespace="com.guomei.dao.OrdersDao">
 
-    <resultMap type="Goods" id="Goods">
 
-        <id column="goods_id" property="id"/>
+    <resultMap type="map" id="maps">
         <!-- column:数据库字段  property:实体类属性  -->
         <result column="order_id" property="id"/>
-        <result column="address_id" property="adressId"/>
-        <result column="pay_date" property="payDate"/>
+        <result column="goods_title" property="title"/>
         <result column="order_time" property="orderTime"/>
         <result column="order_total" property="total"/>
         <result column="order_status" property="status"/>
         <result column="order_no" property="orderNo"/>
+        <result column="address_detail" property="address"/>
+        <result column="address_name" property="userName"/>
     </resultMap>
-
-    <select id="orderList" resultType="map">
-        SELECT a.`address_name`,a.`address_detail`,o.`order_no`,o.`order_status`,s.`goods_id`,o.`order_total`,o.`order_time`
+    <!--查询订单信息-->
+    <select id="orderList" resultMap="maps" parameterType="map">
+        SELECT a.`address_name`,a.`address_detail`,o.`order_no`,o.`order_status`,g.`goods_title`,o.`order_total`,o.`order_time`
         FROM orders o
-                 INNER JOIN order_detail s ON s.`order_id`=o.order_id
-                 INNER JOIN  address a ON a.`address_id`=o.`address_id`
+        INNER JOIN order_detail s ON s.`order_id`=o.order_id
+        INNER JOIN  address a ON a.`address_id`=o.`address_id`
+        INNER JOIN   goods g ON g.`goods_id`=s.`goods_id`
+        <where>
+            <if test="name !=null and name !=' ' ">
+                a.`address_name` LIKE CONCAT(CONCAT('%',#{name}),'%')
+            </if>
+            <if test="orderNo !=null and  orderNo !=' ' ">
+                and o.`order_no` LIKE CONCAT(CONCAT('%',#{orderNo}),'%')
+            </if>
+        </where>
+    </select>
+    <!--订货单  订货金额-->
+    <select id="orderQuantity" resultType="map">
+        SELECT  COUNT(0) ,SUM(order_total)FROM orders
+        WHERE order_status!=5
+    </select>
+    <!--退货单 退货金额-->
+    <select id="returnQuantity" resultType="map">
+        SELECT  COUNT(0) ,SUM(order_total)FROM orders
+        WHERE order_status=5
+    </select>
+    <!--金额合计-->
+    <select id="orderAmount" resultType="double">
+        SELECT  SUM(order_total) FROM orders
     </select>
 
 
