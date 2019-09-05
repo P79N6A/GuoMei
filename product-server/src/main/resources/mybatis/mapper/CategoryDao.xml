@@ -35,4 +35,20 @@
         UPDATE category SET category_name = #{name},category_parent_id = #{parentId} WHERE category_id = #{cid}
     </update>
 
+    <select id="findCategoryAndParentExist" resultType="map">
+        SELECT c1.category_id AS cid,c1.category_name AS `name`,c1.category_parent_id AS parentId,c1.category_level AS clevel,(SELECT COUNT(0)  FROM category c2 WHERE c1.category_id = c2.category_parent_id ) AS pexist FROM category c1
+    </select>
+
+    <delete id="deleteCategory">
+        DELETE FROM category WHERE category_id = #{cid}
+    </delete>
+
+    <select id="brandExistGood" resultType="int">
+        SELECT count(0) FROM brand b INNER JOIN category c ON b.category_id = c.category_id INNER JOIN goods g ON  b.brand_id = g.brand_id WHERE  c.category_id = #{cid}
+    </select>
+
+    <delete id="deleteBrand">
+        delete from brand where category_id = #{cid}
+    </delete>
+
 </mapper>

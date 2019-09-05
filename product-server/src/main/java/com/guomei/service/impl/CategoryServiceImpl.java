@@ -25,4 +25,30 @@ public class CategoryServiceImpl implements CategoryService {
     public Category findCategoryParent(Integer parentId) {
         return categoryDao.findCategoryParent(parentId);
     }
+
+    @Override
+    public int updateCategoryInfo(Category category) {
+        return categoryDao.updateCategoryInfo(category);
+    }
+
+    @Override
+    public List<Map<String, Object>> findCategoryAndParentExist() {
+        return categoryDao.findCategoryAndParentExist();
+    }
+
+    @Override
+    public int deleteCategory(Integer cid) {
+        return categoryDao.deleteCategory(cid);
+    }
+
+    @Override
+    public int brandExistGood(Integer cid) {
+        return categoryDao.brandExistGood(cid);
+    }
+
+    @Override
+    public int deleteBrand(Integer cid) {
+        return categoryDao.deleteBrand(cid);
+    }
+
 }
