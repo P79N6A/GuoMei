@@ -31,4 +31,8 @@
         SELECT category_id,category_name,category_parent_id,category_level FROM category WHERE category_id = #{parentId}
     </select>
 
+    <update id="updateCategoryInfo" parameterType="category">
+        UPDATE category SET category_name = #{name},category_parent_id = #{parentId} WHERE category_id = #{cid}
+    </update>
+
 </mapper>
