@@ -3,18 +3,18 @@ package com.guomei.controller;
 import com.guomei.pojo.Category;
 import com.guomei.service.CategoryService;
 import com.guomei.service.GoodsService;
+import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @RequestMapping("Back/Category")
-@Controller
+@RestController
 public class CategoryController {
 
     @Autowired
@@ -22,14 +22,12 @@ public class CategoryController {
 
     //查询所有分类
     @RequestMapping("findCategory")
-    @ResponseBody
-    public List<Category> findCategory() {
+    public List<Map<String, Object>> findCategory() {
 
-        return categoryService.findCategory(null);
+        return categoryService.findCategoryAndParentExist();
     }
 
     @RequestMapping("updateCategoryInfo/{cid}/{parentId}")
-    @ResponseBody
     public Map<String, Object> updateCategoryInfo(@PathVariable("cid") Integer cid, @PathVariable("parentId") Integer parentId) {
         Map<String, Object> map = new HashMap<>();
         Map<String, Object> param = new HashMap<>();//调用dao的参数
@@ -50,4 +48,44 @@ public class CategoryController {
             map.put("flag", "myRoot");
         return map;
     }
+
+    @PostMapping("updateCategory")
+    public String updateCategory(@RequestBody Category category) {
+        int result = categoryService.updateCategoryInfo(category);
+        if (result > 0) {
+            String json = "{\"code\":\"success\"}";
+            return json;
+        }
+
+        return "{\"msg\":\"更新失败\"}";
+    }
+
+    @RequestMapping("deleteCategory/{cid}")
+    public String deleteCategory(@PathVariable("cid") Integer cid) {
+        int result = categoryService.deleteCategory(cid);
+        if (result > 0) {
+            String json = "{\"code\":\"success\"}";
+            return json;
+        }
+        return "{\"msg\":\"删除失败\"}";
+    }
+
+    @RequestMapping("brandExistGood/{cid}")
+    public String brandExistGood(@PathVariable("cid") Integer cid) {
+        int result = categoryService.brandExistGood(cid);
+        String json;
+        if (result > 0) {
+            json = "{\"code\":\"exists\"}";
+            return json;
+        } else { //没有商品,可以删除
+            int res = deleteBrand(cid);
+            return "{\"code\":\"delBrand\"}";
+        }
+
+    }
+
+    public int deleteBrand(Integer cid) {
+        return categoryService.deleteBrand(cid);
+    }
+
 }
