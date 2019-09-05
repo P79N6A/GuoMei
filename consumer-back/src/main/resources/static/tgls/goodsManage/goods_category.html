@@ -39,19 +39,30 @@
         .layui-table img {
             max-width: none;
         }
+
+        #container {
+            width: 90%;
+            position: fixed;
+            height: 100%;
+            overflow: auto;
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>
-<div class="layui-container">
-    <br><br>
-    <div class="layui-btn-group">
-        <button class="layui-btn" id="btn-expand">全部展开</button>
-        <button class="layui-btn" id="btn-fold">全部折叠</button>
+<div id="container">
+    <div class="layui-container">
+        <br><br>
+        <div class="layui-btn-group">
+            <button class="layui-btn" id="btn-expand">全部展开</button>
+            <button class="layui-btn" id="btn-fold">全部折叠</button>
+        </div>
+        &nbsp;&nbsp;
+        <input id="edt-search" type="text" placeholder="输入关键字" style="width: 120px;"/>&nbsp;&nbsp;
+        <button class="layui-btn" id="btn-search">&nbsp;&nbsp;搜索&nbsp;&nbsp;</button>
+        <button class="layui-btn" onclick="addBut()">&nbsp;&nbsp;新增分类&nbsp;&nbsp;</button>
+        <table id="auth-table" class="layui-table" lay-filter="auth-table"></table>
     </div>
-    &nbsp;&nbsp;
-    <input id="edt-search" type="text" placeholder="输入关键字" style="width: 120px;"/>&nbsp;&nbsp;
-    <button class="layui-btn" id="btn-search">&nbsp;&nbsp;搜索&nbsp;&nbsp;</button>
-    <table id="auth-table" class="layui-table" lay-filter="auth-table"></table>
 </div>
 <script type="text/javascript" src="../../layui/layui.js"></script>
 <script>
@@ -59,11 +70,11 @@
         base: '../../module/'
     }).extend({
         treetable: 'treetable-lay/treetable'
-    }).use(['table', 'treetable'], function () {
+    }).use(['table', 'laypage', 'treetable'], function () {
+        var laypage = layui.laypage;
         var $ = layui.jquery;
         var table = layui.table;
         var treetable = layui.treetable;
-
         // 渲染表格
         layer.load(2);
         treetable.render({
@@ -75,15 +86,15 @@
             url: '../../../Goods/findCategory',
             page: false,
             cols: [[
-                {field: 'cid', width: 100, title: '分类编号'},
-                {field: 'name', width: 350,title: '分类名称'},
+                {type: 'numbers',title: '序号'},
+                {field: 'name', width: 350, title: '分类名称'},
                 {
                     field: 'isMenu', width: 150, align: 'center', templet: function (d) {
 
-                        if (d.parentId == 0) {
-                            return '<button class="layui-btn layui-btn-xs"  onclick="updateBut('+d.cid+','+d.parentId+') ">修改</button>';
+                        if (d.pexist >= 1) {
+                            return '<button class="layui-btn layui-btn-xs"  onclick="updateBut(' + d.cid + ',' + d.parentId + ') ">修改</button>';
                         } else {
-                            return '<button class="layui-btn layui-btn-xs"  onclick="updateBut('+d.cid+','+d.parentId+')">修改</button><button class="layui-btn layui-btn-xs">删除</button>';
+                            return '<button class="layui-btn layui-btn-xs"  onclick="updateBut(' + d.cid + ',' + d.parentId + ')">修改</button><button class="layui-btn layui-btn-xs"  onclick="deleteCate(' + d.cid + ',' + d.clevel + ')" >删除</button>';
                         }
                     }, title: '操作'
                 }
@@ -126,8 +137,9 @@
     });
     //修改按钮
     var updateFrame = null;
-    function updateBut(cid,parentId){
-        layui.use('layer', function() {
+
+    function updateBut(cid, parentId) {
+        layui.use('layer', function () {
             //iframe层-父子操作
             updateFrame = layer.open({
                 title: "商品分类修改",
@@ -135,15 +147,70 @@
                 area: ['100%', '100%'],
                 scrollbar: false,	//默认：true,默认允许浏览器滚动，如果设定scrollbar: false，则屏蔽
                 maxmin: true,
-                content: '../category_update.html?cid='+cid+'&parentId='+parentId
+                content: '../category_update.html?cid=' + cid + '&parentId=' + parentId
+            });
+        });
+    }
+
+    //删除
+    function deleteCate(cid, clevel) {
+        if (clevel < 4) {//表示为分类
+            layer.confirm('真的要删除么?', function () {
+                $.getJSON("../../../Goods/deleteCategory/" + cid + "", function (json) {
+                    if (json.code == 'success') {
+                        layer.closeAll('dialog');//关闭当前confirm窗口
+                        layer.msg('删除成功', {time: 800}, function () {
+                            layer.close(layer.index); //关闭当前窗口
+                            location.reload();//刷新
+                        });
+                    }
+                })
+            });
+        } else if (clevel == 4) { //表示为品牌,进行判断该品牌下是否有商品
+            var id =cid;
+            layer.confirm('真的要删除么?', function () {
+                $.getJSON("../../../Goods/brandExistGood/" + cid + "", function (json) {
+                    if('delBrand' == json.code ){//可以删除
+                        $.getJSON("../../../Goods/deleteCategory/" + cid + "", function (json) {
+                            if (json.code == 'success') {
+                                layer.closeAll('dialog');//关闭当前confirm窗口
+                                layer.msg('删除成功', {time: 800}, function () {
+                                    layer.close(layer.index); //关闭当前窗口
+                                    location.reload();//刷新
+                                });
+                            }
+                        });
+                    }
+                    if (json.code == 'exists') {
+                        layer.closeAll('dialog');//关闭当前confirm窗口
+                        layer.msg('该品牌下有商品,不能删除哦!', {time: 1500}, function () {
+                            layer.close(layer.index); //关闭当前窗口
+                        });
+                    }
+
+                })
+            });
+        }
+    }
+
+    function addBut(cid, parentId) {
+        layui.use('layer', function () {
+            //iframe层-父子操作
+            updateFrame = layer.open({
+                title: "商品分类新增",
+                type: 2,
+                area: ['100%', '100%'],
+                scrollbar: false,	//默认：true,默认允许浏览器滚动，如果设定scrollbar: false，则屏蔽
+                maxmin: true,
+                content: '../category_add.html'
             });
         });
     }
 </script>
 <style>
 
-    .layui-table-header,.layui-table-box, .layui-table-view {
-        width: 603px;
+    .layui-table-header, .layui-table-box, .layui-table-view {
+        width: 544px;
     }
 </style>
 </body>

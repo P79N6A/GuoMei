@@ -15,13 +15,19 @@ import java.util.Map;
 @FeignClient("product-server")
 public interface GoodsService {
 
+    //商品分类模块
     @RequestMapping("Back/Category/findCategory")
     String findCategory();
 
     @RequestMapping("Back/Category/updateCategoryInfo/{cid}/{parentId}")
     String updateCategoryInfo(@PathVariable("cid")Integer cid,@PathVariable("parentId") Integer parentId);
 
-    @RequestMapping(value = "Back/Category/updateCategory")
+    @RequestMapping("Back/Category/updateCategory")
     String updateCategory(Category category);
 
+    @RequestMapping("Back/Category/deleteCategory/{cid}")
+    String deleteCategory(@PathVariable("cid") Integer cid);
+
+    @RequestMapping("Back/Category/brandExistGood/{cid}")
+    String brandExistGood(@PathVariable("cid")Integer cid);
 }

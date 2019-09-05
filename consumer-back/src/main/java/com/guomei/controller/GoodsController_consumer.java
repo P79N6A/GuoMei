@@ -20,26 +20,38 @@ public class GoodsController_consumer {
     private GoodsService goodsService;
 
     @RequestMapping("findCategory")
-    public String findCategory(){
-        String json ="{\"data\":"+goodsService.findCategory()+"}";
-        return  json;
+    public String findCategory() {
+        String json = "{\"data\":" + goodsService.findCategory() + "}";
+        return json;
     }
 
     @RequestMapping("updateCategoryInfo/{cid}/{parentId}")
-    public String updateCategoryInfo(@PathVariable("cid")Integer cid,@PathVariable("parentId") Integer parentId){
-        return goodsService.updateCategoryInfo(cid,parentId);
+    public String updateCategoryInfo(@PathVariable("cid") Integer cid, @PathVariable("parentId") Integer parentId) {
+        return goodsService.updateCategoryInfo(cid, parentId);
     }
 
     @RequestMapping("updateCategory")
-    public String updateCategory(@RequestParam Map<String,String> request){
+    public String updateCategory(@RequestParam Map<String, String> request) {
         //用于封装数据
         Category category = new Category();
         category.setCid(Integer.valueOf(request.get("cid")));
         category.setName(request.get("categoryName"));
         category.setParentId(Integer.valueOf(request.get("categoryList")));
-        String json ="{\"res\":"+goodsService.updateCategory(category)+"}";
+        String json = "{\"res\":" + goodsService.updateCategory(category) + "}";
         return json;
 
+    }
+
+    @RequestMapping("deleteCategory/{cid}")
+    public String deleteCategory(@PathVariable("cid") Integer cid) {
+        String json =  goodsService.deleteCategory(cid);
+        return json;
+    }
+
+    @RequestMapping("brandExistGood/{cid}")
+    public String brandExistGood(@PathVariable("cid") Integer cid){
+        String json =  goodsService.brandExistGood(cid);
+        return json;
     }
 
 }
