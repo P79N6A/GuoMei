@@ -3,8 +3,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.guomei.dao.OrdersDao">
-
-
     <resultMap type="map" id="maps">
         <!-- column:数据库字段  property:实体类属性  -->
         <result column="order_id" property="id"/>
@@ -23,14 +21,15 @@
         INNER JOIN order_detail s ON s.`order_id`=o.order_id
         INNER JOIN  address a ON a.`address_id`=o.`address_id`
         INNER JOIN   goods g ON g.`goods_id`=s.`goods_id`
-        <where>
-            <if test="name !=null and name !=' ' ">
-                a.`address_name` LIKE CONCAT(CONCAT('%',#{name}),'%')
-            </if>
-            <if test="orderNo !=null and  orderNo !=' ' ">
-                and o.`order_no` LIKE CONCAT(CONCAT('%',#{orderNo}),'%')
-            </if>
-        </where>
+
+            <trim prefix="where" prefixOverrides="and ||or">
+                <if test="name !='null'and name !='' and name!=null ">
+                    and  a.`address_name` LIKE CONCAT(CONCAT('%',#{name}),'%')
+                </if>
+                <if test="orderNo !='null'and orderNo !='' and orderNo!=null ">
+                    and o.`order_no` LIKE CONCAT(CONCAT('%',#{orderNo}),'%')
+                </if>
+            </trim>
     </select>
     <!--订货单  订货金额-->
     <select id="orderQuantity" resultType="map">

@@ -20,6 +20,7 @@ public class OrdersServiceImpl implements OrdersService {
 
         return ordersDao.orderList(map);
     }
+
     @Override
     public List<Map<String, Object>> orderQuantity() {
         return ordersDao.orderQuantity();

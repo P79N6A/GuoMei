@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.List;
@@ -27,6 +28,7 @@ public class OrdersController {
         map.put("name",name);
         return ordersService.orderList(map);
     }
+
 
     //查询退货单,退货金额,金额合计,订货单 ,订货金额
     public Map<String,Object> inquiryAmount(){
