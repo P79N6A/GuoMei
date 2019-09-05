@@ -27,7 +27,6 @@ public class GoodsController_consumer {
 
     @RequestMapping("updateCategoryInfo/{cid}/{parentId}")
     public String updateCategoryInfo(@PathVariable("cid")Integer cid,@PathVariable("parentId") Integer parentId){
-
         return goodsService.updateCategoryInfo(cid,parentId);
     }
 

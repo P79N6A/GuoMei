@@ -23,4 +23,5 @@ public interface GoodsService {
 
     @RequestMapping(value = "Back/Category/updateCategory")
     String updateCategory(Category category);
+
 }
