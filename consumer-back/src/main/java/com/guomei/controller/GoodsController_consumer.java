@@ -44,6 +44,7 @@ public class GoodsController_consumer {
         category.setName(request.getParameter("categoryName"));
         category.setParentId(Integer.valueOf(request.getParameter("categoryList")));
         return goodsService.updateCategory(category);
+
     }
 
 }
