@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +33,17 @@ public class GoodsController_consumer {
     public String updateCategoryInfo(@PathVariable("cid")Integer cid,@PathVariable("parentId") Integer parentId){
 
         return goodsService.updateCategoryInfo(cid,parentId);
+    }
+
+    @ResponseBody
+    @RequestMapping("updateCategory")
+    public String updateCategory(HttpServletRequest request){
+        //用于封装数据
+        Category category = new Category();
+        category.setCid(Integer.valueOf(request.getParameter("cid")));
+        category.setName(request.getParameter("categoryName"));
+        category.setParentId(Integer.valueOf(request.getParameter("categoryList")));
+        return goodsService.updateCategory(category);
     }
 
 }
