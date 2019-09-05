@@ -5,10 +5,7 @@ import com.guomei.pojo.Goods;
 import com.guomei.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -35,12 +32,12 @@ public class GoodsController_consumer {
     }
 
     @RequestMapping("updateCategory")
-    public String updateCategory(HttpServletRequest request){
+    public String updateCategory(@RequestParam Map<String,String> request){
         //用于封装数据
         Category category = new Category();
-        category.setCid(Integer.valueOf(request.getParameter("cid")));
-        category.setName(request.getParameter("categoryName"));
-        category.setParentId(Integer.valueOf(request.getParameter("categoryList")));
+        category.setCid(Integer.valueOf(request.get("cid")));
+        category.setName(request.get("categoryName"));
+        category.setParentId(Integer.valueOf(request.get("categoryList")));
         String json ="{\"res\":"+goodsService.updateCategory(category)+"}";
         return json;
 
