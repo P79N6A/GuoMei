@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -15,13 +16,12 @@ import java.util.List;
 import java.util.Map;
 
 @RequestMapping("/Goods")
-@Controller
+@RestController
 public class GoodsController_consumer {
 
     @Autowired
     private GoodsService goodsService;
 
-    @ResponseBody
     @RequestMapping("findCategory")
     public String findCategory(){
         String json ="{\"data\":"+goodsService.findCategory()+"}";
@@ -29,13 +29,11 @@ public class GoodsController_consumer {
     }
 
     @RequestMapping("updateCategoryInfo/{cid}/{parentId}")
-    @ResponseBody
     public String updateCategoryInfo(@PathVariable("cid")Integer cid,@PathVariable("parentId") Integer parentId){
 
         return goodsService.updateCategoryInfo(cid,parentId);
     }
 
-    @ResponseBody
     @RequestMapping("updateCategory")
     public String updateCategory(HttpServletRequest request){
         //用于封装数据
@@ -43,7 +41,8 @@ public class GoodsController_consumer {
         category.setCid(Integer.valueOf(request.getParameter("cid")));
         category.setName(request.getParameter("categoryName"));
         category.setParentId(Integer.valueOf(request.getParameter("categoryList")));
-        return goodsService.updateCategory(category);
+        String json ="{\"res\":"+goodsService.updateCategory(category)+"}";
+        return json;
 
     }
 
