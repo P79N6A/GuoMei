@@ -1,4 +1,4 @@
-package com.guomei.dao;
+package com.guomei.lx.dao;
 
 import com.guomei.pojo.Category;
 import org.apache.ibatis.annotations.Mapper;
@@ -30,3 +30,4 @@ public interface CategoryDao {
     int deleteBrand(Integer cid);
 
 }
+

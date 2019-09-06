@@ -28,14 +28,24 @@
     <select id="findUsers" resultMap="Users">
         SELECT * FROM   users
         <where>
-            <if test="userName!=null and  ''!=userName">
+            <if test="userName!=null and  ''!=userName and   'null'!=userName ">
                 user_name  LIKE   concat('%',#{userName},'%')
             </if>
         </where>
     </select>
 
+    <delete id="delUser">
+        DELETE  FROM   users  WHERE  user_id=#{id}
+    </delete>
 
 
+<select id="findById" resultMap="Users">
+    SELECT * FROM  users  WHERE   `user_id`=#{id}
+</select>
+
+    <update id="updateUser">
+        UPDATE   users  SET   `user_name`=#{userName}  ,`user_sex`=#{sex}  ,`user_birthday`=#{birthday}  ,`user_phone`=#{phone}  , `user_email`=#{email}  ,`user_address`=#{address}   ,`user_headimg`=#{headImg}  ,`user_time`=#{time}  WHERE  `user_id`=#{id}
+    </update>
 
 
 </mapper>

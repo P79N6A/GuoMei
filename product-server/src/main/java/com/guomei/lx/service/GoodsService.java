@@ -1,7 +1,5 @@
-package com.guomei.service;
+package com.guomei.lx.service;
 
-
-import com.guomei.pojo.Category;
 import com.guomei.pojo.Goods;
 
 import java.util.List;

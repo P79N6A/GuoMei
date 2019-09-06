@@ -1,4 +1,4 @@
-package com.guomei.service;
+package com.guomei.lx.service;
 
 import com.guomei.pojo.Category;
 

@@ -94,7 +94,7 @@
                         if (d.pexist >= 1) {
                             return '<button class="layui-btn layui-btn-xs"  onclick="updateBut(' + d.cid + ',' + d.parentId + ') ">修改</button>';
                         } else {
-                            return '<button class="layui-btn layui-btn-xs"  onclick="updateBut(' + d.cid + ',' + d.parentId + ')">修改</button><button class="layui-btn layui-btn-xs"  onclick="deleteCate(' + d.cid + ',' + d.clevel + ')" >删除</button>';
+                            return '<button class="layui-btn layui-btn-xs"  onclick="updateBut(' + d.cid + ',' + d.parentId + ')">修改</button><a class="layui-btn layui-btn-danger layui-btn-xs"  onclick="deleteCate(' + d.cid + ',' + d.clevel + ')" >删除</a>';
                         }
                     }, title: '操作'
                 }
