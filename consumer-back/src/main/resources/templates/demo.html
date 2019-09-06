@@ -3,78 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <title>tree</title>
-    <!--引入zTree的css-->
-    <link rel="stylesheet" href="js/zTree_v3/css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <!-- 公共样式 开始 -->
+    <link rel="shortcut icon" href="/images/favicon.ico"/>
+    <link rel="bookmark" href="/images/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/iconfont.css">
+    <script type="text/javascript" src="/framework/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/layui/css/layui.css">
+    <script type="text/javascript" src="/layui/layui.js"></script>
+    <!-- 滚动条插件 -->
+    <link rel="stylesheet" type="text/css" href="/css/jquery.mCustomScrollbar.css">
+    <script src="/framework/jquery-ui-1.10.4.min.js"></script>
+    <script src="/framework/jquery.mousewheel.min.js"></script>
+    <script src="/framework/jquery.mCustomScrollbar.min.js"></script>
+    <script src="/framework/cframe.js"></script><!-- 仅供所有子页面使用 -->
+    <!-- 公共样式 结束 -->
+
+    <link rel="stylesheet" type="text/css" href="/css/frameStyle.css">
+    <script type="text/javascript" src="/framework/frame.js"></script>
+    <style type="text/css">
+        .downpanel .layui-select-title span {
+            line-height: 38px;
+        }
+
+        /*继承父类颜色*/
+        .downpanel dl dd:hover {
+            background-color: inherit;
+        }
+    </style>
+    <style type="text/css">
+        body {
+            height: 100%;
+            width: 100%;
+            background-size: cover;
+            margin: 0 auto;
+        }
+
+        td {
+            font-size: 12px !important;
+        }
+
+        .layui-form-checkbox span {
+            height: 30px;
+        }
+
+        .layui-field-title {
+            border-top: 1px solid white;
+        }
+
+        table {
+            width: 100% !important;
+        }
+
+    </style>
+
 </head>
 <body>
-<div class="content_wrap" hidden="hidden">
-    <div class="zTreeDemoBackground left">
-        <ul id="treeDemo" class="ztree"></ul>
+<form class="layui-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label">文章栏目</label>
+        <div class="layui-input-inline">
+            <div class="layui-unselect layui-form-select downpanel">
+                <div class="layui-select-title">
+                    <span class="layui-input layui-unselect" id="treeclass">选择栏目</span>
+                    <input type="hidden" name="selectID" value="0">
+                    <i class="layui-edge"></i>
+                </div>
+                <dl class="layui-anim layui-anim-upbit">
+                    <dd>
+                        <ul id="classtree"></ul>
+                    </dd>
+                </dl>
+            </div>
+        </div>
     </div>
-    <button onclick="closeLayer();">关闭layer</button>
-</div>
-<button onclick="openLayer();">弹出layer</button>
+</form>
+<script type="text/javascript">
+    layui.use(['element', 'tree', 'layer', 'form', 'upload'], function () {
+        var $ = layui.jquery, tree = layui.tree;
+        tree({
+            elem: "#classtree"
+            ,
+            nodes: [{
+                name: '常用文件夹',
+                id: 1,
+                alias: 'changyong',
+                children: [{name: '所有未读', id: 11, href: 'http://www.layui.com/', alias: 'weidu'}, {
+                    name: '置顶邮件',
+                    id: 12
+                }, {name: '标签邮件', id: 13}]
+            }, {
+                name: '我的邮箱',
+                id: 2,
+                spread: true,
+                children: [{
+                    name: 'QQ邮箱',
+                    id: 21,
+                    spread: true,
+                    children: [{
+                        name: '收件箱',
+                        id: 211,
+                        children: [{name: '所有未读', id: 2111}, {name: '置顶邮件', id: 2112}, {name: '标签邮件', id: 2113}]
+                    }, {name: '已发出的邮件', id: 212}, {name: '垃圾邮件', id: 213}]
+                }, {
+                    name: '阿里云邮',
+                    id: 22,
+                    children: [{name: '收件箱', id: 221}, {name: '已发出的邮件', id: 222}, {name: '垃圾邮件', id: 223}]
+                }]
+            }]
+            ,
+            click: function (node) {
+                var $select = $($(this)[0].elem).parents(".layui-form-select");
+                $select.removeClass("layui-form-selected").find(".layui-select-title span").html(node.name).end().find("input:hidden[name='selectID']").val(node.id);
+            }
+        });
+        $(".downpanel").on("click", ".layui-select-title", function (e) {
+            $(".layui-form-select").not($(this).parents(".layui-form-select")).removeClass("layui-form-selected");
+            $(this).parents(".downpanel").toggleClass("layui-form-selected");
+            layui.stope(e);
+        }).on("click", "dl i", function (e) {
+            layui.stope(e);
+        });
+        $(document).on("click", function (e) {
+            $(".layui-form-select").removeClass("layui-form-selected");
+        });
+
+    });
+</script>
 </body>
 </html>
-<!--引入layer之前需要引入jquery-->
-<script src="js/jquery-3.2.1.js"></script>
-<!--引入layer-->
-<script src="js/layer/layer.js"></script>
-<!--引入zTree-->
-<script type="text/javascript" src="js/zTree_v3/js/jquery.ztree.core.js"></script>
-<script type="text/javascript" src="js/zTree_v3/js/jquery.ztree.excheck.js"></script>
-<script>
-    /*
-    * 更详细的zTree属性配置可以去zTree官网查看
-    * 地址：http://www.treejs.cn/v3/faq.php#_206
-    */
-    var setting = {
-        check: {
-            enable: true,
-            chkStyle: "radio",
-            radioType: "level"
-        },
-        data: {
-            simpleData: {
-                enable: true
-            }
-        }
-    };
-
-    /*将数据拼接成如下格式*/
-    var zNodes =[
-        { id:1, pId:0, name:"can check 1", open:true},
-        { id:11, pId:1, name:"can check 1-1", open:true},
-        { id:111, pId:11, name:"no radio 1-1-1", nocheck:true},
-        { id:112, pId:11, name:"can check 1-1-2"},
-        { id:12, pId:1, name:"no radio 1-2", nocheck:true, open:true},
-        { id:121, pId:12, name:"no radio 1-2-1"},
-        { id:122, pId:12, name:"no radio 1-2-2"},
-        { id:2, pId:0, name:"can check 2", checked:true, open:true},
-        { id:21, pId:2, name:"can check 2-1"},
-        { id:22, pId:2, name:"can check 2-2", open:true},
-        { id:221, pId:22, name:"can check 2-2-1", checked:true},
-        { id:222, pId:22, name:"can check 2-2-2"},
-        { id:23, pId:2, name:"can check 2-3"}
-    ];
-
-    /*初始化zTree*/
-    $(document).ready(function(){
-        $.fn.zTree.init($("#treeDemo"), setting, zNodes);
-    });
-
-    var index;  // 命名layer弹出层
-    openLayer = function () {
-        demo = layer.open({
-            type: 1,
-            area: ['600px', '360px'],
-            shadeClose: true, //点击遮罩关闭
-            content: $('.content_wrap')
-        });
-    }
-
-    closeLayer = function () {
-        // 关闭layer弹出层
-        layer.close(demo)
-    }
-</script>
