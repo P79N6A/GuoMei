@@ -8,13 +8,13 @@
     <meta name="renderer" content="webkit">
     <!--国产浏览器高速模式-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="国美电器" />
+    <meta name="author" content="国美电器"/>
     <!-- 作者 -->
-    <meta name="revised" content="国美电器.v3, 2019/05/01" />
+    <meta name="revised" content="国美电器.v3, 2019/05/01"/>
     <!-- 定义页面的最新版本 -->
-    <meta name="description" content="网站简介" />
+    <meta name="description" content="网站简介"/>
     <!-- 网站简介 -->
-    <meta name="keywords" content="搜索关键字，以半角英文逗号隔开" />
+    <meta name="keywords" content="搜索关键字，以半角英文逗号隔开"/>
     <title>穷在闹市出品</title>
 
     <!-- 公共样式 开始 -->
@@ -47,103 +47,113 @@
                 <div class="layui-inline">
                     <label class="layui-form-label">订单号</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="orderNo" placeholder="请输入" autocomplete="off" class="layui-input">
+                        <input type="text" name="orderNo" id="orderNo" placeholder="请输入" autocomplete="off"
+                               class="layui-input">
                     </div>
                 </div>
                 <div class="layui-inline">
                     <label class="layui-form-label">收货人</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="name" placeholder="请输入" autocomplete="off" class="layui-input">
+                        <input type="text" name="name" id="name" placeholder="请输入" autocomplete="off"
+                               class="layui-input">
                     </div>
                 </div>
-                <button class="layui-btn" lay-submit lay-filter="formDemo" style="margin-bottom: 6px">检索</button>
+                <button type="button" class="layui-btn" id="serch" data-type="reload" style="margin-bottom: 6px">搜索</button>
             </div>
         </form>
-        <!--表单提交-->
-        <script>
-            layui.use('form', function() {
-                var form = layui.form;
-
-                //监听提交
-                form.on('submit(formDemo)', function(data) {
-                    layer.msg(JSON.stringify(data.field));
-                    return false;
-                });
-            });
-        </script>
     </div>
 
     <table class="layui-table" id="followTable" lay-filter="followTable">
-        <!--<thead>-->
-        <!--<tr>-->
-        <!--<th>订单编号</th>-->
-        <!--<th>收货人</th>-->
-        <!--<th>购买商品</th>-->
-        <!--<th>数量</th>-->
-        <!--<th>金额</th>-->
-        <!--<th>收货地址</th>-->
-        <!--<th>订单时间</th>-->
-        <!--<th>操作</th>-->
-        <!--</tr>-->
-        <!--</thead>-->
-        <!--<tbody>-->
-        <!--<tr>-->
-        <!--<td>11111</td>-->
-        <!--<td>张三</td>-->
-        <!--<td><img src="../../images/goodsPIC1.png" width="20" height="20" onmouseenter="imgBig(this)" onmouseleave="imgSmall(this)"/>&nbsp;海尔冰箱</td>-->
-        <!--<td>1</td>-->
-        <!--<td>120</td>-->
-        <!--<td>长沙实力学校</td>-->
-        <!--<td>2019/12/12</td>-->
-        <!--<td>-->
-        <!--<button class="layui-btn layui-btn-xs" onclick="updateBut()">修改</button>-->
-        <!--<button class="layui-btn layui-btn-xs" >删除</button>-->
-        <!--</td>-->
-        <!--</tr>-->
 
-        <!--</tbody>-->
     </table>
 
     <!-- layUI 分页模块 -->
-    <div id="pages"></div>
-
+    <!--<div id="pages"></div>-->
     <script>
-        layui.use(['element', 'table'], function () {
+        layui.use(['element', 'table', 'form'], function () {
             var $ = layui.jquery,
                 element = layui.element,
-                table = layui.table;
-            table.render({
-                elem: "#followTable",
-                url: '/Orders/orderList/'+null+'/'+null,
-                page: false,
-                cols: [[
-                    {field: "orderNo", title: "订单编号"},
-                    {field: "userName", title: "收货人"},
-                    {field: "title", title: "购买商品"},
-                    {field: "total", title: "金额"},
-                    {field: "address", title: "收货地址"},
-                    {field: "orderTime", title: "订单时间"},
-                    {field: "status", title: "状态"},
-                    {field: 'right', title: '操作', toolbar: '#barDemo'},
-                ]]
-            });
-        });
-        layui.use('laypage', function() {
-            var laypage = layui.laypage;
-
-            //总页数大于页码总数
-            laypage.render({
-                elem: 'pages'
-                ,count: 100
-                ,layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
-                ,jump: function(obj){
-//					      console.log(obj)
+                table = layui.table,
+                form = layui.form;
+                var pageSize = 1;   //每页显示的数量
+                  var currentPageNo = 1;    //当前页数
+                 table.render({
+                    elem: "#followTable",
+                    url: '/Orders/orderList/' + null + '/' + null,
+                    id: 'orderTable',
+                     request:{     ////请求携带的参数
+                          pageName:'currentPageNo',    //页码参数名称
+                          limitName: 'pageSize'     //每页数据量参数名称
+                     },
+                     response:{    //后台返回数据
+                         countName: 'totalCount',  //数据总数的名称
+                         dataName: 'data'        //数据
+                     },
+                     page: true,
+                     limits: ['5', '10', '15'],//分页每页显示数据条数（页面选择）
+                     cols: [[
+                         {field: "orderNo", title: "订单编号"},
+                         {field: "userName", title: "收货人"},
+                         {field: "title", title: "购买商品"},
+                         {field: "total", title: "金额"},
+                         {field: "address", title: "收货地址"},
+                         {field: "orderTime", title: "订单时间"},
+                         {field: "status", title: "状态"},
+                         {field: 'right', title: '操作', toolbar: '#barDemo'},
+                     ]]
+                 });
+              //模糊查询
+            var $ = layui.$, active =
+                {
+                    reload: function () {
+                        var orderNo=$("#orderNo").val();
+                        var name=$("#name").val();
+                        //判读是否为空(防止传空)
+                        if(orderNo==""){
+                            orderNo=null;
+                        }
+                        if(name==""){
+                            name=null;
+                        }
+                        if(orderNo==""&&name==""){
+                            orderNo=null;
+                            name=null;
+                        }
+                        table.reload('orderTable',{
+                            page:{curr:1},
+                            url:'/Orders/orderList/' + orderNo + '/' + name
+                        });
+                    }
                 }
+            //这个是用于创建点击事件的实例
+            $('#serch').on('click',function () {
+                var type = $(this).data('type');
+                active[type] ? active[type].call(this) : '';
+            });
+
+            //监听工具条
+            table.on('tool(followTable)', function (obj) {
+                var data = obj.data ,//获取当前行数据
+                    layEvent = obj.event;      //获得lay-event对应的值
             });
         });
+        //页面
+//         layui.use('laypage', function () {
+//             var laypage = layui.laypage;
+//             //总页数大于页码总数
+//             laypage.render({
+//                 elem: 'pages'
+//                 , count: 100
+//                 , layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
+//                 , jump: function (obj) {
+// //					      console.log(obj)
+//                 }
+//             });
+//         });
+
         //修改规格
-        function specificationsBut(){
-            layui.use('layer', function() {
+        function specificationsBut() {
+            layui.use('layer', function () {
                 var layer = layui.layer;
                 //iframe层-父子操作
                 layer.open({
@@ -156,10 +166,12 @@
             });
 
         }
+
         //修改按钮
         var updateFrame = null;
-        function updateBut(){
-            layui.use('layer', function() {
+
+        function updateBut() {
+            layui.use('layer', function () {
                 var layer = layui.layer;
                 //iframe层-父子操作
                 updateFrame = layer.open({
@@ -173,13 +185,32 @@
             });
         }
 
-
     </script>
 
 
+    <!--//监听提交-->
+    <!--form.on('submit(formDemo)', function(data) {-->
+    <!--var formData=data.field;-->
+    <!--var orderNos=formData.orderNo;-->
+    <!--var names=formdata.name;-->
+    <!--alert(orderNos);-->
+    <!--// var orderNo=$("#orderNo").val();-->
+    <!--// var name=$("#name").val();-->
+    <!--table.reload('orderTable',{-->
+    <!--page: {-->
+    <!--curr: 1 //重新从第 1 页开始-->
+    <!--},where:{-->
+    <!--name:names,-->
+    <!--orderNo:orderNos-->
+    <!--}-->
+    <!--,url:'/Orders/orderList'-->
+    <!--});-->
+    <!--return false;-->
+    <!--});-->
+
     <script type="text/html" id="barDemo">
         <button class="layui-btn layui-btn-xs" onclick="updateBut()">修改</button>
-        <button class="layui-btn layui-btn-xs" >删除</button>
+        <button class="layui-btn layui-btn-xs">删除</button>
     </script>
 
 </div>

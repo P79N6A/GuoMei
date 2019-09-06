@@ -10,7 +10,8 @@ import java.util.Map;
 
 @FeignClient("order-server")
 public interface OrdersService {
-
+      //查询全部和模糊查询
     @RequestMapping("/Back/Orders/orderList/{orderNo}/{name}")
     List<Map<String,Object>> orderList(@PathVariable("orderNo")String orderNo, @PathVariable("name")String name);
+
 }
