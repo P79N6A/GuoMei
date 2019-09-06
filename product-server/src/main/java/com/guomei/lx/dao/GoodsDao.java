@@ -1,9 +1,7 @@
-package com.guomei.dao;
+package com.guomei.lx.dao;
 
-import com.guomei.pojo.Category;
 import com.guomei.pojo.Goods;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 import java.util.Map;

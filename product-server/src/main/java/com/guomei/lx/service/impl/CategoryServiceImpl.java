@@ -1,8 +1,8 @@
-package com.guomei.service.impl;
+package com.guomei.lx.service.impl;
 
-import com.guomei.dao.CategoryDao;
+import com.guomei.lx.dao.CategoryDao;
 import com.guomei.pojo.Category;
-import com.guomei.service.CategoryService;
+import com.guomei.lx.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
