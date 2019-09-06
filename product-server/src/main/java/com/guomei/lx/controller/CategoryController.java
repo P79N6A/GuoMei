@@ -1,14 +1,10 @@
-package com.guomei.controller;
+package com.guomei.lx.controller;
 
 import com.guomei.pojo.Category;
-import com.guomei.service.CategoryService;
-import com.guomei.service.GoodsService;
-import lombok.val;
+import com.guomei.lx.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

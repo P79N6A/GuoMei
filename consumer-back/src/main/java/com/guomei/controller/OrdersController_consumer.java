@@ -1,7 +1,10 @@
 package com.guomei.controller;
 
 import com.github.pagehelper.Page;
+import com.guomei.pojo.Orders;
+import com.guomei.pojo.PageInfo;
 import com.guomei.service.OrdersService;
+import jdk.nashorn.internal.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,13 +28,16 @@ public class OrdersController_consumer {
     @ResponseBody
     public Map<String,Object> findOrders(@PathVariable("pageIndex")Integer pageIndex,@PathVariable("pageSize")Integer pageSize,@PathVariable("orderNo")String orderNo, @PathVariable("name")String name){
         Map<String,Object>map=new HashMap<>();
-//        List<Map<String,Object>> list =ordersService.orderList(orderNo,name);
-//        System.out.println("orderNo:"+orderNo+";name:"+name);
-        Page<Map<String, Object>> maps = ordersService.orderList(pageIndex,pageSize, orderNo, name);
+        PageInfo<Map<String, Object>> mapPageInfo = ordersService.orderList(pageIndex, pageSize, orderNo, name);
         map.put("code",0);
-        map.put("data",maps.getResult());
-        map.put("totalCount",maps.getTotal());
-        System.out.println("map:"+maps);
+        map.put("data",mapPageInfo.getList());
+        map.put("totalCount",mapPageInfo.getTotalCount());
+        System.out.println("pageIndex："+pageIndex);
+        System.out.println("pageSize:"+pageSize);
+        System.out.println("orderNo:"+orderNo+":name:"+name);
+//        String list= JSON.toJSONString();
+        ///String json="{\"code\":0,\"msg\":\"\",\"data\":"+mapPageInfo.getList()+",\"totalCount\":"+mapPageInfo.getTotalCount()+"}";
+        //System.out.println(json);
         return map;
     }
 }
