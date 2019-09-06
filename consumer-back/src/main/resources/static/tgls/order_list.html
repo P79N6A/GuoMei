@@ -15,7 +15,7 @@
     <meta name="description" content="网站简介"/>
     <!-- 网站简介 -->
     <meta name="keywords" content="搜索关键字，以半角英文逗号隔开"/>
-    <title>穷在闹市出品</title>
+    <title>国美电器</title>
 
     <!-- 公共样式 开始 -->
     <link rel="stylesheet" type="text/css" href="../../css/base.css">
@@ -58,7 +58,9 @@
                                class="layui-input">
                     </div>
                 </div>
-                <button type="button" class="layui-btn" id="serch" data-type="reload" style="margin-bottom: 6px">搜索</button>
+
+                <button type="button" class="layui-btn" id="serch" onclick="query()" data-type="reload" style="margin-bottom: 6px">搜索</button>
+
             </div>
         </form>
     </div>
@@ -68,88 +70,98 @@
     </table>
 
     <!-- layUI 分页模块 -->
-    <!--<div id="pages"></div>-->
+    <div id="pages"></div>
+
     <script>
-        layui.use(['element', 'table', 'form'], function () {
-            var $ = layui.jquery,
-                element = layui.element,
-                table = layui.table,
-                form = layui.form;
-                  var currentPageNo = 1;    //当前页数
-                 table.render({
-                    elem: "#followTable",
-                    url: '/Orders/orderList/1/' + null + '/' + null,
-                    id: 'orderTable',
-                     request:{     ////请求携带的参数
-                          pageName:'currentPageNo'    //页码参数名称
-
-                     },
-                     response:{    //后台返回数据
-                         countName: 'totalCount',  //数据总数的名称
-                         dataName: 'data'        //数据
-                     },
-                     page: true,
-                     limits: ['5', '10', '15'],//分页每页显示数据条数（页面选择）
-                     cols: [[
-                         {field: "orderNo", title: "订单编号"},
-                         {field: "userName", title: "收货人"},
-                         {field: "title", title: "购买商品"},
-                         {field: "total", title: "金额"},
-                         {field: "address", title: "收货地址"},
-                         {field: "orderTime", title: "订单时间"},
-                         {field: "status", title: "状态"},
-                         {field: 'right', title: '操作', toolbar: '#barDemo'},
-                     ]]
-                 });
-              //模糊查询
-            var $ = layui.$, active =
-                {
-                    reload: function () {
-                        var orderNo=$("#orderNo").val();
-                        var name=$("#name").val();
-                        //判读是否为空(防止传空)
-                        if(orderNo==""){
-                            orderNo=null;
+        //设置页面数量
+        var pageSize=1;
+        var orderNo;
+        var name;
+        //页面第一次请求
+        function dataLists(pageIndex, pageSize,orderNo,name) {
+            $.get( '/Orders/orderList/'+pageIndex+'/'+pageSize+'/'+orderNo+'/'+name,function (json) {
+                dataList(json.data);  // 数据传到 table组件
+                page(json.totalCount,orderNo,name);      // 数据传到 分页组件
+            });
+        }
+        //页面加载查询全部
+        dataLists(1, 1,null,null);
+        function page(totalCount,orderNo,name) {
+            layui.use('laypage', function () {
+                var  laypage = layui.laypage;
+                laypage.render({
+                    elem: 'pages',
+                    count: totalCount,
+                    limit:1,
+                    limits:[5,10,15],
+                    prev:"上一页",
+                    next:"下一页",
+                    layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+                    jump:function (obj,first) {
+                        if(!first){
+                            numpage(obj.curr, obj.limit,orderNo,name)  // 分页点击传参
                         }
-                        if(name==""){
-                            name=null;
-                        }
-                        if(orderNo==""&&name==""){
-                            orderNo=null;
-                            name=null;
-                        }
-                        table.reload('orderTable',{
-                            page:{curr:1},
-                            url:'/Orders/orderList/1/' + orderNo + '/' + name
-                        });
                     }
-                }
-            //这个是用于创建点击事件的实例
-            $('#serch').on('click',function () {
-                var type = $(this).data('type');
-                active[type] ? active[type].call(this) : '';
+                });
             });
-
-            //监听工具条
-            table.on('tool(followTable)', function (obj) {
-                var data = obj.data ,//获取当前行数据
-                    layEvent = obj.event;      //获得lay-event对应的值
+        }
+        //新的一个请求
+        function numpage(pageIndex, pageSize,orderNo,name) {
+            //判断是否等于undefined
+            if(typeof(orderNo)=="undefined"){
+                 orderNo=null;
+            }
+            if(typeof(name)=="undefined"){
+                name=null;
+            }
+            if(typeof(orderNo)=="undefined"&&typeof(name)=="undefined"){
+                orderNo=null;
+                name=null;
+            }
+            $.get( '/Orders/orderList/'+pageIndex+'/'+pageSize+'/'+orderNo+'/'+name,function (json) {
+                dataList(json.data);  // 数据传到 table组件
             });
-        });
-        //页面
-//         layui.use('laypage', function () {
-//             var laypage = layui.laypage;
-//             //总页数大于页码总数
-//             laypage.render({
-//                 elem: 'pages'
-//                 , count: 100
-//                 , layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
-//                 , jump: function (obj) {
-// //					      console.log(obj)
-//                 }
-//             });
-//         });
+        }
+        // 表格渲染
+        function dataList(data) {
+            layui.use('table', function () {
+                var table=layui.table;
+                table.render({
+                    elem: "#followTable",
+                    id: 'orderTable',
+                    cols: [[
+                        {field: "orderNo", title: "订单编号"},
+                        {field: "userName", title: "收货人"},
+                        {field: "title", title: "购买商品"},
+                        {field: "total", title: "金额"},
+                        {field: "address", title: "收货地址"},
+                        {field: "orderTime", title: "订单时间"},
+                        {field: "status", title: "状态"},
+                        {field: 'right', title: '操作', toolbar: '#barDemo'},
+                    ]],
+                    data: data // 数据
 
+                });
+            });
+        }
+        //模糊查询
+        function query (){
+            //模糊查询
+               orderNo=$("#orderNo").val();
+                name=$("#name").val();
+               //判读是否为空
+               if(orderNo==""){
+                   orderNo=null;
+               }
+               if(name==""){
+                   name=null;
+               }
+               if(orderNo==""&&name==""){
+                   orderNo=null;
+                   name=null;
+               }
+               dataLists(1, 1,orderNo,name);
+        }
         //修改规格
         function specificationsBut() {
             layui.use('layer', function () {
@@ -165,10 +177,8 @@
             });
 
         }
-
         //修改按钮
         var updateFrame = null;
-
         function updateBut() {
             layui.use('layer', function () {
                 var layer = layui.layer;
@@ -183,30 +193,7 @@
                 });
             });
         }
-
     </script>
-
-
-    <!--//监听提交-->
-    <!--form.on('submit(formDemo)', function(data) {-->
-    <!--var formData=data.field;-->
-    <!--var orderNos=formData.orderNo;-->
-    <!--var names=formdata.name;-->
-    <!--alert(orderNos);-->
-    <!--// var orderNo=$("#orderNo").val();-->
-    <!--// var name=$("#name").val();-->
-    <!--table.reload('orderTable',{-->
-    <!--page: {-->
-    <!--curr: 1 //重新从第 1 页开始-->
-    <!--},where:{-->
-    <!--name:names,-->
-    <!--orderNo:orderNos-->
-    <!--}-->
-    <!--,url:'/Orders/orderList'-->
-    <!--});-->
-    <!--return false;-->
-    <!--});-->
-
     <script type="text/html" id="barDemo">
         <button class="layui-btn layui-btn-xs" onclick="updateBut()">修改</button>
         <button class="layui-btn layui-btn-xs">删除</button>

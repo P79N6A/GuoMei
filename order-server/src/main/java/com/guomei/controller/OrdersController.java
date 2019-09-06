@@ -1,6 +1,7 @@
 package com.guomei.controller;
 
 import com.github.pagehelper.Page;
+import com.guomei.pojo.Orders;
 import com.guomei.pojo.PageInfo;
 import com.guomei.service.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +25,20 @@ public class OrdersController {
     //查询所有订单详情
     @RequestMapping("/orderList/{pageIndex}/{pageSize}/{orderNo}/{name}")
     @ResponseBody
-    public PageInfo<Object> orderList(@PathVariable("pageIndex")Integer pageIndex, @PathVariable("pageSize")Integer pageSize, @PathVariable("orderNo")String orderNo, @PathVariable("name")String name){
+    public PageInfo<Map<String, Object>> orderList(@PathVariable("pageIndex")Integer pageIndex, @PathVariable("pageSize")Integer pageSize, @PathVariable("orderNo")String orderNo, @PathVariable("name")String name){
         Map<String,Object>map=new HashMap<>();
         map.put("orderNo",orderNo);
         map.put("name",name);
         Page<Map<String, Object>> maps = ordersService.orderList(map, pageIndex, pageSize);
-        PageInfo<Object>page=new PageInfo<>();
-        System.out.println("提供者maps:"+maps);
+        PageInfo<Map<String, Object>>page=new PageInfo<>();
+        List<Map<String, Object>> result = maps.getResult();
+        //封装查询数据
+        page.setList(result);
+        //封装总记录数
+        page.setTotalCount((int)maps.getTotal());
+//        System.out.println("result:"+page.getList());
+//        System.out.println("total:"+page.getTotalCount());
+//        System.out.println("maps:"+maps.getPages());
         return page;
     }
 
