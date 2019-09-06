@@ -30,5 +30,18 @@ public class UsersServiceImpl implements UsersService {
         return usersDao.findUsers(userName);
     }
 
+    @Override
+    public int delUser(Integer id) {
+        return usersDao.delUser(id);
+    }
 
+    @Override
+    public Users findById(Integer id) {
+        return usersDao.findById(id);
+    }
+
+    @Override
+    public int updateUser(Users user) {
+        return usersDao.updateUser(user);
+    }
 }
