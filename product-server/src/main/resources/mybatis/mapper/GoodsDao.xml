@@ -18,4 +18,8 @@
         <result column="goods_seckill" property="seckill"/>
     </resultMap>
 
+    <select id="findGoods" resultType="map">
+        SELECT g.*,b.`brand_name` FROM goods g INNER JOIN brand b ON  g.`brand_id` = b.`brand_id`
+    </select>
+
 </mapper>
