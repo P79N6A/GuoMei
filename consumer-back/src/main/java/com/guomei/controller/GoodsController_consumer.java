@@ -19,6 +19,7 @@ public class GoodsController_consumer {
     @Autowired
     private GoodsService goodsService;
 
+    //商品分类模块
     @RequestMapping("findCategory")
     public String findCategory() {
         String json = "{\"data\":" + goodsService.findCategory() + "}";
@@ -52,6 +53,16 @@ public class GoodsController_consumer {
     public String brandExistGood(@PathVariable("cid") Integer cid){
         String json =  goodsService.brandExistGood(cid);
         return json;
+    }
+
+    //商品模块
+    @RequestMapping("findGoods")
+    public Map<String, Object> findGoods(){
+        Map<String, Object> map = new HashMap<>();
+        map.put("code",0);
+        map.put("data", goodsService.findGoods(new Goods()));
+        map.put("count",100);
+        return map;
     }
 
 }

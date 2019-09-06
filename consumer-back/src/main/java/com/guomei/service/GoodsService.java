@@ -30,4 +30,8 @@ public interface GoodsService {
 
     @RequestMapping("Back/Category/brandExistGood/{cid}")
     String brandExistGood(@PathVariable("cid")Integer cid);
+
+    //商品模块
+    @RequestMapping("Back/Goods/findGoods")
+    List<Map<String,Object>> findGoods(Goods goods);
 }
