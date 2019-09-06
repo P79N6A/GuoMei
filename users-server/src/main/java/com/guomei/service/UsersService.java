@@ -16,5 +16,9 @@ public interface UsersService {
 
     List<Users> findUsers(String userName);
 
+    int  delUser(Integer id);
 
+    Users   findById(Integer id);
+
+    int updateUser(Users user);
 }
