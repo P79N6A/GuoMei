@@ -1,6 +1,8 @@
 package com.guomei.service.impl;
 
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.guomei.dao.OrdersDao;
 import com.guomei.service.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +18,10 @@ public class OrdersServiceImpl implements OrdersService {
     @Autowired
     private OrdersDao ordersDao;
     @Override
-    public List<Map<String, Object>> orderList(Map<String,Object> map) {
-
-        return ordersDao.orderList(map);
+    public Page<Map<String, Object>> orderList(Map<String,Object> map,int pageIndex, int pageSize) {
+        Page<Map<String, Object>> page = PageHelper.startPage(pageIndex, pageSize);
+        ordersDao.orderList(map);
+        return page;
     }
 
     @Override

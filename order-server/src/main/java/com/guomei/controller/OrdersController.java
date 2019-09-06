@@ -1,5 +1,7 @@
 package com.guomei.controller;
 
+import com.github.pagehelper.Page;
+import com.guomei.pojo.PageInfo;
 import com.guomei.service.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,13 +22,16 @@ public class OrdersController {
     private OrdersService ordersService;
 
     //查询所有订单详情
-    @RequestMapping("/orderList/{orderNo}/{name}")
+    @RequestMapping("/orderList/{pageIndex}/{pageSize}/{orderNo}/{name}")
     @ResponseBody
-    public List<Map<String,Object>> orderList(@PathVariable("orderNo")String orderNo, @PathVariable("name")String name){
+    public PageInfo<Object> orderList(@PathVariable("pageIndex")Integer pageIndex, @PathVariable("pageSize")Integer pageSize, @PathVariable("orderNo")String orderNo, @PathVariable("name")String name){
         Map<String,Object>map=new HashMap<>();
         map.put("orderNo",orderNo);
         map.put("name",name);
-        return ordersService.orderList(map);
+        Page<Map<String, Object>> maps = ordersService.orderList(map, pageIndex, pageSize);
+        PageInfo<Object>page=new PageInfo<>();
+        System.out.println("提供者maps:"+maps);
+        return page;
     }
 
 

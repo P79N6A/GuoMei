@@ -75,15 +75,14 @@
                 element = layui.element,
                 table = layui.table,
                 form = layui.form;
-                var pageSize = 1;   //每页显示的数量
                   var currentPageNo = 1;    //当前页数
                  table.render({
                     elem: "#followTable",
-                    url: '/Orders/orderList/' + null + '/' + null,
+                    url: '/Orders/orderList/1/' + null + '/' + null,
                     id: 'orderTable',
                      request:{     ////请求携带的参数
-                          pageName:'currentPageNo',    //页码参数名称
-                          limitName: 'pageSize'     //每页数据量参数名称
+                          pageName:'currentPageNo'    //页码参数名称
+
                      },
                      response:{    //后台返回数据
                          countName: 'totalCount',  //数据总数的名称
@@ -121,7 +120,7 @@
                         }
                         table.reload('orderTable',{
                             page:{curr:1},
-                            url:'/Orders/orderList/' + orderNo + '/' + name
+                            url:'/Orders/orderList/1/' + orderNo + '/' + name
                         });
                     }
                 }
