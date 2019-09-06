@@ -20,10 +20,24 @@ public class UsersController {
         return  usersService.adminLogin(users);
     }
 
-    @RequestMapping("/findUsers")
-    public List<Users> findUsers(String userName) {
+    @RequestMapping("/findUsers/{userName}")
+    public List<Users> findUsers(@PathVariable("userName") String userName) {
         return usersService.findUsers(userName);
     }
 
+    @RequestMapping("/delUser/{id}")
+    public int delUser(@PathVariable("id") Integer id) {
+        return usersService.delUser(id);
+    }
+
+    @RequestMapping("/findById/{id}")
+    public Users findById(@PathVariable("id") Integer id){
+        return usersService.findById(id);
+    }
+
+    @RequestMapping("/updateUser")
+    public int updateUser(@RequestBody Users user){
+        return usersService.updateUser(user);
+    }
 
 }
