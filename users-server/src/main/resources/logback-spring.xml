@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <layout>
+            <pattern>[%p]%d-%msg%n</pattern>
+        </layout>
+    </appender>
+    <appender name="file" class="ch.qos.logback.core.FileAppender">
+        <file>logs.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>[%p]%d-%msg%n</pattern>
+        </encoder>users-server/log/
+    </appender>
+
+    <root level="error">
+        <appender-ref ref="console" />
+        <appender-ref ref="file" />
+    </root>
+</configuration>
