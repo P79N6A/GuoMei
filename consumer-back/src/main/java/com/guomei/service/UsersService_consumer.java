@@ -12,19 +12,19 @@ import java.util.List;
 @FeignClient("users-server")
 public interface UsersService_consumer {
 
-    @RequestMapping("/adminLogin")
+    @RequestMapping("/back/users/adminLogin")
      Users adminLogin(Users users);
 
-    @RequestMapping("/findUsers/{userName}")
+    @RequestMapping("/back/users/findUsers/{userName}")
      List<Users> findUsers(@PathVariable("userName") String userName);
 
-    @RequestMapping("/delUser/{id}")
+    @RequestMapping("/back/users/delUser/{id}")
      int delUser(@PathVariable("id") Integer id);
 
-    @RequestMapping("/findById/{id}")
+    @RequestMapping("/back/users/findById/{id}")
      Users findById(@PathVariable("id") Integer id);
 
-    @RequestMapping("/updateUser")
+    @RequestMapping("/back/users/updateUser")
      int updateUser(Users user);
 
 }
