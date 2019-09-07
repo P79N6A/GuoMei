@@ -99,7 +99,7 @@
             <input type="text" id="img_url" name="headImg" value="" style="display: none;"/>
 
             <div class="layui-upload-list">
-                <img class="layui-upload-img" id="photo" width="50" height="50">
+                <img class="layui-upload-img" id="photo" width="50" height="50" >
                 <p id="demoText"></p>
             </div>
         </div>
@@ -156,6 +156,8 @@
                     $("#popUpdateTest input[name=email]").val(result.email);
                     $("#popUpdateTest input[name=time]").val(result.time);
                     $("#popUpdateTest input[name=address]").val(result.address);
+                    $("#photo").attr("src",result.headImg);
+                    $("#img_url").val(result.headImg);
                     form.render();  //更新全部
                 });
         })

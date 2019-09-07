@@ -1,5 +1,6 @@
 package com.guomei.controller;
 
+import com.guomei.pojo.Grade;
 import com.guomei.pojo.Users;
 import com.guomei.service.UsersService_consumer;
 import com.netflix.discovery.util.StringUtil;
@@ -114,5 +115,28 @@ public class UsersController_consumer {
                 res.put("url", "http://127.0.0.1:88/upload/"+originalFilename);
             }
         return res;
+    }
+
+    //查询会员
+    @RequestMapping("/back/findVip/{userName}/{gradeName}")
+    @ResponseBody
+    public Map<String, Object> findVip(@PathVariable("userName") String userName,@PathVariable("gradeName") String gradeName){
+        Map hm=new HashMap();
+        hm.put("userName",userName);
+        hm.put("gradeName",gradeName);
+        List<Map> list = usersService_consumer.findVip(hm);
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("code", 0);
+        map.put("msg", "");
+        map.put("count", list.size());
+        map.put("data", list);
+        return  map;
+    }
+
+//显示所有会员等级
+    @RequestMapping("/back/allGrade")
+    @ResponseBody
+     public  List<Grade> allGrade(){
+        return  usersService_consumer.allGrade();
     }
 }

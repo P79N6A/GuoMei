@@ -51,18 +51,26 @@
 			<div class="console">
 				<form class="layui-form" action="">
 					<div class="layui-form-item">
-						<div class="layui-input-inline">
-							<input type="text"    name="userName" placeholder="输入用户名" autocomplete="off" class="layui-input" >
+
+						<div class="layui-inline">
+							<div class="layui-input-inline">
+								<input type="text"    name="userName" placeholder="输入用户名" autocomplete="off" class="layui-input" >
+							</div>
 						</div>
+
+						<div class="layui-inline">
+							<label class="layui-form-label">会员等级</label>
+							<div class="layui-input-inline">
+								<select name="gradeName" lay-search="" id="gradeName">
+									<option value="">直接选择或搜索选择</option>
+								</select>
+							</div>
+						</div>
+
 						<button class="layui-btn" lay-submit lay-filter="formDemo">查询</button>
 					</div>
 				</form>
 			</div>
-
-			<script type="text/html" id="barDemo">
-				<a class="layui-btn layui-btn-xs" lay-event="edit">修改</a>
-				<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-			</script>
 
 			<table class="layui-hide" id="table" lay-filter="test"></table>
 
@@ -84,20 +92,19 @@
 
 			
 			<script>
-				layui.use(['laypage', 'layer','table','upload','form'], function() {
+				layui.use(['laypage', 'layer','table','form'], function() {
 					var laypage = layui.laypage,  //分页
 						layer = layui.layer ,  //弹层
 						table = layui.table , //表格
                         form = layui.form,
-						$ = layui.jquery
-                        ,upload = layui.upload;
+						$ = layui.jquery;
 
 
                     //执行一个 table 实例
                     table.render({
                         elem: '#table'
                         ,height: 420
-                        ,url: '/users/back/findUsers/'+null //数据接口
+                        ,url: '/users/back/findVip/null/null' //数据接口
                         ,cellMinWidth: 60 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
                         ,page: true //开启分页
                         ,done: function(res, curr, count) { //表格数据加载完后的事件
@@ -110,73 +117,59 @@
                             //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
                             console.log(res);}
                         ,cols: [[ //表头
-							{field: 'id', title: 'ID',fixed: 'left', sort: true,width:60}
-                            ,{field: 'userName', title: '用户名',width:80}
-                            ,{field: 'sex', title: '性别', sort: true,width:80,
-                                    templet: function(d){
-                                        if(d.sex == '1'){
-                                            return '男'
-                                        } else { return '女'}
-                                    }
-							}
-                            ,{field: 'birthday', title: '生日',width:125}
-                            ,{field: 'phone', title: '手机号码',width:150}
-                            ,{field: 'email', title: '邮箱',width:180}
-                            ,{field: 'address', title: '家庭住址',width:150}
-                            ,{field: 'headImg', title: '用户头像',width:150,
+							{field: 'id', title: 'ID',width:85}
+                            ,{field: 'userName', title: '用户名',width:200}
+                            ,{field: 'headImg', title: '用户头像',width:200,
                                 templet:"#imgtmp"
                                 }
-                            ,{field: 'time', title: '注册时间',width:125}
-                            ,{fixed: 'right', title:'操作', toolbar: '#barDemo',width:120}
+                            ,{field: 'gradeName', title:'会员等级',width:200,sort: true}
+                            ,{field: 'growupSum', title: '成长值',width:200}
+                            ,{field: 'scoreSum', title:'美豆数',width:200}
                         ]]
                     });
 
-                    //根据用户名模糊查询
+                    //页面一加载就显示所有会员等级
+                    $(function () {
+                        $.getJSON("/users/back/allGrade",
+                            function(json) {
+                                for (var i = 0; i < json.length; i++) {
+                                    var id = json[i].id;
+                                    var gradeName = json[i].gradeName;
+                                    var option = "<option value="+gradeName+">" + gradeName + "</option>";
+                                    $("#gradeName").append(option);
+                                }
+                                //重新渲染select
+                                form.render('select');
+                            });
+                    })
+
+
+                    //根据用户名.会员等级查询
                     form.on('submit(formDemo)', function(data) {
                         var userName=data.field.userName;
                         if (userName=='') {
                             userName=null;
+                        }
+                        var gradeName=data.field.gradeName;
+						if(gradeName==''){
+							gradeName=null;
 						}
                         table.reload("table",{
                             page:{
                                 curr:1
-							},url:'/users/back/findUsers/'+userName
-						})
+                            },url:"/users/back/findVip/"+userName+"/"+gradeName
+                        })
                         return false;
                     });
 
-                    //监听行工具事件
-                    table.on('tool(test)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
-                        var data = obj.data //获得当前行数据
-                            ,layEvent = obj.event; //获得 lay-event 对应的值
-						//删除
-                        if(layEvent === 'del'){
-                            layer.confirm('真的删除行么?', function(index){
-                             $.getJSON("/users/back/delUser/"+data.id,
-                                    function(result) {
-                                        if(result>0){
-                                            obj.del(); //删除对应行（tr）的DOM结构，并更新缓
-                                            layer.close(index);
-                                            layer.msg("删除成功!");
-                                        }
-                                        else{
-                                            layer.msg("删除失败,请重试!");
-                                        }
-                                    });
-                                layer.close(index);
-                            });
-                        //修改
-                        } else if(layEvent === 'edit'){
 
-                                   layer.open({
-                                        //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
-                                        type:2,
-                                        title: "修改用户信息",
-                                        area: [ '750px', '480px' ],
-                                        content:'agent_update.html?id='+data.id ///引用的弹出层的页面层的方式加载修改界面表单
-                                });
-                                }
-                            });
+
+
+
+
+
+
+
 
 
 
