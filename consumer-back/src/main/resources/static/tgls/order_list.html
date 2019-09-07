@@ -74,7 +74,8 @@
 
     <script>
         //设置页面数量
-        var pageSize=1;
+        var pageSize=3;
+        var pageIndex=1;
         var orderNo;
         var name;
         //页面第一次请求
@@ -85,14 +86,14 @@
             });
         }
         //页面加载查询全部
-        dataLists(1, 1,null,null);
+        dataLists(pageIndex, pageSize,null,null);
         function page(totalCount,orderNo,name) {
             layui.use('laypage', function () {
                 var  laypage = layui.laypage;
                 laypage.render({
                     elem: 'pages',
                     count: totalCount,
-                    limit:1,
+                    limit:pageSize,
                     limits:[5,10,15],
                     prev:"上一页",
                     next:"下一页",
@@ -107,42 +108,110 @@
         }
         //新的一个请求
         function numpage(pageIndex, pageSize,orderNo,name) {
-            //判断是否等于undefined
-            if(typeof(orderNo)=="undefined"){
-                 orderNo=null;
-            }
-            if(typeof(name)=="undefined"){
-                name=null;
-            }
-            if(typeof(orderNo)=="undefined"&&typeof(name)=="undefined"){
-                orderNo=null;
-                name=null;
-            }
-            $.get( '/Orders/orderList/'+pageIndex+'/'+pageSize+'/'+orderNo+'/'+name,function (json) {
+            var obj=panduan(orderNo,name);
+            $.get( '/Orders/orderList/'+pageIndex+'/'+pageSize+'/'+obj.orderNos+'/'+obj.names,function (json) {
                 dataList(json.data);  // 数据传到 table组件
             });
         }
+        //判断是否为undefined并返回
+        function panduan(orderNos,names) {
+            //判断是否等于undefined
+            if(typeof(orderNos)=="undefined"){
+                orderNo=null;
+            }else{
+                orderNo=orderNos;
+            }
+            if(typeof(names)=="undefined"){
+                names=null;
+            }else{
+                name=names;
+            }
+            if(typeof(orderNos)=="undefined"&&typeof(names)=="undefined"){
+                orderNo=null;
+                name=null;
+            }else{
+                orderNo=orderNos;
+                name=names;
+            }
+            return {orderNos:orderNo,names:name};
+        }
+
         // 表格渲染
         function dataList(data) {
             layui.use('table', function () {
                 var table=layui.table;
                 table.render({
                     elem: "#followTable",
-                    id: 'orderTable',
                     cols: [[
-                        {field: "orderNo", title: "订单编号"},
+                        {field: "id", title: "id",hide:true},
+                        {field: "orderNo", title: "订单编号",width:148},
                         {field: "userName", title: "收货人"},
                         {field: "title", title: "购买商品"},
                         {field: "total", title: "金额"},
                         {field: "address", title: "收货地址"},
                         {field: "orderTime", title: "订单时间"},
-                        {field: "status", title: "状态"},
+                        {field: "status", title: "状态",
+                            templet: function(d){
+                                if(d.status == '1'){
+                                    return '待付款'
+                                }else if(d.status == '2'){
+                                    return '代发货'
+                                }else if(d.status == '3'){
+                                    return '已发货'
+                                }else if(d.status == '4'){
+                                    return '已完成'
+                                }else if(d.status == '5'){
+                                    return '已退货';
+                                }else { return '已取消'}
+                            }},
                         {field: 'right', title: '操作', toolbar: '#barDemo'},
                     ]],
                     data: data // 数据
-
+                    ,done: function(res, curr, count){
+                        $(".layui-table-box").find("[data-field='id']").css("display","none");
+                    }
                 });
-            });
+
+                //监听行工具事件
+                table.on('tool(followTable)', function(obj){
+                    var data = obj.data //获得当前行数据
+                        ,layEvent = obj.event; //获得 lay-event 对应的值
+                    //删除
+                    if(layEvent === 'del'){
+                        layer.confirm('真的删除行么?', function(index){
+                            $.getJSON("/Orders/deleteOrders?orderId="+data.id,
+                                function(result) {
+                                    if(result>0){
+                                        obj.del(); //删除对应行（tr）的DOM结构，并更新缓
+                                        layer.close(index);
+                                        //调用判断的方法
+                                        var pd=panduan(orderNo,name);
+                                        layer.msg("删除成功!");
+                                        dataLists(pageIndex, pageSize,pd.orderNos,pd.names);
+                                    }
+                                    else{
+                                        layer.msg("删除失败,请重试!");
+                                    }
+                                });
+                            layer.close(index);
+                        });
+                        //修改
+                    } else if(layEvent === 'edit'){
+                        layui.use('layer', function () {
+                            var layer = layui.layer;
+                            //iframe层-父子操作
+                              layer.open({
+                                title: "订单信息修改",
+                                type: 2,
+                                area: ['557px', '400px'],
+                                scrollbar: false,	//默认：true,默认允许浏览器滚动，如果设定scrollbar: false，则屏蔽
+                                maxmin: true,
+                                content: 'order_update.html?orderNo='+data.orderNo
+                            });
+                        });
+                    }
+                });
+                });
         }
         //模糊查询
         function query (){
@@ -160,43 +229,14 @@
                    orderNo=null;
                    name=null;
                }
-               dataLists(1, 1,orderNo,name);
+               dataLists(pageIndex, pageSize,orderNo,name);
         }
-        //修改规格
-        function specificationsBut() {
-            layui.use('layer', function () {
-                var layer = layui.layer;
-                //iframe层-父子操作
-                layer.open({
-                    type: 2,
-                    area: ['70%', '60%'],
-                    fixed: false, //不固定
-                    maxmin: true,
-                    content: 'specifications_list.html'
-                });
-            });
 
-        }
-        //修改按钮
-        var updateFrame = null;
-        function updateBut() {
-            layui.use('layer', function () {
-                var layer = layui.layer;
-                //iframe层-父子操作
-                updateFrame = layer.open({
-                    title: "订单信息修改",
-                    type: 2,
-                    area: ['557px', '400px'],
-                    scrollbar: false,	//默认：true,默认允许浏览器滚动，如果设定scrollbar: false，则屏蔽
-                    maxmin: true,
-                    content: 'order_update.html'
-                });
-            });
-        }
     </script>
+
     <script type="text/html" id="barDemo">
-        <button class="layui-btn layui-btn-xs" onclick="updateBut()">修改</button>
-        <button class="layui-btn layui-btn-xs">删除</button>
+        <a class="layui-btn layui-btn-xs" lay-event="edit">修改</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
     </script>
 
 </div>

@@ -16,7 +16,7 @@
     </resultMap>
     <!--查询订单信息-->
     <select id="orderList" resultMap="maps" parameterType="map">
-        SELECT a.`address_name`,a.`address_detail`,o.`order_no`,o.`order_status`,g.`goods_title`,o.`order_total`,o.`order_time`
+        SELECT DISTINCT o.`order_id`,a.`address_name`,a.`address_detail`,o.`order_no`,o.`order_status`,g.`goods_title`,o.`order_total`,o.`order_time`
         FROM orders o
         INNER JOIN order_detail s ON s.`order_id`=o.order_id
         INNER JOIN  address a ON a.`address_id`=o.`address_id`
@@ -31,6 +31,23 @@
                 </if>
             </trim>
     </select>
+    <!--根据订单号查询订单详情-->
+    <select id="ByIdOrders" resultMap="maps" parameterType="string">
+        SELECT DISTINCT o.`order_id`,a.`address_name`,a.`address_detail`,o.`order_no`,o.`order_status`,g.`goods_title`,o.`order_total`,o.`order_time`
+        FROM orders o
+        INNER JOIN order_detail s ON s.`order_id`=o.order_id
+        INNER JOIN  address a ON a.`address_id`=o.`address_id`
+        INNER JOIN   goods g ON g.`goods_id`=s.`goods_id`
+         where o.`order_no`=#{orderNo}
+    </select>
+    <!--修改订单状态-->
+    <update id="updateStatus" parameterType="orders">
+        UPDATE orders SET order_status=#{status} WHERE order_no=#{orderNo}
+    </update>
+    <!--删除订单-->
+     <delete id="deleteOrder" parameterType="int">
+         delete from orders where order_id=#{orderId}
+     </delete>
     <!--订货单  订货金额-->
     <select id="orderQuantity" resultType="map">
         SELECT  COUNT(0) ,SUM(order_total)FROM orders
