@@ -84,4 +84,44 @@ public class CategoryController {
         return categoryService.deleteBrand(cid);
     }
 
+    @RequestMapping("findTreeCategory/{cLevel}")
+    public List<Map<String, Object>> findTreeCategory(@PathVariable("cLevel") Integer cLevel) {
+        Map<String,Object> map = new HashMap<>();
+        List<Map<String, Object>> list = categoryService.findTreeCategory(cLevel);
+        map.put("name","根栏目");
+        map.put("pid","0");
+        map.put("id","-1");
+        list.add(map);
+        return list;
+    }
+
+    @RequestMapping("addCategory")
+    public String addCategory(@RequestBody Category category){
+        System.out.println("category = " + category);
+        String [] name = category.getName().split(":");
+        String parentName = name[0];
+        String newName = name[1];
+        Category category2 = new Category();
+        if("根栏目".equals(parentName)){
+            category2.setName(newName);
+            category2.setParentId(0);
+            category2.setCLevel(1);
+        }else{
+            Map<String,Object> param = new HashMap<>();
+            param.put("name",parentName);
+            List<Category> parentBrother = categoryService.findCategory(param);
+            if(parentBrother.get(0)!=null){
+                category2.setName(newName);
+                category2.setParentId(parentBrother.get(0).getCid());
+                category2.setCLevel(parentBrother.get(0).getCLevel()+1);
+            }
+        }
+        int result = categoryService.addCategory(category2);
+        if (result > 0) {
+            String json = "{\"code\":\"success\"}";
+            return json;
+        }
+
+        return "{\"msg\":\"新增失败\"}";
+    }
 }

@@ -32,6 +32,11 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    public List<Map<String, Object>> findTreeCategory(Integer cLevel) {
+        return categoryDao.findTreeCategory(cLevel);
+    }
+
+    @Override
     public List<Map<String, Object>> findCategoryAndParentExist() {
         return categoryDao.findCategoryAndParentExist();
     }
@@ -49,6 +54,11 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public int deleteBrand(Integer cid) {
         return categoryDao.deleteBrand(cid);
+    }
+
+    @Override
+    public int addCategory(Category category) {
+        return categoryDao.addCategory(category);
     }
 
 }
