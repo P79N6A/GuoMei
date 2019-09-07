@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.guomei.dao.GradeDao">
+
+    <resultMap type="Grade" id="myGrade">
+        <id column="grade_id" property="id"/>
+        <result column="grade_name" property="gradeName"/>
+        <result column="low" property="low"/>
+        <result column="high" property="high"/>
+    </resultMap>
+
+
+    <select id="allGrade" resultMap="myGrade">
+        SELECT grade_id,grade_name FROM  grade
+    </select>
+
+
+</mapper>

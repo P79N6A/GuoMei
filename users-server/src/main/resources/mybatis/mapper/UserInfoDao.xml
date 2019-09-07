@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.guomei.dao.UserInfoDao">
+
+    <resultMap type="map" id="myMap">
+        <!-- column:数据库字段  property:实体类属性  -->
+        <result column="user_id" property="id"/>
+        <result column="user_name" property="userName"/>
+        <result column="user_headimg" property="headImg"/>
+        <result column="growup_sum" property="growupSum"/>
+        <result column="score_sum" property="scoreSum"/>
+        <result column="grade_name" property="gradeName"/>
+    </resultMap>
+
+
+    <select id="findVip" resultMap="myMap">
+        SELECT u.user_id,u.user_name,u.user_headimg,g.growup_sum,s.score_sum ,gr.grade_name FROM userinfo uinfo
+        INNER JOIN users u ON uinfo.uid=u.user_id
+        INNER JOIN growup g ON uinfo.gid= g.growup_id
+        INNER JOIN score s ON uinfo.sid=s.score_id
+        INNER JOIN grade gr ON ( g.growup_sum BETWEEN gr.low AND high)
+        <where>
+            <if test="userName!=null  and  userName!='' and userName!='null'">
+                u.user_name LIKE concat('%',#{userName},'%')
+            </if>
+            <if test="gradeName!=null and gradeName!='' and gradeName!='null'">
+                AND   gr.grade_name=#{gradeName}
+            </if>
+        </where>
+    </select>
+
+
+</mapper>
