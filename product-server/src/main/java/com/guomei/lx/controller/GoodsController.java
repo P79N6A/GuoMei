@@ -26,9 +26,12 @@ public class GoodsController {
         Map<String, Object> map = new HashMap<>();
         map.put("cname", param.get("cname"));
         map.put("title", param.get("title"));
+        System.out.println("param = " + param);
         Integer pageIndex = new Integer(param.get("pageIndex").toString());
+        System.out.println("pageIndex = " + pageIndex);
         Integer pageSize = new Integer(param.get("pageSize").toString());
         Page<Map<String, Object>> goods = goodsService.findGoods(map, pageIndex, pageSize);
+
         PageInfo<Map<String, Object>>page=new PageInfo<>();
         List<Map<String, Object>> result = goods.getResult();
         //封装查询数据
