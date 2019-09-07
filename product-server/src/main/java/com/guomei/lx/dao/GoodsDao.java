@@ -10,5 +10,5 @@ import java.util.Map;
 public interface GoodsDao {
 
     //查询所有商品
-    List<Map<String,Object>> findGoods(Goods goods);
+    List<Map<String,Object>> findGoods(Map<String,Object> map);
 }

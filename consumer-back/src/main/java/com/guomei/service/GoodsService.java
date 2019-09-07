@@ -2,11 +2,9 @@ package com.guomei.service;
 
 import com.guomei.pojo.Category;
 import com.guomei.pojo.Goods;
+import com.guomei.pojo.PageInfo;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -40,5 +38,5 @@ public interface GoodsService {
 
     //商品模块
     @RequestMapping("Back/Goods/findGoods")
-    List<Map<String,Object>> findGoods(Goods goods);
+    PageInfo<Map<String, Object>> findGoods(@RequestParam Map<String,Object> param);
 }

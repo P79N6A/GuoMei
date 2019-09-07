@@ -1,6 +1,8 @@
 package com.guomei.lx.service.impl;
 
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.guomei.lx.dao.GoodsDao;
 import com.guomei.pojo.Goods;
 import com.guomei.lx.service.GoodsService;
@@ -18,8 +20,11 @@ public class GoodsServiceImpl implements GoodsService {
     @Autowired
     private GoodsDao goodsDao;
 
+
     @Override
-    public List<Map<String, Object>> findGoods(Goods goods) {
-        return goodsDao.findGoods(goods);
+    public Page<Map<String, Object>> findGoods(Map<String, Object> map, int pageIndex, int pageSize) {
+        Page<Map<String, Object>> page = PageHelper.startPage(pageIndex, pageSize);
+        goodsDao.findGoods(map);
+        return page;
     }
 }
