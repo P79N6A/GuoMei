@@ -24,6 +24,9 @@
             <if test="level != null and level != '' ">
                 and category_level = #{level}
             </if>
+            <if test="name != null and name != '' ">
+                and category_name = #{name}
+            </if>
         </where>
     </select>
 
@@ -51,4 +54,11 @@
         delete from brand where category_id = #{cid}
     </delete>
 
+    <select id="findTreeCategory" resultType="map">
+        SELECT category_name AS `name`,category_id AS id,category_parent_id AS pid FROM category WHERE category_level !=#{cLevel}
+    </select>
+
+    <insert id="addCategory" parameterType="category">
+        INSERT INTO category (category_name,category_parent_id,category_level) VALUES (#{name},#{parentId},#{cLevel})
+    </insert>
 </mapper>

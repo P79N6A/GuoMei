@@ -15,6 +15,9 @@ public interface CategoryService {
     //修改分类
     int updateCategoryInfo(Category category);
 
+    //查询生成zTree树状下拉框的分类值
+    List<Map<String,Object>> findTreeCategory(Integer cLevel);
+
     //查询所有分类以及该分类是否存在父分类
     List<Map<String,Object>> findCategoryAndParentExist();
 
@@ -26,4 +29,8 @@ public interface CategoryService {
 
     //删除品牌分类
     int deleteBrand(Integer cid);
+
+
+    //新增分类
+    int addCategory(Category category);
 }

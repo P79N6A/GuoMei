@@ -31,6 +31,13 @@ public interface GoodsService {
     @RequestMapping("Back/Category/brandExistGood/{cid}")
     String brandExistGood(@PathVariable("cid")Integer cid);
 
+    @RequestMapping("Back/Category/findTreeCategory/{cLevel}")
+    String findTreeCategory(@PathVariable("cLevel")Integer cLevel);
+
+    @RequestMapping("Back/Category/addCategory")
+    String addCategory(Category category);
+
+
     //商品模块
     @RequestMapping("Back/Goods/findGoods")
     List<Map<String,Object>> findGoods(Goods goods);
