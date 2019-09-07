@@ -8,8 +8,14 @@
     <meta name="renderer" content="webkit">
     <!--国产浏览器高速模式-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="国美电器"/>
+    <!-- 作者 -->
+    <meta name="revised" content="国美电器.v3, 2019/05/01"/>
     <!-- 定义页面的最新版本 -->
     <meta name="description" content="网站简介"/>
+    <!-- 网站简介 -->
+    <meta name="keywords" content="搜索关键字，以半角英文逗号隔开"/>
+    <title>国美电器</title>
 
     <!-- 公共样式 开始 -->
     <link rel="stylesheet" type="text/css" href="../../css/base.css">
@@ -24,6 +30,11 @@
     <script src="../../framework/jquery.mCustomScrollbar.min.js"></script>
     <script src="../../framework/cframe.js"></script><!-- 仅供所有子页面使用 -->
     <!-- 公共样式 结束 -->
+
+    <link rel="stylesheet" type="text/css" href="../../js/zTree_v3/css/zTreeStyle/zTreeStyle.css"/>
+    <script type="text/javascript" src="../../js/zTree_v3/js/jquery.ztree.all.js"></script>
+    <script type="text/javascript" src="../../js/tree-select.js"></script>
+
     <style type="text/css">
 
         .layui-table-cell {
@@ -45,128 +56,200 @@
         <form class="layui-form" action="">
             <div class="layui-form-item">
                 <div class="layui-input-inline">
-                    <input type="text" name="name" required lay-verify="required" placeholder="输入商品名称"
+                    <input type="text" name="name" required lay-verify="required" id="title" placeholder="输入商品名称"
                            autocomplete="off" class="layui-input">
                 </div>
                 <div class="layui-input-inline">
-                    <select name="provid" id="provid" lay-filter="provid">
-                        <option value="">一级分类</option>
-                    </select>
+                    <div class="layui-input-block">
+                        <input id="ts_input" type="text" id="cname" style="width: 190px" name="parentName" required
+                               lay-verify="required" autocomplete="off" class="layui-input">
+                    </div>
                 </div>
-                <button class="layui-btn" lay-submit lay-filter="formDemo">检索</button>
+                <button type="button" class="layui-btn" id="serch" onclick="query()" data-type="reload"
+                        style="margin-bottom: 6px">检索
+                </button>
                 <a class="layui-btn">导入商品</a>
             </div>
         </form>
     </div>
+    <table class="layui-table" id="followTable" lay-filter="followTable"></table>
+
+
+
+    <!-- layUI 分页模块 -->
+    <div id="pages"></div>
+
+    <script>
+        //设置页面数量
+        var pageSize = 10;
+        var pageIndex = 1;
+        var title;
+        var cname;
+
+        //页面第一次请求
+        function dataLists(pageIndex, pageSize, cname, title) {
+            var url = '../../../Goods/findGoods?pageIndex='+pageIndex+'&pageSize='+pageSize+'&cname='+cname+'&title='+title+'';
+            $.get(url, function (json) {
+                dataList(json.data);  // 数据传到 table组件
+                page(json.totalCount, cname, title);      // 数据传到 分页组件
+            });
+        }
+
+        //页面加载查询全部
+        dataLists(pageIndex, pageSize, null, null);
+
+        function page(totalCount, cname, title) {
+            layui.use('laypage', function () {
+                var laypage = layui.laypage;
+                laypage.render({
+                    elem: 'pages',
+                    count: totalCount,
+                    limit: pageSize,
+                    limits: [5, 10, 15],
+                    prev: "上一页",
+                    next: "下一页",
+                    layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+                    jump: function (obj, first) {
+                        if (!first) {
+                            numpage(obj.curr, obj.limit, cname, title)  // 分页点击传参
+                        }
+                    }
+                });
+            });
+        }
+
+        //新的一个请求
+        function numpage(pageIndex, pageSize, cname, title) {
+            var obj = panduan(cname, title);
+            var url = '../../../Goods/findGoods?pageIndex='+pageIndex+'&pageSize='+pageSize+'&cname='+cname+'&title='+title+'';
+            $.get(url, function (json) {
+                dataList(json.data);  // 数据传到 table组件
+            });
+        }
+
+        //判断是否为undefined并返回
+        function panduan(cname2, title2) {
+            //判断是否等于undefined
+            if (typeof (cname2) == "undefined") {
+                cname = null;
+            }
+            if (typeof (title2) == "undefined") {
+                title = null;
+            }
+            cname = cname2;
+            title = title2;
+            return {cnames: cname, titles: title};
+        }
+
+        // 表格渲染
+        function dataList(data) {
+            layui.use('table', function () {
+                var table = layui.table;
+                table.render({
+                    elem: "#followTable",
+                    cols: [[
+                        {type: 'numbers', width: 80, title: "序号"},
+                        {
+                            field: "goods_title", title: "商品名称", templet: function (d) {
+                                if (d.goods_title.length > 7) {
+                                    return d.goods_title.substring(0, 7) + '...';
+                                } else {
+                                    return d.goods_title;
+                                }
+                            }
+                        },
+                        {
+                            field: "goods_sub_title", title: "商品副标题", templet: function (d) {
+                                if (d.goods_sub_title.length > 7) {
+                                    return d.goods_sub_title.substring(0, 7) + '...';
+                                } else {
+                                    return d.goods_sub_title;
+                                }
+                            }
+                        },
+                        {field: "goods_sub_title", title: "商品图片", templet: '#imgtmp'},
+                        {field: "brand_name", title: "所属品牌"},
+                        {field: "goods_price", title: "参考价位", sort: true},
+                        {field: "goods_stock", title: "商品库存", sort: true},
+                        {field: "status", title: "商品状态", templet: '#state'},
+                        {field: 'right', title: '操作', toolbar: '#barDemo'},
+                    ]],
+                    data: data // 数据
+                    , done: function (res, curr, count) {
+                        $(".layui-table-box").find("[data-field='goods_id']").css("display", "none");
+                        //调用示例
+                        layer.photos({//点击图片弹出
+                            photos: '.layer-photos-demo'
+                            , anim: 1 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
+                        });
+                        //如果是异步请求数据方式，res即为你接口返回的信息。
+                        //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
+                        console.log(res);
+                    }
+                });
+
+                //监听行工具事件
+                table.on('tool(followTable)', function (obj) {
+                    var data = obj.data //获得当前行数据
+                        , layEvent = obj.event; //获得 lay-event 对应的值
+                    //删除
+                    if (layEvent === 'del') {
+                        layer.confirm('真的删除行么?', function (index) {
+                            $.getJSON("/Orders/deleteOrders?orderId=" + data.id,
+                                function (result) {
+                                    if (result > 0) {
+                                        obj.del(); //删除对应行（tr）的DOM结构，并更新缓
+                                        layer.close(index);
+                                        //调用判断的方法
+                                        var pd = panduan(orderNo, name);
+                                        layer.msg("删除成功!");
+                                        dataLists(pageIndex, pageSize, pd.orderNos, pd.names);
+                                    } else {
+                                        layer.msg("删除失败,请重试!");
+                                    }
+                                });
+                            layer.close(index);
+                        });
+                        //修改
+                    } else if (layEvent === 'edit') {
+                        layui.use('layer', function () {
+                            var layer = layui.layer;
+                            //iframe层-父子操作
+                            layer.open({
+                                title: "订单信息修改",
+                                type: 2,
+                                area: ['557px', '400px'],
+                                scrollbar: false,	//默认：true,默认允许浏览器滚动，如果设定scrollbar: false，则屏蔽
+                                maxmin: true,
+                                content: 'order_update.html?orderNo=' + data.orderNo
+                            });
+                        });
+                    }
+                });
+            });
+        }
+
+        //模糊查询
+        function query() {
+            //模糊查询
+            title = $("#title").val();
+            cname = $("#cname").val();
+            //判读是否为空
+            if (typeof (cname) == "undefined" || cname == "") {
+                cname = null;
+            }
+            if (typeof (title) == "undefined" || title == "") {
+                title = null;
+            }
+            dataLists(pageIndex, pageSize, cname, title);
+        }
+
+    </script>
+
     <script type="text/html" id="barDemo">
         <a class="layui-btn layui-btn-xs" lay-event="edit">修改</a>
         <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
     </script>
-
-    <table class="layui-table" id="followTable"  lay-filter="followTable"></table>
-
-    <script type="text/html" id="imgtmp">
-        <div class="layer-photos-demo" onclick="img_click()" style="cursor:pointer;">
-            <img layer-src="../../images/logo.jpg" src="../../images/logo.jpg" alt="头像图片">
-        </div>
-    </script>
-
-    <script>
-        layui.use(['element', 'table'], function () {
-            var $ = layui.jquery,
-                element = layui.element,
-                table = layui.table;
-            table.render({
-                elem: "#followTable",
-                url: '../../../Goods/findGoods',
-                page: true,
-                skin: 'row',
-                even: true,
-                done: function (res, curr, count) { //表格数据加载完后的事件
-                    //调用示例
-                    layer.photos({//点击图片弹出
-                        photos: '.layer-photos-demo'
-                        , anim: 1 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
-                    });
-                    //如果是异步请求数据方式，res即为你接口返回的信息。
-                    //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
-                    console.log(res);
-                },
-                cols: [[
-                    {type: 'numbers', width: 80, title: "序号"},
-                    {
-                        field: "goods_title", title: "商品名称", templet: function (d) {
-                            if (d.goods_title.length > 7) {
-                                return d.goods_title.substring(0, 7) + '...';
-                            } else {
-                                return d.goods_title;
-                            }
-                        }
-                    },
-                    {
-                        field: "goods_sub_title", title: "商品副标题", templet: function (d) {
-                            if (d.goods_sub_title.length > 7) {
-                                return d.goods_sub_title.substring(0, 7) + '...';
-                            } else {
-                                return d.goods_sub_title;
-                            }
-                        }
-                    },
-                    {field: "goods_sub_title", title: "商品图片", templet: '#imgtmp'},
-                    {field: "brand_name", title: "所属品牌"},
-                    {field: "goods_price", title: "参考价位", sort: true},
-                    {field: "goods_stock", title: "商品库存", sort: true},
-                    {field: "status", title: "商品状态", templet: '#state'},
-                    {field: 'right', title: '操作', toolbar: '#barDemo'},
-                ]]
-            });
-
-            //监听行工具事件
-            table.on('tool(followTable)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
-                var data = obj.data //获得当前行数据
-                    , layEvent = obj.event; //获得 lay-event 对应的值
-                //删除
-                if (layEvent === 'del') {
-                    layer.confirm('真的要删除么?', function (index) {
-                        $.getJSON("/users/back/delUser/" + data.id,
-                            function (result) {
-                                if (result > 0) {
-                                    obj.del(); //删除对应行（tr）的DOM结构，并更新缓
-                                    layer.close(index);
-                                    layer.msg("删除成功!");
-                                } else {
-                                    layer.msg("删除失败,请重试!");
-                                }
-                            });
-                        layer.close(index);
-                    });
-                    //修改
-                } else if (layEvent === 'edit') {
-                    $.getJSON("/users/back/findById/" + data.id,
-                        function (result) {
-                            $("#popUpdateTest input[name=id]").val(result.id);
-                            $("#popUpdateTest input[name=userName]").val(result.userName);
-                            $("input[name=sex][value=" + result.sex + "]").prop("checked", "true");
-                            $("#popUpdateTest input[name=birthday]").val(result.birthday);
-                            $("#popUpdateTest input[name=phone]").val(result.phone);
-                            $("#popUpdateTest input[name=email]").val(result.email);
-                            $("#popUpdateTest input[name=time]").val(result.time);
-                            $("#popUpdateTest input[name=address]").val(result.address);
-                            form.render();  //更新全部
-                        });
-                    layer.open({
-                        //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
-                        type: 1,
-                        title: "修改用户信息",
-                        area: ['750px', '480px'],
-                        content: $("#popUpdateTest")//引用的弹出层的页面层的方式加载修改界面表单
-                    });
-                }
-            });
-        });
-
-    </script>
-
 
     <script id="state" type="text/html">
         {{#  if(d.goods_state == 1){ }}
@@ -175,7 +258,29 @@
         <span>下架</span>
         {{#  } }}
     </script>
+
+    <script type="text/javascript">
+        $(function () {
+            $.ajax({
+                url: "../../../Goods/findTreeCategory/5",
+                type: "get",
+                dataType: "json",
+                success: function (data) {
+                    if (data != null) {
+                        $("#ts_input").treeSelect(data);
+                    }
+                }
+            });
+
+        });
+
+    </script>
+
+    <script type="text/html" id="imgtmp">
+        <div class="layer-photos-demo" onclick="img_click()" style="cursor:pointer;">
+            <img layer-src="../../fileupload/60b9feef-7942-4831-a910-5c11df8b9db505.jpg" src="../../fileupload/60b9feef-7942-4831-a910-5c11df8b9db505.jpg" alt="头像图片">
+        </div>
+    </script>
 </div>
 </body>
-
 </html>

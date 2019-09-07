@@ -15,7 +15,7 @@
     <meta name="description" content="网站简介" />
     <!-- 网站简介 -->
     <meta name="keywords" content="搜索关键字，以半角英文逗号隔开" />
-    <title>穷在闹市出品</title>
+    <title>国美电器</title>
 
     <!-- 公共样式 开始 -->
     <link rel="stylesheet" type="text/css" href="../../css/base.css">
@@ -43,42 +43,42 @@
 </head>
 
 <body>
-<div class="mCS_no_scrollbar" id="bodys">
+<div class="mCS_no_scrollbar" >
     <form id="addForm" class="layui-form" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label">订单号</label>
+            <div class="layui-input-block">
+                <input type="text" name="orderNo"  readonly="readonly" autocomplete="off" class="layui-input" style="width: 343px">
+            </div>
+        </div>
         <div class="layui-form-item">
             <label class="layui-form-label">收货人</label>
             <div class="layui-input-block">
-                <input type="text" name="userName" required lay-verify="required" autocomplete="off" class="layui-input" style="width: 343px">
+                <input type="text" name="userName" readonly="readonly" lay-verify="required" autocomplete="off" class="layui-input" style="width: 343px">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">购买商品</label>
             <div class="layui-input-block">
-                <input type="text" name="company" required lay-verify="required" autocomplete="off" class="layui-input" style="width: 343px">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">购买数量</label>
-            <div class="layui-input-block">
-                <input type="text" name="price" required lay-verify="required|number" autocomplete="off" class="layui-input" style="width: 343px">
+                <input type="text" name="title" readonly="readonly" lay-verify="required" autocomplete="off" class="layui-input" style="width: 343px">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">金额</label>
             <div class="layui-input-block">
-                <input type="text" name="password" autocomplete="off" class="layui-input" style="width: 343px">
+                <input type="text" name="total" readonly="readonly" autocomplete="off" class="layui-input" style="width: 343px">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">收货地址</label>
             <div class="layui-input-block">
-                <input type="text" name="password2" autocomplete="off" class="layui-input" style="width: 343px">
+                <input type="text" name="address" readonly="readonly" autocomplete="off" class="layui-input" style="width: 343px">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">订单时间</label>
             <div class="layui-input-block">
-                <input type="text" name="password2" autocomplete="off" class="layui-input" style="width: 343px">
+                <input type="text" name="orderTime" readonly="readonly" autocomplete="off" class="layui-input" style="width: 343px">
             </div>
         </div>
         <div class="layui-form-item">
@@ -89,50 +89,81 @@
                     <option value="2">待发货</option>
                     <option value="3">已发货</option>
                     <option value="4">已完成</option>
-                    <option value="0">已取消</option>
+                    <option value="5">已退货</option>
+                    <option value="6">已取消</option>
                 </select>
             </div>
         </div>
         <div class="layui-form-item">
             <div class="layui-input-block">
                 <button class="layui-btn" lay-submit lay-filter="submitBut">立即提交</button>
-                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
     </form>
 
-
     <script>
-        layui.use(['upload','form'], function() {
-            var form = layui.form;
-            // var upload = layui.upload;
-            var layer = layui.layer;
-            layer.ready(function () {
-                $("#bodys").css("");
+        layui.use(['layer','upload','form'], function() {
+            var  layer = layui.layer ,  //弹层
+                form = layui.form,
+                $ = layui.jquery
+                ,upload = layui.upload;
+
+            //获取url中"?"符后的字串
+            function GetRequest() {
+                var url = location.search; //获取url中"?"符后的字串
+                var theRequest = new Object();
+                if (url.indexOf("?") != -1) {
+                    var str = url.substr(1);
+                    strs = str.split("&");
+                    for (var i = 0; i < strs.length; i++) {
+                        theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+                    }
+                }
+                return theRequest;
+            }
+            //页面一加载就显示信息
+            $(function () {
+                var re = GetRequest();
+                $.getJSON("/Orders/ByIdOrders/"+re.orderNo,
+                    function(result) {
+                        $("input[name=orderNo]").val(result[0].orderNo);
+                        $("input[name=userName]").val(result[0].userName);
+                        $("input[name=total]").val(result[0].total);
+                        $("input[name=title]").val(result[0].title);
+                        $("input[name=address]").val(result[0].address);
+                        $(" input[name=orderTime]").val(result[0].orderTime);
+                        $("select[name='provid']").val(result[0].status);
+                        //修改状态只能修改后面的
+                        var option=$("select>option");
+                        for (var i = 0; i <result[0].status-1; i++) {
+                            $(option[i]).attr("disabled","disabled");
+                        }
+                        form.render();  //更新全部
+                    });
             })
 
             //监听提交
             //解决了layui.open弹窗从内部关闭这个弹窗的问题
             form.on('submit(submitBut)', function(data) {
-                var updateFrame = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-                parent.layer.close(updateFrame);  //再改变当前层的标题
+               var no= data.field.orderNo;
+               var select=data.field.provid;
+               $.post("/Orders/updateStatus",{"orderNo":no,"status":select},function (json) {
+                   if (json>0) {
+                        layer.msg('修改成功', {time:600}, function(){
+                           layer.close(layer.index); //关闭当前窗口
+                           window.parent.location.reload(); //刷新父窗口数据
+                       });
+                   } else {
+                       layer.msg("修改失败,请重试");
+                   }
+               },"json");
+
+                return false;
             });
-            form.verify({
-                //数组的两个值分别代表：[正则匹配、匹配不符时的提示文字]
-                ZHCheck: [
-                    /^[\u0391-\uFFE5]+$/
-                    ,'只允许输入中文'
-                ]
-            });
-            // //拖拽上传
-            // upload.render({
-            //     elem: '#goodsPic',
-            //     url: '/upload/',
-            //     done: function(res) {
-            //         console.log(res)
-            //     }
-            // });
         });
+
+
+
     </script>
 </div>
 </body>
