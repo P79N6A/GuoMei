@@ -4,7 +4,7 @@
 
 <mapper namespace="com.guomei.dao.UsersDao">
 
-    <resultMap type="Users" id="Users">
+    <resultMap type="Users" id="myUser">
         <id column="user_id" property="id"/>
         <result column="user_name" property="userName"/>
         <result column="user_pwd" property="passWord"/>
@@ -20,12 +20,12 @@
 
 
 
-    <select   id="adminLogin" resultMap="Users">
+    <select   id="adminLogin" resultMap="myUser">
         SELECT  * FROM  users  WHERE  user_name =#{userName}  AND  user_pwd=#{passWord}  AND  user_role=1
     </select>
 
 
-    <select id="findUsers" resultMap="Users">
+    <select id="findUsers" resultMap="myUser">
         SELECT * FROM   users
         <where>
             <if test="userName!=null and  ''!=userName and   'null'!=userName ">
@@ -39,7 +39,7 @@
     </delete>
 
 
-<select id="findById" resultMap="Users">
+<select id="findById" resultMap="myUser">
     SELECT * FROM  users  WHERE   `user_id`=#{id}
 </select>
 
