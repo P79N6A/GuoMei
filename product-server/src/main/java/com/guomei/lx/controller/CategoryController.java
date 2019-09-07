@@ -86,12 +86,14 @@ public class CategoryController {
 
     @RequestMapping("findTreeCategory/{cLevel}")
     public List<Map<String, Object>> findTreeCategory(@PathVariable("cLevel") Integer cLevel) {
-        Map<String,Object> map = new HashMap<>();
         List<Map<String, Object>> list = categoryService.findTreeCategory(cLevel);
-        map.put("name","根栏目");
-        map.put("pid","0");
-        map.put("id","-1");
-        list.add(map);
+        if(cLevel!=5){
+            Map<String,Object> map = new HashMap<>();
+            map.put("name","根栏目");
+            map.put("pid","0");
+            map.put("id","-1");
+            list.add(map);
+        }
         return list;
     }
 
@@ -124,4 +126,6 @@ public class CategoryController {
 
         return "{\"msg\":\"新增失败\"}";
     }
+
+
 }
