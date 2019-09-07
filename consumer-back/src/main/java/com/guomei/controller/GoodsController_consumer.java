@@ -82,4 +82,6 @@ public class GoodsController_consumer {
         return json;
     }
 
+
+
 }
