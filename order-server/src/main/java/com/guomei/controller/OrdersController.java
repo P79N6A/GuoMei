@@ -36,9 +36,6 @@ public class OrdersController {
         page.setList(result);
         //封装总记录数
         page.setTotalCount((int)maps.getTotal());
-//        System.out.println("result:"+page.getList());
-//        System.out.println("total:"+page.getTotalCount());
-//        System.out.println("maps:"+maps.getPages());
         return page;
     }
 

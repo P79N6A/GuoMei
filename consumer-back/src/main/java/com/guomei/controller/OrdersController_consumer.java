@@ -35,9 +35,6 @@ public class OrdersController_consumer {
         System.out.println("pageIndex："+pageIndex);
         System.out.println("pageSize:"+pageSize);
         System.out.println("orderNo:"+orderNo+":name:"+name);
-//        String list= JSON.toJSONString();
-        ///String json="{\"code\":0,\"msg\":\"\",\"data\":"+mapPageInfo.getList()+",\"totalCount\":"+mapPageInfo.getTotalCount()+"}";
-        //System.out.println(json);
         return map;
     }
 }

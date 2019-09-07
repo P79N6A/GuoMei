@@ -13,6 +13,8 @@ public interface OrdersService {
      * @return
      */
     public Page<Map<String,Object>> orderList(Map<String,Object>map,int pageIndex,int pageSize);
+    //根据订单号回显订单信息
+    public List<Map<String,Object>> ByIdOrders(String orderNo);
     //订货单  订货金额
     public List<Map<String,Object>> orderQuantity();
     //退货单 退货金额

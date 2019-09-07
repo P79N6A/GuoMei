@@ -25,6 +25,11 @@ public class OrdersServiceImpl implements OrdersService {
     }
 
     @Override
+    public List<Map<String, Object>> ByIdOrders(String orderNo) {
+        return ordersDao.ByIdOrders(orderNo);
+    }
+
+    @Override
     public List<Map<String, Object>> orderQuantity() {
         return ordersDao.orderQuantity();
     }

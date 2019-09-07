@@ -9,6 +9,8 @@ import java.util.Map;
 public interface OrdersDao {
     //查询所有订单详情
     public List<Map<String,Object>> orderList(Map<String,Object>map);
+    //根据订单号回显订单信息
+    public List<Map<String,Object>> ByIdOrders(String orderNo);
     //订货单  订货金额
     public List<Map<String,Object>> orderQuantity();
     //退货单 退货金额
