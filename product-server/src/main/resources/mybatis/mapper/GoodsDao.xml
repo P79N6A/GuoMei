@@ -19,7 +19,18 @@
     </resultMap>
 
     <select id="findGoods" resultType="map">
-        SELECT g.*,b.`brand_name` FROM goods g INNER JOIN brand b ON  g.`brand_id` = b.`brand_id`
+        SELECT g.*,b.`brand_name`
+        FROM goods g
+        INNER JOIN brand b ON g.`brand_id` = b.`brand_id`
+        INNER JOIN category c ON c.`category_id` = b.`category_id`
+        <where>
+            <if test="cname != null and cname != '' ">
+                and c.`category_name`  = #{cname}
+            </if>
+            <if test="title != null and title != '' ">
+                AND g.`goods_title` LIKE concat('%',#{title},'%')
+            </if>
+        </where>
     </select>
 
 </mapper>
