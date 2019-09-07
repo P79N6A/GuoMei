@@ -96,7 +96,7 @@
         <div class="layui-upload">
             <button type="button" class="layui-btn" id="test1">头像图片</button>
             <!--隐藏的input  装头像url-->
-            <input type="text" id="img_fileName" name="headImg" value="" style="display: none;"/>
+            <input type="text" id="img_url" name="headImg" value="" style="display: none;"/>
 
             <div class="layui-upload-list">
                 <img class="layui-upload-img" id="photo" width="50" height="50">
@@ -180,7 +180,7 @@
                 }
                 //上传成功
                 layer.msg("头像上传成功");
-                $("#img_fileName").val(res.fileName);
+                $("#img_url").val(res.url);
             }
             ,error: function(){
                 //演示失败状态，并实现重传

@@ -6,6 +6,7 @@ import com.netflix.discovery.util.StringUtil;
 import com.sun.java.browser.plugin2.liveconnect.v1.Result;
 import com.sun.net.httpserver.Authenticator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.jnlp.IntegrationService;
 import javax.naming.spi.DirStateFactory;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
@@ -28,7 +30,7 @@ public class UsersController_consumer {
 
     //管理员后台登录
     @RequestMapping("/back/adminLogin")
-    public String adminLogin(Users users, Model model) {
+    public String adminLogin(Users users, Model model, HttpSession session) {
         //解密
         //String password = DigestUtils.md5DigestAsHex(users.getPassWord().getBytes());
         // users.setPassWord(password);
@@ -36,6 +38,7 @@ public class UsersController_consumer {
             model.addAttribute("errorMess", "用户名或密码错误");
             return "login";
         } else {
+            session.setAttribute("user", users);
             return "frame";
         }
     }
@@ -88,8 +91,12 @@ public class UsersController_consumer {
     @RequestMapping("/back/upload/img")
     @ResponseBody
     public Map<String, Object>  upload(MultipartFile file, HttpServletRequest request) throws IOException{
-        //D:\IdeaProjects\GuoMei\consumer-back\src\main\resources\static\fileupload
-            String path = "D:\\IdeaProjects\\GuoMei\\consumer-back\\src\\main\\resources\\static\\fileupload";
+
+        // "D:/Nignx4FileServer/nginx-1.14.2/html/images"
+        //"http://127.0.0.1:88/upload/"+图片名
+
+            //图片存入路径
+            String path = "D:/Nignx4FileServer/nginx-1.14.2/html/images";
         Map<String, Object> res = new HashMap<>();
             if(!file.isEmpty()) {    //传过来的文件不为空
                 String uuid = UUID.randomUUID().toString();   //保证每个的文件名不重复
@@ -102,9 +109,9 @@ public class UsersController_consumer {
                     f.getParentFile().mkdir();
                 }
                     //写入指定盘符
-                    file.transferTo(f);
-                //返回图片名
-                res.put("fileName", originalFilename);
+                file.transferTo(f);
+                //返回图片url
+                res.put("url", "http://127.0.0.1:88/upload/"+originalFilename);
             }
         return res;
     }
