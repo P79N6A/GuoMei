@@ -55,6 +55,19 @@ public class GoodsController_consumer {
         String json =  goodsService.brandExistGood(cid);
         return json;
     }
+    @RequestMapping("findTreeCategory/{cLevel}")
+    public String findTreeCategory(@PathVariable("cLevel")Integer cLevel){
+        return goodsService.findTreeCategory(cLevel);
+    }
+
+    @RequestMapping("addCategory")
+    public String addCategory(@RequestParam Map<String, String> map){
+        Category category = new Category();
+        category.setName(map.get("parentName")+":"+map.get("categoryName"));
+        return goodsService.addCategory(category);
+    }
+
+
 
     //商品模块
     @RequestMapping("findGoods")
