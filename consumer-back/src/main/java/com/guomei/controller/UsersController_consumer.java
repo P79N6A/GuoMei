@@ -3,18 +3,20 @@ package com.guomei.controller;
 import com.guomei.pojo.Users;
 import com.guomei.service.UsersService_consumer;
 import com.netflix.discovery.util.StringUtil;
+import com.sun.java.browser.plugin2.liveconnect.v1.Result;
+import com.sun.net.httpserver.Authenticator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.jnlp.IntegrationService;
+import javax.naming.spi.DirStateFactory;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Date;
 import java.util.*;
 
 @RequestMapping("/users")
@@ -68,27 +70,42 @@ public class UsersController_consumer {
     //修改用户
     @RequestMapping("/back/updateUser")
     @ResponseBody
-    public int updateUser(Users user, MultipartFile file, HttpServletRequest request){
-        String path = "D:\\IdeaProjects\\GuoMei\\consumer-back\\src\\main\\resources\\static\\fileupload";
-        if(!file.isEmpty()) {    //传过来的文件不为空
-            String uuid = UUID.randomUUID().toString();   //保证每个的文件名不重复
-            //源文件名
-            String originalFilename=uuid+file.getOriginalFilename();
-            //文件的真实类型
-            String contentType = file.getContentType();
-                File fi=new File(path,originalFilename);
-            try {
-                //写入指定盘符
-                file.transferTo(fi);
-            } catch (IOException e) {
-                e.printStackTrace();
+    public int updateUser(@RequestParam  Map<String, String> map){
+        Users user = new Users();
+        user.setId(Integer.valueOf(map.get("id")));
+        user.setUserName(map.get("userName"));
+       user.setSex(Integer.valueOf(map.get("sex")));
+       user.setBirthday(Date.valueOf(map.get("birthday")));
+       user.setPhone(map.get("phone"));
+       user.setEmail(map.get("email"));
+       user.setTime(Date.valueOf(map.get("time")));
+       user.setAddress(map.get("address"));
+       user.setHeadImg(map.get("headImg"));
+        return usersService_consumer.updateUser(user);
+    }
+
+    //上传用户头像
+    @RequestMapping("/back/upload/img")
+    @ResponseBody
+    public Map<String, Object>  upload(MultipartFile file, HttpServletRequest request) throws IOException{
+        //D:\IdeaProjects\GuoMei\consumer-back\src\main\resources\static\fileupload
+            String path = "D:\\IdeaProjects\\GuoMei\\consumer-back\\src\\main\\resources\\static\\fileupload";
+        Map<String, Object> res = new HashMap<>();
+            if(!file.isEmpty()) {    //传过来的文件不为空
+                String uuid = UUID.randomUUID().toString();   //保证每个的文件名不重复
+                //源文件名
+                String originalFilename=uuid+file.getOriginalFilename();
+                //文件的真实类型
+                String contentType = file.getContentType();
+                File f=new File(path,originalFilename);
+                if(!f.getParentFile().exists()){
+                    f.getParentFile().mkdir();
+                }
+                    //写入指定盘符
+                    file.transferTo(f);
+                //返回图片名
+                res.put("fileName", originalFilename);
             }
-            user.setHeadImg(originalFilename);
-        }
-        int count=0;
-        if(user.getId()!=null){
-            count=usersService_consumer.updateUser(user);
-        }
-        return count;
+        return res;
     }
 }
