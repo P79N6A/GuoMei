@@ -1,5 +1,6 @@
 package com.guomei.service;
 
+import com.guomei.pojo.Grade;
 import com.guomei.pojo.Users;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Map;
 
 @FeignClient("users-server")
 public interface UsersService_consumer {
@@ -26,5 +28,11 @@ public interface UsersService_consumer {
 
     @RequestMapping("/back/users/updateUser")
      int updateUser(Users user);
+
+    @RequestMapping("/back/userInfo/findVip")
+     List<Map> findVip(@RequestBody Map map);
+
+    @RequestMapping("/back/grade/allGrade")
+     List<Grade> allGrade() ;
 
 }
