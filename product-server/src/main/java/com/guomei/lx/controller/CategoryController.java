@@ -128,5 +128,21 @@ public class CategoryController {
     }
 
 
+    @RequestMapping("categoryShow")
+    public List<Category> categoryShow(@RequestParam Map<String, String> param){
+        Map<String,Object> map = new HashMap<>();
+
+        if(param.get("level")!=null){
+            map.put("level",param.get("level"));
+        }
+        if(param.get("parentId")!=null){
+            map.put("parentId",param.get("parentId"));
+        }
+        if(param.get("cid")!=null){
+            map.put("cid",param.get("cid"));
+        }
+        List<Category> category = categoryService.findCategory(map);
+        return  category;
+    }
 
 }
