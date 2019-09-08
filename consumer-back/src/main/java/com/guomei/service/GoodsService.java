@@ -35,6 +35,8 @@ public interface GoodsService {
     @RequestMapping("Back/Category/addCategory")
     String addCategory(Category category);
 
+    @RequestMapping("Back/Category/categoryShow")
+    List<Category> categoryShow(@RequestParam Map<String, String> param);
 
     //商品模块
     @RequestMapping("Back/Goods/findGoods")
