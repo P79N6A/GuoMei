@@ -35,6 +35,8 @@ public interface CategoryDao {
     //新增分类
     int addCategory(Category category);
 
+    //查询当前分类所在的品牌编号
+    int selectBrandId(Integer cid);
 
 
 }
