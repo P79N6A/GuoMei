@@ -3,11 +3,11 @@ package com.guomei.pojo;
 import java.util.List;
 
 public class PageInfo<T> {
-    private int pageSize;     //页面数量
+    private int pageSize;     //每页的条数
     private int pageCount;    //总页面
-    private int totalCount;   //总记录数
-    private int pageNo;       //当前页面
-    private List<T> list;     //数据
+    private int totalCount;   //总条数
+    private int pageNo;       //当前页码
+    private List<T> list;     //每页的list
 
     public int getPageSize() {
         return pageSize;

@@ -1,6 +1,8 @@
 package com.guomei.service.impl;
 
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.guomei.dao.UsersDao;
 import com.guomei.pojo.Users;
 import com.guomei.service.UsersService;
@@ -11,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Transactional
@@ -25,10 +28,14 @@ public class UsersServiceImpl implements UsersService {
         return usersDao.adminLogin(users);
     }
 
+
     @Override
-    public List<Users> findUsers(String userName) {
-        return usersDao.findUsers(userName);
+    public Page<Users> UsersFenYe(String userName, int pageIndex, int pageSize) {
+        Page<Users> usersPage = PageHelper.startPage(pageIndex, pageSize);
+        usersDao.findUsers(userName);
+        return usersPage;
     }
+
 
     @Override
     public int delUser(Integer id) {

@@ -105,6 +105,11 @@
                         elem: '#table'
                         ,height: 420
                         ,url: '/users/back/findVip/null/null' //数据接口
+                        ,even: true //隔行背景
+                        ,page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem）
+                            layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip'] //自定义排版
+                            ,limit: 10 //每页默认显示的数量
+                        }
                         ,cellMinWidth: 60 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
                         ,page: true //开启分页
                         ,done: function(res, curr, count) { //表格数据加载完后的事件
