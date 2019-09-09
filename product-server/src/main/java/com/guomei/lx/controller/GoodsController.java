@@ -2,6 +2,7 @@ package com.guomei.lx.controller;
 
 
 import com.github.pagehelper.Page;
+import com.guomei.lx.service.CategoryService;
 import com.guomei.pojo.Goods;
 import com.guomei.lx.service.GoodsService;
 import com.guomei.pojo.PageInfo;
@@ -21,14 +22,15 @@ public class GoodsController {
     @Autowired
     private GoodsService goodsService;
 
+    @Autowired
+    private CategoryService categoryService;
+
     @RequestMapping("findGoods")
-    private PageInfo<Map<String, Object>> findGoods(@RequestParam Map<String, Object> param) {
+    public PageInfo<Map<String, Object>> findGoods(@RequestParam Map<String, Object> param) {
         Map<String, Object> map = new HashMap<>();
         map.put("cname", param.get("cname"));
         map.put("title", param.get("title"));
-        System.out.println("param = " + param);
         Integer pageIndex = new Integer(param.get("pageIndex").toString());
-        System.out.println("pageIndex = " + pageIndex);
         Integer pageSize = new Integer(param.get("pageSize").toString());
         Page<Map<String, Object>> goods = goodsService.findGoods(map, pageIndex, pageSize);
 
@@ -41,5 +43,29 @@ public class GoodsController {
         return page;
     }
 
+
+
+    @RequestMapping("addGoods")
+    public String addGoods(@RequestParam Map<String,Object> map){
+        System.out.println("map = " + map);
+        Integer vip = new Integer(map.get("vip").toString());
+        Integer ms = new Integer(map.get("ms").toString());
+        Integer cid = new Integer(map.get("brand").toString());
+        int brandid = categoryService.selectBrandId(cid);
+        int res = 0;
+        if(ms==1){ //新增到秒杀商品中
+
+        }
+        if(vip==1){ //新增到会员商品中
+
+        }
+        map.put("brand",brandid);
+        res = goodsService.addGoods(map);
+        if (res > 0) {
+            String json = "{\"code\":\"success\"}";
+            return json;
+        }
+        return "{\"msg\":\"新增失败\"}";
+    }
 
 }

@@ -61,4 +61,9 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryDao.addCategory(category);
     }
 
+    @Override
+    public int selectBrandId(Integer cid) {
+        return categoryDao.selectBrandId(cid);
+    }
+
 }

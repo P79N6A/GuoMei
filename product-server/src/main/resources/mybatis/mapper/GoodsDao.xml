@@ -33,4 +33,8 @@
         </where>
     </select>
 
+    <insert id="addGoods" parameterType="map">
+        INSERT INTO goods(brand_id,goods_title,goods_sub_title,goods_main_img,goods_des_img,goods_des,goods_price,goods_stock,goods_state,goods_seckill) VALUES(#{brand},#{goodsName},#{subTitle},#{imgmain},#{imginfo},#{desc},#{price},#{stock},#{state},#{ms})
+    </insert>
+
 </mapper>

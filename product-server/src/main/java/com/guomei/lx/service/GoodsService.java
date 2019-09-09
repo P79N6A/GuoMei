@@ -9,4 +9,8 @@ import java.util.Map;
 public interface GoodsService {
     //查询所有商品
     Page<Map<String,Object>> findGoods(Map<String,Object>map,int pageIndex,int pageSize);
+
+    //新增商品
+    int addGoods(Map<String,Object> map);
+
 }

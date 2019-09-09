@@ -27,4 +27,11 @@ public class GoodsServiceImpl implements GoodsService {
         goodsDao.findGoods(map);
         return page;
     }
+
+    @Override
+    public int addGoods(Map<String, Object> map) {
+        return goodsDao.addGoods(map);
+    }
+
+
 }

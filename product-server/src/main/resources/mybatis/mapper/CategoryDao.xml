@@ -61,4 +61,8 @@
     <insert id="addCategory" parameterType="category">
         INSERT INTO category (category_name,category_parent_id,category_level) VALUES (#{name},#{parentId},#{cLevel})
     </insert>
+
+    <select id="selectBrandId" resultType="int">
+        SELECT brand_id FROM category c INNER JOIN brand b ON c.category_id = b.category_id WHERE c.category_id=#{cid}
+    </select>
 </mapper>
