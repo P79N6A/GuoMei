@@ -113,5 +113,11 @@ public class GoodsController_consumer {
         }
         return res;
     }
+    @RequestMapping("addGoods")
+    public String addGoods(@RequestParam Map<String,Object> map){
+
+        String s = goodsService.addGoods(map);
+        return s;
+    }
 
 }

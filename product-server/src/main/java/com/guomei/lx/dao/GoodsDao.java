@@ -11,4 +11,7 @@ public interface GoodsDao {
 
     //查询所有商品
     List<Map<String,Object>> findGoods(Map<String,Object> map);
+
+    //新增商品
+    int addGoods(Map<String,Object> map);
 }

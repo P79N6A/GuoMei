@@ -59,6 +59,14 @@
             </div>
         </div>
         <div class="layui-form-item">
+            <label class="layui-form-label">商品副标题</label>
+            <div class="layui-input-block">
+                <input style="width: 343px" type="text" name="subTitle" required lay-verify="required"
+                       autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
             <label class="layui-form-label">商品主图</label>
             <div class="layui-input-inline uploadHeadImage">
                 <div class="layui-upload-drag" id="headImg">
@@ -109,8 +117,8 @@
         <div class="layui-form-item">
             <label class="layui-form-label">状态</label>
             <div class="layui-input-block">
-                <input type="radio" name="sex" value="nan" title="上架" checked>
-                <input type="radio" name="sex" value="nv" title="下架">
+                <input type="radio" name="state" value="1" title="上架" checked>
+                <input type="radio" name="state" value="0" title="下架">
             </div>
         </div>
         <div class="layui-form-item">
@@ -134,7 +142,9 @@
                 <select name="provid" id="category" lay-filter="category"></select>
             </div>
             <div class="layui-input-inline">
-                <select name="cityid" id="brand" lay-filter="brand"></select>
+                <select name="brand" id="brand" lay-filter="brand">
+
+                </select>
             </div>
         </div>
 
@@ -184,20 +194,15 @@
                 })
             });
 
-            function renderForm() {
-                layui.use('form', function () {
-                    var form = layui.form;
-                    form.render();
-                });
-            }
             function brandShow(json) {
-                var op = "<option disabled>品牌</option>";
+                $("#brand OPTION:not(:first)").remove();
                 for (var i = 0; i < json.length; i++) {
-                    op += " <option value=" + json[i].cid + ">" + json[i].name + "</option>"
-                    $("#brand").html(op);
-                    //重新渲染
-                    renderForm();
+                    var op = "<option value=" + json[i].cid + ">" + json[i].name + "</option>"
+                    $("#brand").append(op);
+
                 }
+                //重新渲染
+                form.render('select');
             }
 
             function categoryShow(pid) {
@@ -215,7 +220,7 @@
                         }
                         $("#category").html(op);
                         //重新渲染
-                        renderForm();
+                        form.render('select');
                     }
                 })
             }
@@ -299,7 +304,26 @@
             //监听提交
             //解决了layui.open弹窗从内部关闭这个弹窗的问题
             form.on('submit(submitBut)', function (data) {
-
+                if (data.fieId != null) {
+                    return;
+                } else {
+                    $.ajax({
+                        url: '../../Goods/addGoods',
+                        method: 'post',
+                        data: data.field,
+                        dataType: 'JSON',
+                        success: function (res) {
+                            if (res.code = "success") {
+                                layer.msg('新增成功', {time: 600}, function () {
+                                    layer.close(layer.index); //关闭当前窗口
+                                    location.href='goods_list.html';
+                                });
+                            } else
+                                layer.msg(res.msg);//输出错误消息
+                        }
+                    });
+                }
+                return false;
             });
         });
 
