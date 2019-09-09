@@ -1,0 +1,405 @@
+<html class=" ieundefined">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache,no-store">
+    <title>国美收银台</title>
+    <link rel="shortcut icon" type="image/x-icon" href="http://www.gome.com.cn/ec/homeus/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="https://misc.gomein.net.cn/finance/cashier/20170926/css/base.css">
+    <link rel="stylesheet" type="text/css" href="https://misc.gomein.net.cn/finance/cashier/20170926/css/pay-ment.css">
+    <link rel="stylesheet" type="text/css" href="https://misc.gomein.net.cn/finance/cashier/20170926/css/intro.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://misc.gomein.net.cn/finance/cashier/20170926/css/financeBackCards.css">
+    <!--<script type="text/javascript" async="" src="https://material-ssl.mediav.com/bjjs/mba_ka.js"></script>-->
+    <script async="" src="//js.gomein.net.cn/sitemonitor/10402.js"></script>
+    <script async="" src="//js.gomein.net.cn/sitemonitor/10119.js"></script>
+    <script async="" src="//js.gomein.net.cn/sitemonitor/js-sdk.min.js?v=8719163166"></script>
+    <script type="text/javascript"
+            src="https://misc.gomein.net.cn/finance/cashier/20170926/js/new/util/jquery-1.7.1.js"></script>
+    <!--<script type="text/javascript"-->
+            <!--src="https://misc.gomein.net.cn/finance/cashier/20170926/js/new/util/jquery.base64.js"></script>-->
+    <!--<script type="text/javascript"-->
+            <!--src="https://misc.gomein.net.cn/finance/cashier/20170926/js/new/util/json2.js"></script>-->
+    <!--<script type="text/javascript"-->
+            <!--src="https://misc.gomein.net.cn/finance/cashier/20170926/js/new/util/base64.js"></script>-->
+
+</head>
+<body id="mainBody">
+<div class="topnav" id="RESOURCE_PATH" attr_v="https://misc.gomein.net.cn/finance/cashier/20170926/">
+    <div class="wbox" id="CASHIER_WEB_PATH" attr_v="https://gpay.gome.com.cn/">
+        <input type="hidden" id="NeedlessLogin" name="NeedlessLogin" value="">
+        <ul class="topmenu clearfix">
+            <li class="login-top" id="loginDiv">
+
+					<span class="gwelcome">
+					<a title="gm_17608470615" class="guser" href="http://myhome.gome.com.cn/member/profileHome">gm_17608470615&nbsp;</a>
+					<a title="退出" class="glogout" href="https://login.gome.com.cn/login.no?type=logout">[退出]</a>
+
+				</span></li>
+            <li class="linespace"></li>
+            <li class="g-myoder">
+                <a href="http://help.gome.com.cn/question/33.html" target="_blank" rel="nofollow">支付帮助</a>
+            </li>
+            <li class="linespace"></li>
+            <li>
+                <a href="http://cs.gome.com.cn/?entry=composite&amp;orgi=111111" target="_blank"
+                   class="triggerLive800 online">在线客服 </a>
+            </li>
+            <li class="ml10">
+                <i class="phone-line-pic">　4008-708-708</i>
+                <b class="time_hover">(9:00-21:00)</b>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="jrlc-tip">
+    <div class="jrlc-warp clearfix">
+        <h1 class="jrlc-logo"><img id="logoImg" src="https://misc.gomein.net.cn/finance/cashier/20170926/image/1041.png"
+                                   onerror="javascript:this.src='https://misc.gomein.net.cn/finance/cashier/20170926/image/1041.png'">
+        </h1>
+        <h3 class="h3_pay" style="color:#5e5e5e;">收银台</h3>
+    </div>
+</div>
+<div class="jrlc-cen">
+    <div class="jrlc-orderInfo">
+        <script type="text/javascript">
+            function weixinErrorFunc() {
+                if ($("#scancode_id_weixin").attr("src") != "") {
+                    window.parent.document.getElementById("pay_zhifu_colse").style.display = "none";
+                    window.parent.document.getElementById("or_right_id").style.marginRight = "0px";
+                }
+            }
+        </script>
+        <div class="or_dstop clearfix" style="padding: 35px 0px 20px 31px;" id="orderInfo_PTSYT">
+            <div class="or_left">
+
+                <h3>订单提交成功，请您尽快付款。 支付单号：<i>17608470790</i></h3>
+
+                <input type="hidden" id="orderTime" value="20190829104959">
+                <br>
+            </div>
+            <div class="pay_zhifu" style="top: -37px;" id="pay_zhifu_colse">
+                <div id="scancode_div_id_o" style="display: none; position: absolute; top: 0px; z-index: 2;" width="100"
+                     height="100" scrolling="no">
+                    <img style="margin:41px 39px 34px 39px"
+                         src="https://misc.gomein.net.cn/finance/cashier/20170926/image/scan_loading.gif">
+                </div>
+                <img style="display:block;" id="scancode_id_img" class=""
+                     src="https://misc.gomein.net.cn/finance/cashier/20170926/image/ALIPAYSCANN.png" alt="支付宝"
+                     width="100" height="20">
+                <div class="saoma_ad" style="display:none">
+                    <span id="AD_FIXED_040_B_ALIPAY"></span>
+                </div>
+            </div>
+            <div class="or_right" id="or_right_id">
+                <p class="or_allpay">应付金额<i id="yfPayMoney">16.00</i>元</p>
+
+                <b class="or_look" style="padding-top: 7px; color: rgb(0, 102, 153);">收起详情<i class="shangla1"
+                                                                                             style="background-position: -240px 0px;"></i></b>
+
+            </div>
+        </div>
+        <div class="or_dteail" style="color: rgb(94, 94, 94); display: block;">
+            <div class="adress-mess clearfix"><span class="or_addss">收货地址：<i title="湖南省 长沙市 开福区 望麓园街道 北大青鸟实力校区">湖南省 长沙市 开福区 望麓园街道 北大青鸟实力校区</i></span><span
+                    class="or_name">收货人：<b class="get_name" title="刘君">刘君</b><i>130****2754</i></span></div>
+            <div class="or_list clearfix"><span class="or_coding">订单号：<i title="11930493436">11930493436</i></span>
+                <div class="shop-god clearfix"><b class="or_shopname" title="百花集食品专营店">百花集食品专营店</b>
+                    <ul class="or_goodsname">
+                        <li><b title="百草味-玫瑰红葡萄干100g/袋">百草味-玫瑰红葡萄干100g/袋</b><i>¥16.0</i></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" language="javascript">
+            $("#scancode_id").load(function () {
+                $("#scancode_div_id_o").hide();
+            });
+        </script>
+        <div class="platform_ad" id="broadcast">
+            <div id="kq_ad_id" class="kq_ad clearfix" style="display:none">
+                <i class="lba"></i>
+                <span id="AD_FIXED_BROADCAST" class="ad_tps"></span>
+                <a href="javascript:;" class="close cl_posizion">×</a>
+            </div>
+        </div>
+        <!--弹出层-->
+        <link rel="stylesheet" href="https://misc.gomein.net.cn/finance/cashier/20170926/css/phonecode-alert.css">
+        <div class="alert" id="alert">
+            <div id="phonecodeAlertDiv" style="display:none">
+                <div class="thickdiv">
+                    <div class="bg"></div>
+                </div>
+                <div class="alert-box">
+                    <div class="wrap-head"><span>支付&nbsp;<i>16.00</i>元</span><a href="javascript:;" class="close">×</a>
+                    </div>
+                    <div class="text">
+                        <p>请输入短信验证码</p>
+                        <div class="al_send">
+                            (已发送至<i><span id="currentTelAlert"></span></i>)
+                            <b></b>
+                            <div class="ph_wrong" style="display:none">
+                                <i></i>
+                                <span style="height: 50px;left: 0;position: absolute;top: -25px;width: 260px;"></span>
+                                <p>手机号码有误？</p>
+                                <span>1.请确认该预留手机号是当前使用手机号</span>
+                                <span>2.若银行预留手机号已停用，请联系银行修改</span>
+                                <span>3.获取更多帮助，可以联系<a href="http://cs.gome.com.cn/?entry=composite&amp;orgi=111111"
+                                                      target="_blank">在线客服</a></span>
+                            </div>
+                        </div>
+                        <div class="put_code">
+                            <input type="text" id="codeAlert" class="code" maxlength="6">
+                            <div class="code_tip">
+                                <span id="sendSuccessShow" style="display:inline-block;">短信验证码已发送，请注意查收</span>
+                                <span class="font-red" style="display:none;">短信验证码错误，请您核对或重新获取</span>
+                                <b>清空</b>
+                            </div>
+                            <div class="code_time">
+                                <span id="downtimeAlert" style="display:none;"></span><!---->
+                                <span id="repeatGet" class="new_code">重新获取验证码</span>
+                                <i class="line"></i>
+                                <a href="javascript:void(0);">关闭</a>
+                            </div>
+                        </div>
+                        <div class="pay_wait" style="display:none;">
+                            <p>支付中<img src="https://misc.gomein.net.cn/finance/cashier/20170926/image/progress.gif"
+                                       alt="支付中"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <link rel="stylesheet" href="https://misc.gomein.net.cn/finance/cashier/20170926/css/myCards.css">
+        <link rel="stylesheet" href="https://misc.gomein.net.cn/finance/cashier/20170926/css/myb-pay.css">
+
+        <div class="platform platform-nomyb platform1-top" id="mycards" style="display:none;">
+
+            <div id="myb_gotopay" style="">
+                <p class="pay_checkway clearfix" id="myb_password" style="display:none">
+		    <span class="pay-pswd clearfix" style="display:none">
+		        <span class="myb-prompt" id="myb-prompt" onclick="promptClick()">请输入国美支付密码</span>
+		    	<input type="password" id="myb_password_text" value="" onfocus="focus_common('myb_password_text','')"
+                       maxlength="20" onblur="blur_common('myb_password_text','')"><a
+                    href="http://myhome.gome.com.cn/member/accountSecurity?atc=42" target="_blank"
+                    class="alinks">忘记密码</a>
+		    </span>
+                </p>
+                <p class="pay_checkway clearfix" id="myb-gotopay" style="display:none">
+                    <a href="javascript:void(0)" class="btn_unable mr10 mr_flt">立即支付</a>
+                    <b id="myb_checkway_errormsg" style="color:#d10311;padding-left:210px;padding-top: 15px;"></b>
+                </p>
+                <input type="hidden" name="myb_telephone" id="myb_telephone" value="">
+                <input type="hidden" name="myb_transNo" id="myb_transNo" value="">
+            </div>
+        </div>
+        <script type="text/javascript"
+                src="https://misc.gomein.net.cn/finance/cashier/20170926/js/new/mycards.js"></script>
+
+        <div class="platform platform-nomyb platform1-top wy_pay" id="platform-zfpt" style="display:block;">
+            <dl class="platform-box">
+                <dt class="platform-title">
+                    <span class="price">支付<b class="heighlight">16.00</b>元</span>
+                    <label class="type"><i
+                            style="display:inline-block;margin-right:5px;vertical-align:middle;position:relative"></i>平台支付</label>
+                    <span class="sm"></span>
+
+                </dt>
+                <dd class="platform-con">
+                    <div id="zfpt-moduleId" style="display:block">
+                        <div id="chooseBankDiv" style="display:block">
+                            <div class="bank-list-box" style="padding-bottom: 18px;">
+                                <ul class="bank-lists clearfix bank-lst" id="bank-zfptId">
+                                    <li id="ALIPAY" name="支付宝"
+                                        class="ygbx-pay-bank hsdiscount">
+                                        <img height="40"
+                                             src="https://misc.gomein.net.cn/finance/cashier-web/temp/ALIPAY.png"
+                                             alt="支付宝">
+                                        <div class="pt_ad">
+                                            <span id="AD_FIXED_050_B_ALIPAY"></span>
+                                        </div>
+                                    </li>
+                                    <li id="WEIXINPAY" name="微信支付"
+                                        class="ygbx-pay-bank hsdiscount">
+                                        <img height="40"
+                                             src="https://misc.gomein.net.cn/finance/cashier-web/temp/WEIXINPAY.png"
+                                             alt="微信支付">
+                                        <div class="pt_ad">
+                                            <span id="AD_FIXED_050_B_WEIXINPAY"></span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+        <script type="text/javascript"
+                src="https://misc.gomein.net.cn/finance/cashier/20170926/js/new/platform.js"></script>
+    </div>
+</div>
+<!--大数据埋码-->
+<script language="javascript" src="https://misc.gomein.net.cn/finance/cashier/20170926/js/new/util/s_code-gz.js"
+        type="text/javascript"></script>
+<script language="javascript" src="https://misc.gomein.net.cn/finance/cashier/20170926/js/new/util/bigdata-live.js"
+        type="text/javascript"></script>
+<script type="text/javascript" src="https://misc.gomein.net.cn/finance/cashier/20170926/js/new/cashier.js"></script>
+<script type="text/javascript" src="https://misc.gomein.net.cn/finance/cashier/20170926/js/new/commons.js"></script>
+<!-- 底部 -->
+<div class="footer" id="footerHtml">
+    <p>©2000-2018 国美在线电子商务有限公司 版权所有</p>
+</div>
+
+
+<!--点击事件埋码-->
+<script type="text/javascript"
+        id="">function recTrackClick(areaname, areaid, showid, productid, pagename, pagetype, pagecateg, level, abid, abv) {
+    gomeClicki('send', 'event', '大数据监控', 'recTrackClick', areaname, {
+        'customActionId': 50,
+        'customActionLabel1': areaname,
+        'customActionLabel2': aredid,
+        'customActionLabel3': showid,
+        'customActionLabel4': productid,
+        'customActionLabel5': pagename,
+        'customActionLabel6': pagetype,
+        'customActionLabel7': pagecateg,
+        'customActionLabel8': level,
+        'customActionLabel9': abid,
+        'customActionLabel10': abv,
+        'customActionValue1': 1
+    });
+}
+
+function recTrack(param, skus) {
+    var p = param.split('|');
+    var flag = p[0];
+    var data = {'customActionValue1': 1};
+    for (var i = 1, l = p.length; i < l; i++) {
+        data['customActionLabel' + i] = p[i];
+    }
+    if (flag == 'show') {
+        data.customActionId = 49;
+        if (arguments.length == 2) {
+            var prd = p[3].split(","), msg = "prdimp:", sku = [];
+            for (i = 0; i < skus.length; i++) {
+                sku.push(skus[i] + "|" + prd[i] + "|");
+            }
+            msg += sku.join(";");
+            data.dimension16 = clickSku;
+        }
+        gomeClicki('send', 'event', '大数据监控', 'recTrack', 'show' + p[1], data);
+    } else if (flag == 'click') {
+        data.customActionId = 50;
+        if (arguments.length == 2) {
+            var clickSku = "prdclick:" + skus[0] + "|" + p[4] + "|";
+            data.dimension16 = clickSku;
+        }
+        gomeClicki('send', 'event', '大数据监控', 'recTrack', 'click' + p[1], data);
+    }
+}</script>
+<script type="text/javascript" id="">
+    var _mvq = window._mvq || [];
+    window._mvq = _mvq;
+    _mvq.push(['$setAccount', 'm-20396-0']);
+    var wurl = wurl || document.location.href;
+    if (wurl.indexOf("item") > -1) { // 详情页代码
+        if (typeof prdInfo != "undefined") {
+            _mvq.push(['$setGeneral', 'goodsdetail', '', /*用户名*/ '', /*用户id*/ '']);
+            _mvq.push(['$logConversion']);
+            _mvq.push(['$addGoods',
+                /*分类id*/ "",
+                /*品牌id*/ prdInfo.brandID || "",
+                /*商品名称*/ prdInfo.itemName || prdInfo.prdName || "",
+                /*商品ID*/ prdInfo.itemId || prdInfo.prdId || "",
+                /*商品售价*/ prdInfo.price,
+                /*商品图片url*/ "https:" + $(".j-bpic-b").attr("src"),
+                /*分类名*/ "",
+                /*品牌名*/ prdInfo.breadName || "",
+                /*商品库存状态1或是0*/ "",
+                /*网络价*/ '',
+                /*收藏人数*/ '',
+                /*商品下架时间*/ '',
+                prdInfo.firstCategoryName || "",
+                prdInfo.secondCategoryName || "",
+                prdInfo.thirdCategoryName || ""
+            ]);
+            _mvq.push(['$addPricing', /*价格描述*/ '']);
+            _mvq.push(['$logData']);
+        }
+    } else if (wurl.indexOf("cart.jsp") > -1) { // 购物车页代码
+        _mvq.push(['$setGeneral', 'cartview', '', /*用户名*/ '', /*用户id*/ '']);
+        _mvq.push(['$logConversion']);
+        var mediavAddItem = [];
+        (function () {
+            var smStr = "";
+            for (var k = 0, len = shippingGroups.length; k < len; k++) {
+                if (k == 0) {
+                    var normalCartGroups = shippingGroups[0].normalCartGroups;
+                    var items = shippingGroups[0].items;
+                    //国美在线商品存在
+                    if (normalCartGroups) {
+                        var normalLen = normalCartGroups.length;
+                        $.each(normalCartGroups, function (index, item) {
+                            var generalItems = item.generalItems;
+                            var generalLen = generalItems.length;
+                            $.each(generalItems, function (i, item2) {
+                                mediavAddItem.push(item2.productId);
+                            });
+                        });
+                    }
+                    //如果国美在线商品不存在，则第一个为店铺商品或其他
+                    if (items) {
+                        var len = items.length;
+                        $.each(items, function (index, item2) {
+                            mediavAddItem.push(item2.productId);
+                        });
+                    }
+                } else {
+                    if (typeof (shippingGroups[k]) == 'undefined') continue;
+                    var items = shippingGroups[k].items;
+                    if (items) {
+                        var len = items.length;
+                        $.each(items, function (index, item2) {
+                            mediavAddItem.push(item2.productId);
+                        });
+                    }
+                }
+            }
+        })()
+        mediavAddItem = mediavAddItem.join(",");
+        _mvq.push(["$addItem", "", mediavAddItem, "", ""]);
+        _mvq.push(['$logData']);
+    } else if (wurl.indexOf("commitSuccess.jsp") > -1) { // 订单页代码
+        _mvq.push(['$setGeneral', 'ordercreate', '', /*用户名*/ '', /*用户id*/ '']);
+        _mvq.push(['$logConversion']);
+        _mvq.push(['$addOrder',/*订单号*/ orderId, /*订单金额*/ totalPrice]);
+        shippingGroups = eval(shippingGroups);
+        if (shippingGroups) {
+            var shipLen = shippingGroups.length;
+            $.each(shippingGroups, function (index, item2) {
+                _mvq.push(['$addItem',
+                    /*订单号*/ orderId,
+                    /*商品id*/ item2.productId,
+                    /*商品名称*/ item2.productName,
+                    /*商品价格*/ item2.price,
+                    /*商品数量*/ item2.quantity,
+                    /*商品页url*/ '',
+                    /*商品页图片url*/ '']);
+            });
+        }
+    }
+    _mvq.push(['$logConversion']);
+    (function () {
+        var mvl = document.createElement('script');
+        mvl.type = 'text/javascript';
+        mvl.async = true;
+        mvl.src = ('https:' == document.location.protocol ? 'https://material-ssl.mediav.com/bjjs/mba_ka.js' : 'http://material.mediav.com/bjjs/mba_ka.js');
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(mvl, s);
+    })();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" name="browerForIe">
+    <title>注册</title>
+
+
+    <link rel="shortcut icon" href="font/favicon.ico" type="image/x-icon">
+    <link type="text/css" rel="stylesheet" href="css/base.css">
+    <link type="text/css" rel="stylesheet" href="css/common-button.css">
+    <link rel="stylesheet" href="css/regist.css">
+    <link rel="stylesheet" type="text/css" href="css/drag-20161228.css">
+    <link rel="stylesheet" type="text/css" href="css/newRegister.css">
+    <!-- <script type="text/javascript" src="../../static/js/1.7.1jquery.js"></script> -->
+    <!--<script src="static/regjs/201908211805.js"></script>-->
+    <!--图块滑着验证  注册信息验证-->
+    <!--<script type="text/javascript" src="static/regjs/gome-base-v3-20160229.js"></script>-->
+    <!--<script type="text/javascript" src="static/regjs/jquery.form-20150123.js"></script>-->
+    <!--<script type="text/javascript" src="static/regjs/jquery.cookie-gclickshow-2016121.js"></script>-->
+    <!--<script type="text/javascript" src="static/regjs/gfp-20190528.js"></script>-->
+    <!--<script src="static/regjs/sa-20180917.js"></script>-->
+    <!--<script src="static/regjs/index.js"></script>-->
+    <!--<script type="text/javascript" src="static/regjs/jquery.drag-20161228.js"></script>-->
+    <!--<script type="text/javascript" src="static/regjs/nc-20161026.js"></script>-->
+    <!--<script type="text/javascript" src="static/regjs/ua-parser.min-20160927.js"></script>-->
+    <!--<script type="text/javascript" src="static/regjs/registerTpl.js"></script>-->
+    <!--同意协议-->
+    <!--<script type="text/javascript" src="static/regjs/agreement.js"></script>-->
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="regjs/newRegister.js"></script>
+    <!--<script type="text/javascript">
+        var contextPath = 'https://reg.gome.com.cn';
+        var siteVersion = 'refuse';
+        var loginSite = 'https://login.gome.com.cn';
+        var captchaSrc = "https://imgcode.gome.com.cn/captcha?type=register";
+        var isColseRegisterCaptcha = 'false';
+        var isColseRegisterCaptchaEmail = 'false';
+        var isColseEmailRegister = 'false';
+        var regImageURL = '//gfs11.gomein.net.cn/T1E1VjB7YT1RCvBVdK.png';
+        var riskToken = '77fa0d9e7529081c5d2b0210773c0d1c713a080269320c086b300808932c3b3a';
+        var smsRegURL = 'do';
+        var smsRegSwitch = 'true';
+        var bigDataSend = "true";
+        var regBigDataMobile = '';
+
+        //无设备指纹显示中文动态验证码;
+        function noUpfdAuthenticCode(captchaId, uuid) {
+            $("#" + captchaId).attr("src", "https://imgcode.gome.com.cn/getLRcaptcha.no?gsscast=login_dynamic&capCd=" + uuid + "&refreshkey=" + Math.random());
+            var $clone = $("#" + captchaId).clone();
+            $("#" + captchaId).parent().find("img").replaceWith($clone);
+        };
+    </script>-->
+
+
+</head>
+<body>
+<div class="w990">
+    <!-- 返利的导航 -->
+    <!--头部end--><!--newads-->
+    <!--newads-->
+    <div id="gome-head" class="wbox">
+        <div id="logo"><a data-code="public03001" href="javascript:;">国美</a></div>
+        <div id="head-title"></div>
+        <div id="head-box"></div>
+    </div>
+    <!--gome_head -->
+    <!--head-->
+
+    <div class="login-box">
+        <p class="login-title">我已经注册，现在就<a href="gm-login.html">登录</a></p>
+    </div>
+</div>
+<div style="border-top:1px solid #dd00a7;">
+    <div class="step-progress" id="container">
+        <div class="step-slider">
+            <ul>
+                <li class="step-li1 "></li>
+                <li class="step-li2"></li>
+            </ul>
+            <div data-id="step1" class="step-active">
+                <div class="step-icon-pos step-icon step-icon1">1</div>
+                <div class="step-info step-info1">
+                    <div name="js_step_name_1">验证手机号</div>
+                </div>
+            </div>
+            <div data-id="step2">
+                <div class="step-icon-pos step-icon step-icon2">2</div>
+                <div class="step-info step-info2">
+                    <div name="js_step_name_2">填写账户信息</div>
+                </div>
+            </div>
+            <div data-id="step3">
+                <div class="step-icon-pos step-icon step-icon3">3</div>
+                <div class="step-info step-info3">
+                    <div name="js_step_name_3">注册成功</div>
+                </div>
+            </div>
+        </div>
+        <div class="step-content">
+            <form id="verifyAccountForm" autocomplete="off">
+                <div class="form-group err"><input type="text" id="username" name="username" maxlength="20"
+                                                   onpaste="return false" tabindex="3"
+                                                   onkeypress="if(event.keyCode==13||event.which==13){return false;}"
+                                                   class="form-control focus" placeholder="请输入用户名" autocomplete="aaa"
+                                                   verify="false"> <i class="reg-icon close" style="display: none;"></i>
+                    <i class="inputSuc" style="display: none;"></i>
+                    <div class="input-call-info"></div>
+                    <div class="C_err_tips">请输入用户名</div>
+                    <div id="tj_name" class="recommended-list hide"><p>推荐您使用：</p>
+                        <ul class="clearfix"></ul>
+                    </div>
+                </div>
+                <div class="form-group err"><input type="password" isclick="false" id="password" name="password"
+                                                   onpaste="return false" tabindex="3"
+                                                   onkeypress="if(event.keyCode==13||event.which==13){return false;}"
+                                                   class="form-control focus" placeholder="请设置登录密码" autocomplete="aaa"
+                                                   verify="false"> <i class="reg-icon close pwd-close"
+                                                                      style="display: none;"></i> <i
+                        class="reg-icon errOpen" id="eye" style="display: none;"></i>
+                    <div id="capsLocked" class="capsLock" style="display: none;">键盘大写锁定已打开，请注意大小写!</div>
+                    <div class="pw-tips" id="pwd-safe" style="display:none;"><span class="txt">安全程度：</span>
+                        <div class="pw-safe pw-none">
+                            <div class="pw-bar"></div>
+                            <div class="pw-letter clearfix"><span>弱</span> <span>中</span> <span>强</span></div>
+                        </div>
+                        <a class="pw-suggest" href="javascript:void(0);">密码设置建议</a></div>
+                    <i class="inputSuc" style="display: none;"></i>
+                    <div class="input-call-info"></div>
+                    <div class="C_err_tips">请输入密码</div>
+                </div>
+                <div class="form-group"><input type="text" id="refereeCode" name="refereeCode"
+                                               class="form-control focus" placeholder="填写推荐人推荐码，帮好友赚收入（选填）"
+                                               autocomplete="off"> <i class="inputSuc" style="display: none;"></i>
+                    <div class="C_err_tips"></div>
+                </div>
+                <div class="form-group-submit"><a class="button btn-primary" href="javascript:;"
+                                                  id="submitVerifyAccountForm">下一步</a></div>
+                <div class="js-change-company step-link"><i class="company"></i> <a href="/register/index/company">企业用户注册</a>
+                </div>
+                <div class="grey-layer"></div>
+                <div class="bomb-box" id="pw-suggest-box">
+                    <div class="bomb-box-posi w440">
+                        <div class="bomb-box-title"><h1>密码设置建议</h1> <a href="javascript:void(0);"></a></div>
+                        <div class="bomb-box-text"><p>1.密码设置至少6位以上，由数字、字母和符号混合而成，安全性最高；</p>
+                            <p>2.不允许空格、特殊字符。允许的符号为：~!@#$%^&amp;*()_+-=；</p>
+                            <p class="bomb-box-text-b">统计分析表明，账号被盗，80%由于密码简单而被猜到引起的</p>
+                            <p>1.不建议使用7位以下纯数字；</p>
+                            <p>2.不建议和用户名太相似；</p>
+                            <p>3.不建议用太多连续或重复的字符（如：1234、ssss等）；</p>
+                            <p>4.不建议用手机号，身份证号，生日等个人信息</p></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--手机短信验证-->
+        <!--<div class="step-content">
+            <form id="verifyMobileForm" autocomplete="off">
+                <div class="form-group err"><input type="text" id="mobile" name="mobile" maxlength="11"
+                                                   onpaste="return false" tabindex="3"
+                                                   onkeypress="if(event.keyCode==13||event.which==13){return false;}"
+                                                   class="form-control" placeholder="请输入常用手机号" autocomplete="off"
+                                                   verify="false"> <i class="close mobile-close reg-icon"
+                                                                      style="display: none;"></i> <i class="inputSuc"
+                                                                                                     style="display: none;"></i>
+                    <div class="input-call-info pos-abs"></div>
+                    <div class="C_err_tips">请输入手机号</div>
+                </div>
+                <div class="form-group" id="js-dingxiang">
+                    <div class="dingxiang-box">
+                        <div class="dingxiang-title">为了账号安全，完成拼图验证</div>
+                        <i class="close dingxiang-close"></i>
+                        <div id="dingxiang"
+                             class="dx_captcha dx_captcha_loading-style-embed dx_captcha_basic dx_captcha-type-basic dx_captcha_basic-style-embed"
+                             data-dx-idx="1" style="width: 270px; height: 200px;">
+                            <div id="dx_captcha_basic_wrapper_1"
+                                 class="dx_captcha_basic_wrapper dx_captcha_basic_smart_checking">
+                                <div id="dx_captcha_basic_state-box_1" class="dx_captcha_basic_state-box"
+                                     style="display: none;">
+                                    <div class="dx_captcha_basic_state-box-img"><img
+                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAABBVBMVEUAAABVccZLX8RNXcRLXcRMXcVMXcVMXMVLadJNXcVMXcVMXcVLXMRNZsxMXcVMXcVVqv9LXcZLXMRMXsZLXcVMXMVLXcVMXMVOXsZPXcdMXcVMXcRRXslOXsVLXcRMXMRMXcVVgNVLXcVOYsRLXMVNXsZMXMVOXcdLXMVNXsdMXcRSZMhLXMVLXcVLXcVRXcdMXsVLX8hNXsZMYMiAgP9LXMRLXcVNXsZNZsxRXslLXcRMXcZPYcpMXMZMXsRLXMRMXcWAgP9NXcVLXcZNXsxMXcVNXcZtbdtMXsZLXsZLXsRMXMROXMZNYcdNXsRNXsVLXcRLXsVLXMVVY8ZMXcRLXcRSZsx9ZaoWAAAAV3RSTlMACU6Pt9vs+RFgr/X/CnzyA2bmG8vKkmExN+SHJlz383YGqhr+ePZS40mGHKbt+imAM0wlBN1YZxQT6pcdbHX7xgJuRx61YwdvYovrSDJklvSIwRLUuhldI39aAAAB2klEQVR4AZTUVZrbMBSG4T9MX0gTZuaUmdv9L6rWQOTQY/m9Fh7SlUQylc5kc7lsJp1KJhQhXyiWCCkVC3ndV65UuVKtlHVbrW64ydRruuGhwZNmq90B6LRbTZ40HnSla7B6/YECAAoM+j0s09WF4QhgPJlKboM1nYwBRsOL9VizuXS5QZrPsM52dEfAYildb7CWC2DUDf3XAKu17m3QegWY089rDWCxVsgGNgrvWACNmp7UAZYK2242W4UtAeqyVDbATBFmgCnLqgDjuSLMx0BFgXwVmCjSBKjmJRWA3lSRpj2gIKkI7OShDxSlRAkYyMMAKCWUBJry0gSSSgEteWkBKaWBti7sD8Yc9rrQBtLKAJ3L9UeA4+WODpBRlheuGA5YHFyh8CKrHG6HnhmwjCvFk1z8DfGe9Grn+2nHL6yOS5wnVxq+/ItPr9+8VaAI9OXhXY7q+xgN9OEj8ClGi34GRl/8h8DXb8D3GGPmAKx++A+ynwC//Edl8jfw56/3MB7+BqoD73H/bwH8n70zsRWKiytY0o3IKsvdA1xl2XviqhS1UCtFL2+wsLwPEdWur5+/iApEyMGYpIpdXsGRlKZDQKAFCY0TlSDzYFQVOJs/ckIhoVrqYRjSAIrmQGZqCbNAAAAAAElFTkSuQmCC"
+                                            alt=""></div>
+                                    <span class="dx_captcha_basic_lang dx_captcha_basic_lang_smart_checking">智能检测中</span>
+                                </div>
+                                <div id="dx_captcha_basic_main-box_1" class="dx_captcha_basic_main-box"
+                                     style="display: block;">
+                                    <div id="dx_captcha_basic_tr-btn-close_1"
+                                         class="dx_captcha_basic_tr-btn-close"></div>
+                                    <div id="dx_captcha_basic_box_1" class="dx_captcha_basic_box">
+                                        <div id="dx_captcha_basic_content_1" class="dx_captcha_basic_content">
+                                            <div id="dx_captcha_basic_sub-slider_1" class="dx_captcha_basic_sub-slider"
+                                                 style="margin-top: 39px; display: block;"><img
+                                                    src="//captcha.gome.com.cn/api/p2?sid=a3c2edabee0b04ce4ea4e2e647bd78d4&amp;aid=dx-1566545596029-63587409-1&amp;ak=9d20bcf9dee0f3dd33ca1b0465f6c64f&amp;c=5d5e58c2pcXn5y7LpxQW71KEeLygHVxakEXYmGl1_r=0.7405625858520546"
+                                                    alt="" draggable="false" style="width:45.225px;height:50.25px;">
+                                            </div>
+                                            <div id="dx_captcha_basic_pic_1" class="dx_captcha_basic_pic">
+                                                <div id="dx_captcha_basic_loading_1" class="dx_captcha_basic_loading"
+                                                     style="opacity: 0; display: none;">loading...
+                                                </div>
+                                                <div id="dx_captcha_basic_bg_1" class="dx_captcha_basic_bg">
+                                                    <canvas width="400" height="200"
+                                                            style="width: 270px; height: 150px;"></canvas>
+                                                </div>
+                                                <a id="dx_captcha_basic_link_1" class="dx_captcha_basic_link"></a></div>
+                                            <div id="dx_captcha_basic_init-inform_1"
+                                                 class="dx_captcha_basic_init-inform"
+                                                 style="display: block; opacity: 1;"><img
+                                                    class="dx_captcha_basic_arrow_lb"
+                                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAkCAYAAACaJFpUAAABkUlEQVR4Ac3QRVI8MRQG8J7+u7u7CzdDt3MKdMURcGgZlxPgzhLtzuCwHnlYSFWq52se9qriyferinG6Pi513zOF3XTXd74bzKIMyqJM9UTFoqZvdVbGNg56hLUdZUUlqsOoQSiAUVNRPQaiAKZB6Z/lAY7imGxkGXf8gR+mZ7VzUAyTGaFQFiaL0FhoFMa2k9+kdEYUxFpVTIeKoZ+mqI5CmGdJjItyMQ2aAFENthX/ChAslI9J1P5lenYHhK0N8DAY5WBPt/JPtWjB/a1FhdVyd9X9AmapdXsjURPxbc8Ubh2EBmCUQVmUGYT5lVaiVg0l7N6m/TkAKx01X0F1GIKCmIrqMQwFMD0aEU5OPcBRGJMtazzcS76uTKY4KIhNkUX3j1BnOjyKYs7kw73YK+Xhg/3MGxzlYSoqnBkEBbEJFWOgCPZoN/8yyJKocN9GhD3LAMcBDEIZGI7OwZhwxh7tZl4YnLpfSLyDUBxjo4SN8jEt6szrsMc7ied8QYum3iuosEdwjIcuhMeYqMSueZUBAHK/BLMerF0AAAAASUVORK5CYII="
+                                                    alt="">
+                                                <span class="dx_captcha_basic_lang dx_captcha_basic_lang_init_inform">拖动下方的滑块</span>
+                                            </div>
+                                            <div id="dx_captcha_basic_refresh_1" class="dx_captcha_basic_refresh"
+                                                 style="display: block; opacity: 1;"><img
+                                                    class="dx_captcha_basic_img_btn_refresh"
+                                                    id="dx_t_dx-1566545596029-63587409-1_btn-reload-1"
+                                                    src="data:image/png;base64,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"
+                                                    alt=""></div>
+                                        </div>
+                                        <div id="dx_captcha_basic_bar_1" class="dx_captcha_basic_bar">
+                                            <div id="dx_captcha_basic_slider_1" class="dx_captcha_basic_slider">
+                                                <div id="dx_captcha_basic_slider-img-animated-wrap_1"
+                                                     class="dx_captcha_basic_slider-img-animated-wrap">
+                                                    <span></span><span></span><span></span><span></span><img
+                                                        id="dx_captcha_basic_slider-img-normal_1"
+                                                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAABYCAMAAAADZq/BAAABMlBMVEUAAAD///+AgID///+qqqr////MzMyqqqrV1dW2tra/v7+/v7/MzMy/v7+2tra7u7u/v7+0tLTDw8O5ubnGxsbCwsK/v7/ExMS/v7/BwcG7u7vGxsbIyMi8vLy9vb2+vr68vLy/v7/BwcG8vLy+vr7MzMy5ubm8vLy7u7u+vr68vLy8vLy+vr68vLy9vb28vLy5ubm+vr68vLzGxsbT09PPz8/KysrIyMjBwcHS0tLJycnR0dHJycne3t709PT9/f3////Ozs7x8fG/v7/o+/lP3tEN0sA12crL9vIAz7wL0r/C9O/B9O/A9O/e+feY7OSr8On5/v4M0sDN9vK68+0J0b8z2cr2/v0g1sXw/fwu2MmU6+MX1MOF6d8O0sB05dtR39K48u3n+/lC3M6H6eD7//5JuDLdAAAARHRSTlMAAQICAwMFBgYHCAQKDA4PEBERCxIVGBocHR4JDhMjJyosLS4vDxYmLTM5PT9BQhchKzVn0vn+/z7W/vD/////////NDne7GMAAAJ9SURBVHgBxNCF2cIwAITheKBepBLc3eotDvvv9LssQPotcO9z4DsIIcKYEEIlRAjBGL1Pgv+9CwhlvFJVJFWtcEYJ+s94J6hc0XTDtGy79vJs2zINXVO4+s74M1Cm1M1G03E93xcvz/c912k2zLrC6I8CYspb7Y4jur3+YDgav7zRcNDvdYXTabc4xfD7B65NpmI2XyxX681WQpv1armYz8R0ovGvLyBhrclufwjCKE5SSSVxFAaH/W7SYgR+HKEq7d1+nuVFKrUiz+b7XVtR36+AhNc74pAd09P5cr1J6no5n9JjdhCdOicQIKqYzizI0/vjJrXHPc2DmWMqFAHEtIYYhsXp3SBZcSrCoWhoDAHM9Gb3GaXnm/TOafTsNnWGAa4YTm8Zpxf5iEsaL3uOUcGAVE23v0rSq3zENU1WfdesEkAUyxus0/RWQmm6HniWQgBVbH+4KQuxGfq2Qt8RNX+0LQuxHfm1L4QYl4cYizd27ALHoRgGAujRdstN4jIz3/8IZQZLI2WKHtGIrPf5J4YwhCEMYYjXINKZbC7/akTGOefDixFZhyoIiJxDFQRE3u8U8tKnI+wVgYjAFTiCrsARfAWOwBUEBK4QAoKgYCL+Za8oEBDFUrmi9ytFtRYdUW8412zp/UrR7sRGdDdje2o/JfS3ikFsxHAzdaR3OmK8mTpRO/9yTGeuMdc6/8bcpLPQO/0RBSL8lxVu4CNwAx+BGXAEbuAjcAMfgRu++Zc/hxp4y0B5gwWx2NbAKYYwhCEMYQguYtWsHQgAAAAAAPm/tqGDgCQHnB2YugD7oi4UiePoLEPsKYpTkb2G9lYEwKFCFik06LFNFC7KNJiNrL2eJYp+AAAAAElFTkSuQmCC"
+                                                        draggable="false" art=""></div>
+                                                <img id="dx_captcha_basic_slider-img-active_1"
+                                                     class="dx_captcha_basic_slider-img-active"
+                                                     src="data:image/png;base64,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"
+                                                     data-dx-role="captcha-slider" draggable="false" alt=""></div>
+                                            <div id="dx_captcha_basic_slider-cover_1"
+                                                 class="dx_captcha_basic_slider-cover"></div>
+                                            <div id="dx_captcha_basic_bar-inform_1" class="dx_captcha_basic_bar-inform">
+                                                <span class="dx_captcha_basic_lang dx_captcha_basic_lang_loading">请拖动滑块至正确缺口</span><img
+                                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAQAAACFzfR7AAAAbElEQVR42q3KMQ5AQBRF0RdaKhtiQVZgD5NYwvuimYzCLnSzE4VEPSIq/BjF3PLkArD5XOKRZpCJ29jEDdIxcL+zZicbZTVp1qGO2ck9g6y2iBgregZZQvZpF9Gzwpel3QBxL1INbMU9SLWfHaAlft8rLtzNAAAAAElFTkSuQmCC">
+                                            </div>
+                                            <div id="dx_captcha_basic_bar-verifying_1"
+                                                 class="dx_captcha_basic_bar-verifying"></div>
+                                            <div id="dx_captcha_basic_bar-success_1"
+                                                 class="dx_captcha_basic_bar-success"><span
+                                                    class="dx_captcha_basic_lang dx_captcha_basic_lang_verify_success">验证成功</span>
+                                            </div>
+                                            <div id="dx_captcha_basic_bar-fail_1" class="dx_captcha_basic_bar-fail">
+                                                <span class="dx_captcha_basic_lang dx_captcha_basic_lang_verify_fail">验证未通过</span>
+                                            </div>
+                                            <div id="dx_captcha_basic_bar-load-fail_1"
+                                                 class="dx_captcha_basic_bar-load-fail"><span
+                                                    class="dx_captcha_basic_lang dx_captcha_basic_lang_load_fail">加载失败，<a
+                                                    href="#">请重试</a>！</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="dx_captcha_basic_two-step_1" class="dx_captcha_basic_two-step"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="button btn-gray" href="javascript:;">点击按钮进行验证</a>
+                    <div class="C_err_tips"></div>
+                </div>
+                <div class="form-group clearfix" id="js-verifyCodeBox" style="display: none"><input type="text"
+                                                                                                    name="verifyCode"
+                                                                                                    id="verifyCode"
+                                                                                                    maxlength="6"
+                                                                                                    onkeypress="if(event.keyCode==13||event.which==13){return false;}"
+                                                                                                    class="form-control col-1"
+                                                                                                    placeholder="输入验证码"
+                                                                                                    autocomplete="off">
+                    <a href="javascript:;" class="button btn-gray col-2" id="getVerifyCode">获取短信验证码</a> <a
+                            href="javascript:;" class="button btn-gray col-2 remain-btn" disabled=""><span
+                            id="remainSeconds">60</span>秒后重新获取</a>
+                    <div class="success-mobile-msg input-call-info top50">验证码已发送，10分钟内输入有效</div>
+                    <div class="C_err_tips top50" id="TipverifyCode"></div>
+                </div>
+                <div class="form-group-submit"><a class="button btn-primary" href="javascript:;"
+                                                  id="submitVerifyMobileForm">下一步</a></div>
+                <div class="js-change-company step-link"><i class="company"></i> <a href="/register/index/company">企业用户注册</a>
+                </div>
+            </form>
+        </div>-->
+    </div>
+</div>
+<img id="checkimg" style="display: none;" src="picture/27342.jpg">
+<div class="w990 newRegister">
+    <div id="gome-foot">
+        <div id="gome-foot-box">
+            <ul class="foot_small_zdy_w">
+                <li><a data-code="1000043124-0" href="javascript:;" target="_blank" rel="nofollow">国美集团</a></li>
+                <li><a data-code="1000043124-1" href="javascript:;" target="_blank">国美管家</a></li>
+                <li><a data-code="1000043124-2" href="javascript:;" target="_blank">关于国美</a></li>
+                <li><a data-code="1000043124-3" href="javascript:;" target="_blank">加入我们</a></li>
+                <li>|</li>
+                <li><a data-code="1000043124-4" href="javascript:;" target="_blank">品牌大全</a></li>
+                <li><a data-code="1000043124-5" href="javascript:;" target="_blank">商品专题</a></li>
+                <li><a data-code="1000043124-6" href="javascript:;" target="_blank">商品词</a></li>
+                <li><a data-code="1000043124-7" href="javascript:;" target="_blank">热词搜索</a></li>
+                <li><a data-code="1000043124-8" href="javascript:;" target="_blank">友情链接</a></li>
+                <li><a data-code="1000043124-9" href="javascript:;" target="_blank">风险监测</a></li>
+                <li>|</li>
+                <li><a data-code="1000043124-10" href="javascript:;" target="_blank">销售联盟</a></li>
+                <li><a data-code="1000043124-11" href="javascript:;" target="_blank">商家入驻</a></li>
+                <li><a data-code="1000043124-12" href="javascript:;" target="_blank">广告营销</a></li>
+            </ul>
+            <p>本公司游戏产品适合18岁以上成年人使用&nbsp;&nbsp;违法和不良信息举报电话：021-39900132&nbsp;&nbsp;<a class="interDrug"
+                                                                                     href="javascript:;"
+                                                                                     target="_blank">互联网药品信息服务资格证编号（沪）-经营性-2019-0006</a>
+            </p>
+            <p>网络食品销售第三方平台提供者备案：沪网食备A0015号&nbsp;&nbsp;<a class="interDrug" href="javascript:;" target="_blank">网络文化经营许可证沪网文[2017]5537-436号</a>&nbsp;&nbsp;<a
+                    class="interDrug" href="javascript:;" target="_blank">增值电信业务经营许可证</a></p>
+            <p>客服电话:4008113333&nbsp;&nbsp;<a class="interDrug" href="javascript:;" target="_blank">沪ICP备11009419号/京ICP备
+                19011786号</a>&nbsp;&nbsp;<a class="interDrug" href="javascript:;" target="_blank">京B2-20191290</a>&nbsp;&nbsp;<a
+                    class="interDrug" href="javascript:;" target="_blank">经营执照</a>&nbsp;&nbsp;<a class="interDrug"
+                                                                                                 href="javascript:;"
+                                                                                                 target="_blank">营业执照</a>&nbsp;&nbsp;<a
+                    class="interDrug" href="javascript:;" target="_blank">出版物经营许可证</a></p>
+            <p>©2000-2019&nbsp;&nbsp;国美在线电子商务有限公司版权所有&nbsp;&nbsp;<a class="interDrug tw-w-ico-wrap" href="javascript:;"
+                                                                    target="_blank"><i class="tw-w-mark-icon"></i>京公网安备
+                11010502038379号</a></p>
+            <div class="gome-foot-credit">
+                <a class="credit-baxx" href="javascript:;" target="_blank" rel="nofollow"><i></i><b>经营性网站备案信息</b></a>
+                <a class="credit-xypj" href="javascript:;" target="_blank" rel="nofollow"><i></i><b>可信网站信用评价</b></a>
+                <a class="credit-cxwz" href="javascript:;" target="_blank" rel="nofollow"><i></i><b>诚信网站</b></a>
+                <a class="credit-hdjc" href="javascript:;" target="_blank" rel="nofollow"><i></i><b>朝阳网络警察</b></a>
+                <a class="credit-wgdj" href="javascript:;" target="_blank" rel="nofollow"><i></i><b>网购大家评</b></a>
+                <a class="credit-report" href="javascript:;" target="_blank"
+                   rel="nofollow"><i></i><b>上海市互联网违法和不良信息举报中心</b></a>
+                <!-- <a class="credit-syxy" href="https://sz.yhxy.org.cn/credit/verifyseal.php?sn=2008070300100000031&ct=df&pa=33&check=y" target="_blank" rel="nofollow"><i></i><b>炎黄鸿志商业信用认证体系</b></a> -->
+            </div>
+            <em class="turst-gome"></em>
+        </div>
+    </div>
+    <!--foot-->
+</div>
+<!--<script type="text/javascript">
+    // 顶象滑块相关
+    var openDingxiang = "true";
+    var appId_dingxiang = "9d20bcf9dee0f3dd33ca1b0465f6c64f";
+    var apiServer_dingxiang = "//captcha.gome.com.cn";
+    var constIDServer_dingxiang = "//security.gome.com.cn/udid/c1";
+    var constID_js_dingxiang = "//js.gomein.net.cn/security/js/dx-slider/const-id.js?v=20190401";
+    var ua_js_dingxiang = "//js.gomein.net.cn/security/js/dx-slider/greenseer.js?v=20190401";
+    // agreement 相关
+    var staSite = "http://www.gome.com.cn";
+    var loginHttps = "https://login.gome.com.cn";
+</script>-->
+<!-- 顶像验证码 -->
+<!--<script type="text/javascript">
+    window.onload = function () {
+        var distinctId = GomeSa.store.getDistinctId();
+        $.cookie('distinctId', distinctId, {path: '/'});
+    }
+    // $("#head-title").text("欢迎注册");
+    // $("#head-title").css("color","#333");
+    /*大数据登录注册成功埋码*/
+    function bigLoginReg() {
+        var userId = $.cookie("sid");
+        try {
+            gomeClicki('send', 'event', '国美会员', '注册', '注册成功', {
+                'customActionId': 101,
+                'customActionLabel1': userId,//{memberId}为会员ID
+                'customActionLabel2': '个人用户'//根据个人用户还是企业用户实际替换
+            });
+        } catch (err) {
+            //防止事件触发失败影响业务
+        }
+    }
+</script>-->
+<!--<script type="text/javascript">
+    $(function () {
+        $.getScript("https://misc.gomein.net.cn/js/regfront/s_code-gz.min.js?v=20170607", function () {
+            s.pageName = "注册:填写账户信息";
+            s.channel = "注册";
+            s.prop1 = "注册";
+            s.prop4 = "注册";
+            var s_code = s.t();
+            if (s_code) document.write(s_code);
+        });
+    });
+</script>-->
+</body>
+</html>
