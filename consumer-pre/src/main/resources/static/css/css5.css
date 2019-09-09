@@ -1,0 +1,715 @@
+html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, q, th, td, caption, article, aside, figure, figcaption, footer, header, hgroup, nav, section, audio, video {
+    margin: 0;
+    padding: 0
+}
+
+body, button, input, select, textarea {
+    font: 12px/1.5 Tahoma, Simsun
+}
+
+.pop {
+    display: none;
+    width: 310px;
+    border: 5px solid #999;
+    box-shadow: 5px 5px 5px #333;
+    background: #FFF;
+    padding: 0 10px 0 40px
+}
+
+.pop .hd {
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px
+}
+
+.pop .close {
+    float: right;
+    font-weight: 400;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    text-decoration: none
+}
+
+.pop .close:hover {
+    color: #c00;
+    text-decoration: none
+}
+
+.pop .bd {
+    word-break: break-all;
+    word-wrap: break-word;
+    margin-top: -15px;
+    padding-bottom: 20px;
+    padding-right: 30px
+}
+
+.pop .bd h3 {
+    font: 400 14px/22px "Microsoft Yahei";
+    color: #c00
+}
+
+.pop .bd .info {
+    margin-top: 5px;
+    color: #5e5e5e;
+    font: 400 12px/20px "Microsoft Yahei"
+}
+
+.pop .bd .info em {
+    font-weight: 700;
+    color: #c00;
+    font-family: Arial;
+    margin: 0 2px
+}
+
+.pop .bd .btn a {
+    display: block;
+    width: 88px;
+    height: 26px;
+    font: 400 12px/26px Simsun;
+    color: #fff;
+    background: #c00;
+    text-align: center;
+    margin-top: 12px
+}
+
+.pop-wrap {
+    position: fixed;
+    _position: absolute;
+    top: 100px;
+    _top: expression(documentElement.scrollTop+100);
+    left: 50%;
+    margin-left: -220px;
+    width: 442px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .19);
+    *border: 2px solid #919191;
+    border: 2px solid #919191 \9;
+    border: 2px solid #919191 \0
+}
+
+.pop-box {
+    position: relative;
+    width: 442px;
+    background: #FFF
+}
+
+.pop-bd .tab-list {
+    position: absolute;
+    left: 60px;
+    top: -40px;
+    width: 305px
+}
+
+.pop-bd .tab-list li {
+    float: left;
+    margin-right: 1px;
+    width: 150px;
+    height: 39px;
+    background: #C63942;
+    color: #FFF;
+    cursor: pointer;
+    font-family: "Microsoft Yahei";
+    font-size: 16px;
+    line-height: 39px;
+    text-align: center
+}
+
+.pop-bd .tab-list .cur {
+    width: 151px;
+    height: 40px;
+    background: #FFF;
+    color: #C00
+}
+
+.pw-items {
+    _width: 562px;
+    padding: 0 0 25px 424px;
+    *padding: 0 0 23px 424px;
+    position: relative
+}
+
+.pw-cont .pw-pt13 {
+    padding-bottom: 13px
+}
+
+.pw-cont {
+    margin-top: 88px
+}
+
+.pw-label {
+    float: left;
+    width: 424px;
+    height: 26px;
+    line-height: 26px;
+    text-align: right;
+    font-size: 14px;
+    position: absolute;
+    left: 0;
+    top: 0
+}
+
+.pw-txt {
+    width: 204px;
+    height: 24px;
+    line-height: 24px;
+    border: 1px solid #ccc;
+    padding: 0 4px;
+    color: #A5A5A5
+}
+
+.pw-short {
+    width: 81px
+}
+
+.pw-focus {
+    border-color: #a5a5a5;
+    color: #5e5e5e
+}
+
+.pw-check {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    vertical-align: top;
+    margin-left: 6px
+}
+
+.pw-check img {
+    width: 66px;
+    height: 24px;
+    border: 1px solid #fff
+}
+
+.check-pic:hover img {
+    border: 1px solid #e6e6e6
+}
+
+.common-btn {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    width: 66px;
+    height: 26px;
+    line-height: 26px;
+    background: #c00;
+    color: #fff;
+    text-align: center
+}
+
+.common-btn:hover {
+    background: #d00;
+    text-decoration: none;
+    color: #fff
+}
+
+.common-btn:active {
+    background: #b00;
+    text-decoration: none;
+    color: #fff
+}
+
+.msg-box {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    width: 340px;
+    position: relative;
+    color: #A5A5A5;
+    vertical-align: top;
+    font-family: Arial, Simsun
+}
+
+.msg-weak {
+    padding: 4px 0 4px 6px;
+    line-height: 18px;
+    position: absolute;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1
+}
+
+.err-tips {
+    color: #c00;
+    padding-left: 7px
+}
+
+.msg-cont {
+    display: inline
+}
+
+.cur-tips {
+    color: #2A8C01
+}
+
+.icon {
+    background-image: url(../image/new_exclusive/T1IkEvB_Dv1RCvBVdK.png);
+    background-repeat: no-repeat
+}
+
+.icon_warn {
+    background-position: 0 0
+}
+
+.icon_right {
+    background-position: 0 -46px
+}
+
+.icon_error {
+    background-position: 0 -92px
+}
+
+.popup {
+    display: none;
+    width: 440px;
+    box-shadow: 0 0 40px 0 #7f7f7f;
+    -moz-box-shadow: 0 0 40px 0 #7f7f7f;
+    -webkit-box-shadow: 0 0 40px 0 #7f7f7f;
+    border: 4px solid #adadad \9;
+    position: fixed;
+    top: 30% !important;
+    left: 50% !important;
+    margin-left: -220px;
+    z-index: 1000
+}
+
+.popup .verification_box {
+    display: none;
+    width: 310px !important;
+    left: 500px !important;
+    background: #FFF;
+    padding: 0 10px 0 40px !important
+}
+
+.popup-none {
+    box-shadow: 0 0;
+    -moz-box-shadow: 0 0;
+    -webkit-box-shadow: 0 0;
+    border: 0
+}
+
+.popup .icon.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    _right: 24px;
+    margin-right: 0;
+    display: block;
+    width: 12px;
+    height: 12px;
+    background-position: 0 -137px;
+    opacity: .7;
+    filter: alpha(opacity=70);
+    overflow: hidden;
+    cursor: pointer
+}
+
+.popup .close-sm {
+    width: 12px;
+    height: 12px;
+    background-position: -68px -16px
+}
+
+.popup .close-lg {
+    width: 34px;
+    height: 34px;
+    background-position: 0 0
+}
+
+.popup .close-white {
+    width: 16px;
+    height: 16px;
+    background-position: -84px 0
+}
+
+.popup .close-white-sm {
+    width: 12px;
+    height: 12px;
+    background-position: -84px -16px
+}
+
+.popup .close-white-lg {
+    width: 34px;
+    height: 34px;
+    background-position: -34px 0
+}
+
+.popup .close:hover {
+    opacity: 1;
+    filter: alpha(opacity=100)
+}
+
+.popup .popup-body {
+    padding: 70px 0 20px 50px;
+    background: #fff
+}
+
+.popup .tips, .popup .icon, .popup .tips p {
+    display: inline-block;
+    font: 16px/40px "Microsoft Yahei";
+    color: #333;
+    vertical-align: top
+}
+
+.popup .tips {
+    width: 350px;
+    font-size: 0;
+    text-align: center
+}
+
+.popup .icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px
+}
+
+.popup .num {
+    font-family: arial;
+    font-size: 16px;
+    color: #ff4c4c
+}
+
+.popup .coupons_box {
+    width: 284px;
+    height: 102px;
+    padding: 20px 0 0 30px;
+    margin-top: 30px;
+    background: url(../image/new_exclusive/T1CohvBmLT1RCvBVdK.jpg) no-repeat
+}
+
+.popup .coupons_box .title {
+    font-size: 0;
+    height: 48px;
+    line-height: 48px;
+    vertical-align: bottom
+}
+
+.symbol, .coupons_box .price, .price_point {
+    color: #ff4c4c;
+    font-family: arial;
+    margin-right: 5px
+}
+
+.symbol {
+    font-size: 18px
+}
+
+.coupons_box .price {
+    font-size: 48px
+}
+
+.price_point {
+    font-size: 16px
+}
+
+.coupon_name {
+    font-family: 'Microsoft Yahei';
+    font-size: 14px
+}
+
+.popup .tips_box {
+    font: 12px/18px 'Microsoft Yahei';
+    color: #888
+}
+
+.popup .btn_box {
+    width: 314px;
+    margin-top: 40px;
+    text-align: center;
+    font-size: 0;
+    padding-bottom: 20px
+}
+
+.popup .btn_ok, .popup .btn_no {
+    width: 100px;
+    height: 30px;
+    border-radius: 3px;
+    color: #fff;
+    font: 14px/30px 'Microsoft Yahei';
+    display: inline-block;
+    text-decoration: none
+}
+
+.btn_ok {
+    background: #f95353;
+    margin-right: 10px
+}
+
+.btn_ok:hover {
+    background: #ff4c4c
+}
+
+.btn_no {
+    background: #a5a5a5
+}
+
+.close_later {
+    width: 314px;
+    font: 13px/16px 'Microsoft Yahei';
+    padding-bottom: 4px;
+    color: #a5a5a5;
+    text-align: center
+}
+
+.close_later span {
+    font-family: arial;
+    color: #ff4c4c
+}
+
+.verification_box .popup-body {
+    width: 370px;
+    height: auto;
+    padding: 50px 0 40px 70px
+}
+
+.verification_box .tips {
+    line-height: 30px;
+    text-align: left
+}
+
+.ver_info_box {
+    vertical-align: bottom;
+    font-size: 0;
+    height: 32px;
+    line-height: 32px;
+    clear: both
+}
+
+.ver_info {
+    width: 108px;
+    height: 20px;
+    padding: 5px;
+    border: solid 1px #e6e6e6;
+    display: inline-block;
+    float: left;
+    font: 14px/30px arial
+}
+
+.ver_img {
+    width: 80px;
+    height: 30px;
+    margin: 1px 8px 0 10px;
+    display: inline-block;
+    float: left
+}
+
+.ver_change {
+    color: #2875cc;
+    display: inline-block;
+    font: 14px/32px 'Microsoft Yahei';
+    float: left;
+    text-decoration: none
+}
+
+.ver_change:hover {
+    text-decoration: none
+}
+
+.error_tips {
+    font: 13px/30px 'Microsoft Yahei';
+    color: #ff4c4c;
+    height: 30px
+}
+
+.continue_btn {
+    width: 100px;
+    height: 30px;
+    margin-top: 12px;
+    border-radius: 3px;
+    font: 14px/30px 'Microsoft Yahei';
+    color: #fff;
+    background: #ff4c4c;
+    display: block;
+    text-align: center;
+    text-decoration: none
+}
+
+.continue_btn:hover {
+    text-decoration: none
+}
+
+.mask {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: .2;
+    -moz-opacity: .2;
+    -webkit-opacity: .2;
+    -khtml-opacity: .2;
+    -ms-filter: "alpha(Opacity=20)";
+    filter: alpha(opacity=20);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 60
+}
+
+.seckill_content * {
+    box-sizing: content-box
+}
+
+.numerical_content ul li {
+    list-style: none;
+    padding: 0;
+    float: left
+}
+
+.numerical_content .numerical_content_two li {
+    margin-left: 10px;
+    margin-left: 10px \9
+}
+
+.numerical_content ul li:first-child {
+    margin: 0
+}
+
+.numerical_content_two .numerical_content_two_bg {
+    background-color: #fff;
+    height: 300px;
+    width: 190px
+}
+
+.numerical_content_two .numerical_content_two_bg .numerical_content_two_img img {
+    height: 200px;
+    width: 190px
+}
+
+.numerical_content_two .numerical_content_two_bg .numerical_content_two_txt {
+    padding: 0 8px 8px
+}
+
+.numerical_content_two .numerical_content_two_bg .numerical_content_two_name {
+    height: 35px;
+    width: 174px;
+    overflow: hidden
+}
+
+.numerical_content_two .numerical_content_two_bg .numerical_content_two_name a {
+    font: 400 12px "Microsoft YaHei";
+    color: #5e5e5e;
+    text-decoration: none
+}
+
+.numerical_content_two .numerical_content_two_bg .numerical_content_two_price {
+    font: 400 14px Arial;
+    color: #e3101e;
+    margin-bottom: 2px
+}
+
+.numerical_content_two .numerical_content_two_bg .numerical_content_two_price span {
+    font: 700 21px Arial;
+    color: #e3101e
+}
+
+.numerical_content_two .numerical_content_two_bg .numerical_content_two_btn {
+    background-color: #e3101e;
+    padding: 6px 0;
+    text-align: center
+}
+
+.numerical_content_two .numerical_content_two_bg .numerical_content_two_btn a {
+    font: 400 14px "Microsoft YaHei";
+    color: #fff;
+    text-decoration: none
+}
+
+.numerical_content_two .numerical_content_two_bg .numerical_content_two_btn a:hover {
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer
+}
+
+@charset "utf-8";
+.bombBox {
+    width: 1000px;
+    overflow: hidden
+}
+
+.bombBox li {
+    width: 190px;
+    background-color: #fff;
+    margin: 5px 10px 5px 0;
+    float: left
+}
+
+.bombBox li a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 5px
+}
+
+.bombBox li h3, .bombBox li h4 {
+    width: 90%;
+    height: 20px;
+    font: 14px/20px "微软雅黑";
+    color: #000;
+    overflow: hidden;
+    margin: 0 auto
+}
+
+.bombBox li h4 {
+    font-size: 13px;
+    color: #555
+}
+
+.bombBox li span {
+    color: #F30157;
+    font: 16px/25px "微软雅黑"
+}
+
+.bombBox li font {
+    font-size: 20px;
+    font-family: arial
+}
+
+.bombBox li p {
+    width: 150px;
+    height: 25px;
+    border: 1px solid #F30157;
+    font: 15px/25px "微软雅黑";
+    margin: 0 auto;
+    background-color: #F30157;
+    color: #fff
+}
+
+.bombBox li:hover {
+    -webkit-animation: moveY linear .5s;
+    -moz-animation: moveY linear .5s;
+    animation: moveY linear .5s
+}
+
+@-webkit-keyframes moveY {
+    0% {
+        transform: translateY(0)
+    }
+    50% {
+        transform: translateY(-2px)
+    }
+    100% {
+        transform: translateY(0)
+    }
+}
+
+@-moz-keyframes moveY {
+    0% {
+        transform: translateY(0)
+    }
+    50% {
+        transform: translateY(-2px)
+    }
+    100% {
+        transform: translateY(0)
+    }
+}
+
+@keyframes moveY {
+    0% {
+        transform: translateY(0)
+    }
+    50% {
+        transform: translateY(-2px)
+    }
+    100% {
+        transform: translateY(0)
+    }
+}

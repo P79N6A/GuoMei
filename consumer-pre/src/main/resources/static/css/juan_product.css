@@ -1,0 +1,174 @@
+.gm-compareBox {
+display: none;
+position: fixed;
+bottom: 0;
+z-index: 30;
+width: 990px;
+height: 142px;
+background: #fff;
+box-shadow: 0 0 20px rgba(0, 0, 0, .19)
+}
+
+.gm-compareBox-hd {
+    height: 32px;
+    border-bottom: 1px solid #e6e6e6;
+    background: #f3f3f3;
+    line-height: 32px
+}
+
+.gm-compareBox-hd .tabs-hide {
+    float: right;
+    margin-right: 10px;
+    color: #06c;
+    cursor: pointer
+}
+
+.gm-compareBox-hd .tabs {
+    float: left;
+    width: 140px;
+    height: 32px;
+    text-align: center
+}
+
+.gm-compareBox-hd .cur {
+    position: relative;
+    border-right: 1px solid #e6e6e6;
+    border-bottom: 1px solid #fff;
+    background-color: #fff;
+    color: #c00;
+    font-weight: 700
+}
+
+.gm-compareBox-bd {
+    overflow: hidden;
+    padding-top: 25px;
+    padding-right: 110px;
+    height: 85px
+}
+
+.gm-compareBox-list .item-compare {
+    position: relative;
+    float: left;
+    margin-right: 3px;
+    width: 215px;
+    height: 84px
+}
+
+.gm-compareBox-list .default {
+    padding: 0 12px;
+    width: 191px;
+    height: 80px;
+    border-bottom: 4px solid #e6e6e6;
+    color: #ccc
+}
+
+.gm-compareBox-list .default span {
+    float: left;
+    overflow: hidden;
+    margin-right: 12px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #e7e7e7;
+    background: #f6f6f6;
+    text-align: center;
+    font: 46px/50px "Microsoft YaHei"
+}
+
+.gm-compareBox-list .product {
+    padding: 0 12px 0 70px;
+    width: 133px;
+    height: 80px;
+    border-bottom: 4px solid #c00
+}
+
+.gm-compareBox-list .product .pic {
+    float: left;
+    overflow: hidden;
+    margin-left: -58px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #e7e7e7;
+    background: #f6f6f6;
+    text-align: center
+}
+
+.gm-compareBox-list .product .pic img {
+    width: 50px;
+    height: 50px
+}
+
+.gm-compareBox-list .product .name {
+    overflow: hidden;
+    height: 36px;
+    word-wrap: break-word;
+    word-brak: break-all
+}
+
+.gm-compareBox-list .product .price {
+    color: #e3101e;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 2px
+}
+
+.gm-compareBox-list .product .tags {
+    display: inline-block;
+    vertical-align: middle;
+    height: 16px;
+    line-height: 16px;
+    color: #e3101e;
+    border: 1px solid #e3101e;
+    padding: 0 2px
+}
+
+.gm-compareBox-list .product .delete {
+    float: right;
+    visibility: hidden;
+    color: #06c;
+    margin-top: 2px
+}
+
+.gm-compareBox-list .product:hover .delete {
+    visibility: visible
+}
+
+.gm-compareBox-opt {
+    float: right;
+    margin-right: -110px;
+    width: 110px;
+    text-align: center
+}
+
+.gm-compareBox-opt .go-commpare {
+    display: inline-block;
+    margin-bottom: 3px;
+    width: 66px;
+    height: 28px;
+    line-height: 28px;
+    border: 1px solid #e3101e;
+    background: #e3101e;
+    color: #fff;
+    text-decoration: none
+}
+
+.gm-compareBox-opt .disable {
+    border: 1px solid #e6e6e6;
+    background: #f8f8f8;
+    color: #ccc;
+    cursor: default
+}
+
+.gm-compareBox-opt .clear-commpare {
+    color: #06c
+}
+
+.errorTips {
+    display: none;
+    margin-top: -36px;
+    background: #ffdfe0;
+    border: 2px solid #fed2d3;
+    height: 32px;
+    text-align: center;
+    color: #cd0001;
+    font: 700 12px/32px Arial
+}

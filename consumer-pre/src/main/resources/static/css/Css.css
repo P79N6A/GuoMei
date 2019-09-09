@@ -1,0 +1,1682 @@
+.bg_white {
+    background: #fff
+}
+
+.tab_time_selected .coupon_good_rob_tab_bg, .tab_time_clicked .coupon_good_rob_tab_bg {
+    background: url(../image/juan/T1QC_vBsY_1RCvBVdK.png) no-repeat 0 -920px;
+    width: 196px;
+    height: 70px;
+    margin-top: -10px;
+    position: relative
+}
+
+.blue_coupon_bg {
+    background: url(../image/juan/T1QC_vBsY_1RCvBVdK.png) no-repeat 0 -190px;
+    width: 94px;
+    height: 180px
+}
+
+.red_coupon_bg {
+    background: url(../image/juan/T1QC_vBsY_1RCvBVdK.png) no-repeat 0 0;
+    width: 94px;
+    height: 180px
+}
+
+.shop_coupon_bg {
+    background: url(../image/juan/T1QC_vBsY_1RCvBVdK.png) no-repeat -105px -190px;
+    width: 94px;
+    height: 180px
+}
+
+.loot_all_coupon_bg {
+    background: url(../image/juan/T1QC_vBsY_1RCvBVdK.png) no-repeat -105px 0;
+    width: 94px;
+    height: 180px
+}
+
+.loot_all {
+    color: #ccc
+}
+
+.loot_all_bg {
+    background-color: #ccc
+}
+
+.quancenter * {
+    box-sizing: content-box
+}
+
+.bg_grey {
+    margin: 0 auto;
+    width: 100%;
+    overflow: hidden;
+    zoom: 1;
+    margin-bottom: 0
+}
+
+.bg_grey .wbox {
+    margin: 0 auto;
+    width: 1200px;
+    padding: 50px 0 20px
+}
+
+.wbox h1 {
+    font: 24px "Microsoft YaHei";
+    color: #333;
+    margin: 0;
+    padding: 0
+}
+
+.coupon_wbox_tab {
+    width: 1200px;
+    height: 50px;
+    background-color: #e6e6e6;
+    margin-top: 20px
+}
+
+.coupon_wbox_tab ul {
+    list-style: none;
+    padding: 0;
+    margin: 0
+}
+
+.tab_time {
+    vertical-align: middle
+}
+
+.coupon_wbox_tab ul li {
+    list-style: none;
+    padding: 0 22.5px;
+    width: 196px;
+    width: 195px \9;
+    float: left
+}
+
+.coupon_wbox_tab ul li:last-child {
+    padding: 0
+}
+
+.tab_time_selected .timeline_item_link {
+    text-decoration: none;
+    line-height: 0
+}
+
+.timeline_item_link:hover {
+    text-decoration: none
+}
+
+.timeline_item_link {
+    text-decoration: none;
+    line-height: 55px
+}
+
+.tab_time_selected .rob_tab_selected_text {
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    color: #fff;
+    text-align: center
+}
+
+.tab_time_selected .rob_tab_selected_text_time {
+    color: #fff
+}
+
+.rob_tab_selected_text_time {
+    font: 400 24px Arial;
+    color: #888;
+    margin-right: 5px
+}
+
+.tab_time_selected .rob_tab_selected_text_now {
+    color: #fff;
+    display: inline-block
+}
+
+.rob_tab_selected_text_now {
+    display: none
+}
+
+.tab_time_selected .rob_tab_selected_text_begin {
+    display: none
+}
+
+.rob_tab_selected_text_begin {
+    font: 400 18px "Microsoft YaHei";
+    color: #888
+}
+
+.rob_tab_selected_text_now {
+    font: 400 18px "Microsoft YaHei";
+    color: #888
+}
+
+.tab_time_clicked .rob_tab_selected_text {
+    position: relative;
+    top: 10px;
+    color: #fff;
+    text-align: center
+}
+
+.tab_time_clicked .rob_tab_selected_text_time {
+    color: #fff
+}
+
+.tab_time_clicked .rob_tab_selected_text_begin {
+    color: #fff
+}
+
+.tab_time_clicked .rob_tab_selected_text_now {
+    color: #fff
+}
+
+.tab_time_selected .timeline_timecount {
+    display: block;
+    position: absolute;
+    left: 20px;
+    bottom: 8px;
+    color: #fff
+}
+
+.timeline_timecount {
+    display: none
+}
+
+.tab_time_selected .timeline_timecount_end_txt {
+    font: 400 14px "Microsoft YaHei";
+    margin-right: 5px
+}
+
+.tab_time_selected .timeline_timecount_end_txt span {
+    color: #000;
+    display: inline-block;
+    margin: 0 2px
+}
+
+.tab_time_selected .timeline_timecount_end_time {
+    background-color: #000;
+    width: 18px;
+    height: 16px;
+    font: 400 12px Arial;
+    padding: 1px 2px
+}
+
+.bg_grey .coupon_wbox_img {
+    margin-top: 40px
+}
+
+.bg_grey .coupon_wbox_img ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    min-height: 85px
+}
+
+.bg_grey .coupon_wbox_img ul span.nodata {
+    font-size: 16px;
+    color: #999;
+    position: relative;
+    left: 50%;
+    width: 450px;
+    margin-left: -225px;
+    display: inline-block;
+    padding: 30px 0
+}
+
+.bg_grey .coupon_wbox_img ul li {
+    list-style: none;
+    padding: 20px 0 20px 20px;
+    width: 559px;
+    height: 140px;
+    border: 1px solid #e6e6e6;
+    border-right: 0;
+    background-color: #fff;
+    margin-bottom: 20px;
+    float: left
+}
+
+.bg_grey .coupon_wbox_img ul li:first-child {
+    margin-right: 40px
+}
+
+.bg_grey .coupon_wbox_img ul > li:nth-child(2n+1) {
+    margin-right: 40px
+}
+
+.coupon_good_rob_tab_bg {
+    text-align: center
+}
+
+.bg_grey .coupon_wbox_img .coupon_wbox_red_s_img {
+    margin-right: 20px;
+    display: inline-block
+}
+
+.bg_grey .coupon_wbox_img .coupon_wbox_red_s_img img {
+    margin-top: -135px
+}
+
+.bg_grey .coupon_wbox_img .coupon_wbox_s_content {
+    display: inline-block;
+    margin-right: 30px
+}
+
+.coupon_wbox_bg .coupon_wbox_price {
+    font: 400 24px Arial;
+    margin-top: 5px;
+    color: #ff4c4c
+}
+
+.coupon_bg_img {
+    opacity: .9;
+    filter: alpha(opacity=90);
+    -moz-opacity: .9;
+    -khtml-opacity: .9;
+    text-decoration: none
+}
+
+.coupon_bg_img:hover {
+    text-decoration: none
+}
+
+.hq_red .hq_name {
+    color: #5e5e5e
+}
+
+.hq_red .coupon_bg_img {
+    background: url(../image/juan/T1EjWsBgCT1RCvBVdK.png) no-repeat 0 0;
+    width: 94px;
+    height: 180px
+}
+
+.hq_red .coupon_bg_img:hover {
+    background: url(../image/juan/T1EjWsBgCT1RCvBVdK.png) no-repeat -94px 0;
+    width: 94px;
+    height: 180px
+}
+
+.hq_green .hq_name {
+    color: #5e5e5e
+}
+
+.hq_green .coupon_bg_img {
+    background: url(../image/juan/T1EjWsBgCT1RCvBVdK.png) no-repeat 0 0;
+    width: 94px;
+    height: 180px
+}
+
+.hq_green .coupon_bg_img:hover {
+    background: url(../image/juan/T1EjWsBgCT1RCvBVdK.png) no-repeat -94px 0;
+    width: 94px;
+    height: 180px
+}
+
+.hq_blue .hq_name {
+    color: #5e5e5e
+}
+
+.hq_blue .coupon_bg_img {
+    background: url(../image/juan/T1EjWsBgCT1RCvBVdK.png) no-repeat 0 0;
+    width: 94px;
+    height: 180px
+}
+
+.hq_blue .coupon_bg_img:hover {
+    background: url(../image/juan/T1EjWsBgCT1RCvBVdK.png) no-repeat -94px 0;
+    width: 94px;
+    height: 180px
+}
+
+.hq_beauty .hq_name {
+    color: #5e5e5e
+}
+
+.hq_beauty .coupon_bg_img {
+    background: url(../image/juan/T1EjWsBgCT1RCvBVdK.png) no-repeat 0 0;
+    width: 94px;
+    height: 180px
+}
+
+.hq_beauty .coupon_bg_img:hover {
+    background: url(../image/juan/T1EjWsBgCT1RCvBVdK.png) no-repeat -94px 0;
+    width: 94px;
+    height: 180px
+}
+
+.coupon_bg_img:hover {
+    filter: alpha(opacity=100);
+    -moz-opacity: 1;
+    -khtml-opacity: 1;
+    opacity: 1
+}
+
+.loot_all_img .hq_name {
+    color: #ccc
+}
+
+.loot_all_img .coupon_wbox_price {
+    color: #ccc
+}
+
+.loot_all_img .coupon_bg_img {
+    background: url(../image/juan/T1QC_vBsY_1RCvBVdK.png) no-repeat -105px 0;
+    width: 94px;
+    height: 180px
+}
+
+.loot_all_img .coupon_bg_img:hover {
+    background: url(../image/juan/T1QC_vBsY_1RCvBVdK.png) no-repeat -105px 0;
+    width: 94px;
+    height: 180px
+}
+
+.loot_all_img .bg_grey .coupon_wbox_img .coupon_wbox_bg .coupon_wbox_content_line .red_line_r {
+    color: #ccc
+}
+
+.loot_all_img .coupon_bg_img {
+    filter: alpha(opacity=100);
+    -moz-opacity: 1;
+    -khtml-opacity: 1;
+    opacity: 1
+}
+
+.line_color {
+    background-color: #ff5757
+}
+
+.t_txt_color {
+    color: #5e5e5e
+}
+
+.b_txt_color {
+    color: #888;
+    max-width: 238px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.coupon_wbox_bg .coupon_wbox_price span {
+    font-weight: 700;
+    font-size: 48px
+}
+
+.loot_all_img .price_color {
+    color: #ccc
+}
+
+.loot_all_img .coupon_wbox_price span {
+    color: #ccc
+}
+
+.loot_all_img .t_txt_color span {
+    color: #ccc
+}
+
+.loot_all_img .line_bg {
+    background-color: #ccc
+}
+
+.loot_all_img .line_color {
+    background-color: #ccc
+}
+
+.loot_all_img .t_txt_color {
+    color: #ccc
+}
+
+.loot_all_img .b_txt_color {
+    color: #ccc
+}
+
+.coupon_wbox_s_content .coupon_wbox_txt {
+    font-family: "Microsoft YaHei";
+    margin-bottom: 30px
+}
+
+.coupon_wbox_s_content .coupon_wbox_txt .coupon_wbox_t_txt {
+    font-size: 14px;
+    margin-left: -5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 285px
+}
+
+.coupon_wbox_bg {
+    position: relative
+}
+
+.coupon_wbox_content_line {
+    display: inline-block
+}
+
+.coupon_wbox_content_line .line {
+    width: 131px;
+    height: 4px;
+    display: inline-block;
+    margin-right: 5px;
+    position: relative;
+    background-color: #e6e6e6
+}
+
+.coupon_wbox_content_line .line {
+    background-color: #ccc
+}
+
+.coupon_wbox_content_line .red_line {
+    height: 4px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #ff5757
+}
+
+
+
+.coupon_wbox_content_line .red_line_r {
+    display: inline-block;
+    font: 400 12px "Microsoft YaHei";
+    color: #a5a5a5;
+    vertical-align: middle
+}
+
+.coupon_bg_img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer
+}
+
+.red_coupon_bg_txt {
+    font: 400 22px "Microsoft YaHei";
+    color: #fff;
+    margin: 40px auto;
+    width: 30px;
+    line-height: 26px;
+    text-align: center;
+    border: 0 solid #fff;
+    display: block
+}
+
+.loot_all_img .coupon_bg_img {
+    cursor: default
+}
+
+.loot_all_img .loot_all_r_img, .loot_all_has_img {
+    position: absolute;
+    display: block;
+    top: 50px;
+    right: 60px;
+    background: url(../image/juan/T1HCKvB4_g1RCvBVdK.png) no-repeat;
+    width: 76px;
+    height: 76px
+}
+
+.coupon_wbox_bg .loot_all_has_img {
+    background: url(../image/juan/T1HCKvB4_g1RCvBVdK.png) no-repeat -90px 0
+}
+
+.icon {
+    background-image: url(../image/juan/T1IkEvB_Dv1RCvBVdK.png);
+    background-repeat: no-repeat
+}
+
+.icon_warn {
+    background-position: 0 0
+}
+
+.icon_right {
+    background-position: 0 -46px
+}
+
+.icon_error {
+    background-position: 0 -92px
+}
+
+.popup {
+    display: none;
+    width: 440px;
+    box-shadow: 0 0 40px 0 #7f7f7f;
+    -moz-box-shadow: 0 0 40px 0 #7f7f7f;
+    -webkit-box-shadow: 0 0 40px 0 #7f7f7f;
+    border: 4px solid #adadad \9;
+    position: fixed;
+    top: 30% !important;
+    left: 50% !important;
+    margin-left: -220px;
+    z-index: 1000
+}
+
+.popup .verification_box {
+    display: none;
+    width: 310px !important;
+    left: 500px !important;
+    background: #FFF;
+    padding: 0 10px 0 40px !important
+}
+
+.popup-none {
+    box-shadow: 0 0;
+    -moz-box-shadow: 0 0;
+    -webkit-box-shadow: 0 0;
+    border: 0
+}
+
+.popup .icon.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    _right: 24px;
+    margin-right: 0;
+    display: block;
+    width: 12px;
+    height: 12px;
+    background-position: 0 -137px;
+    opacity: .7;
+    filter: alpha(opacity=70);
+    overflow: hidden;
+    cursor: pointer
+}
+
+.popup .close-sm {
+    width: 12px;
+    height: 12px;
+    background-position: -68px -16px
+}
+
+.popup .close-lg {
+    width: 34px;
+    height: 34px;
+    background-position: 0 0
+}
+
+.popup .close-white {
+    width: 16px;
+    height: 16px;
+    background-position: -84px 0
+}
+
+.popup .close-white-sm {
+    width: 12px;
+    height: 12px;
+    background-position: -84px -16px
+}
+
+.popup .close-white-lg {
+    width: 34px;
+    height: 34px;
+    background-position: -34px 0
+}
+
+.popup .close:hover {
+    opacity: 1;
+    filter: alpha(opacity=100)
+}
+
+.popup .popup-body {
+    padding: 70px 0 20px 50px;
+    background: #fff
+}
+
+.popup .tips, .popup .icon, .popup .tips p {
+    display: inline-block;
+    font: 16px/40px "Microsoft Yahei";
+    color: #333;
+    vertical-align: top
+}
+
+.popup .tips {
+    width: 350px;
+    font-size: 0;
+    text-align: center
+}
+
+.popup .icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px
+}
+
+.popup .num {
+    font-family: arial;
+    font-size: 16px;
+    color: #ff4c4c
+}
+
+.popup .coupons_box {
+    width: 284px;
+    height: 102px;
+    padding: 20px 0 0 30px;
+    margin-top: 30px;
+    background: url(../image/juan/T1CohvBmLT1RCvBVdK.jpg) no-repeat
+}
+
+.popup .coupons_box .title {
+    font-size: 0;
+    height: 48px;
+    line-height: 48px;
+    vertical-align: bottom
+}
+
+.symbol, .coupons_box .price, .price_point {
+    color: #ff4c4c;
+    font-family: arial;
+    margin-right: 5px
+}
+
+.symbol {
+    font-size: 18px
+}
+
+.coupons_box .price {
+    font-size: 48px
+}
+
+.price_point {
+    font-size: 16px
+}
+
+.coupon_name {
+    font-family: 'Microsoft Yahei';
+    font-size: 14px
+}
+
+.popup .tips_box {
+    font: 12px/18px 'Microsoft Yahei';
+    color: #888
+}
+
+.popup .btn_box {
+    width: 314px;
+    margin-top: 40px;
+    text-align: center;
+    font-size: 0;
+    padding-bottom: 20px
+}
+
+.popup .btn_ok, .popup .btn_no {
+    width: 100px;
+    height: 30px;
+    border-radius: 3px;
+    color: #fff;
+    font: 14px/30px 'Microsoft Yahei';
+    display: inline-block;
+    text-decoration: none
+}
+
+.btn_ok {
+    background: #f95353;
+    margin-right: 10px
+}
+
+.btn_ok:hover {
+    background: #ff4c4c
+}
+
+.btn_no {
+    background: #a5a5a5
+}
+
+.close_later {
+    width: 314px;
+    font: 13px/16px 'Microsoft Yahei';
+    padding-bottom: 4px;
+    color: #a5a5a5;
+    text-align: center
+}
+
+.close_later span {
+    font-family: arial;
+    color: #ff4c4c
+}
+
+.verification_box .popup-body {
+    width: 370px;
+    height: auto;
+    padding: 50px 0 40px 70px
+}
+
+.verification_box .tips {
+    line-height: 30px;
+    text-align: left
+}
+
+.ver_info_box {
+    vertical-align: bottom;
+    font-size: 0;
+    height: 32px;
+    line-height: 32px;
+    clear: both
+}
+
+.ver_info {
+    width: 108px;
+    height: 20px;
+    padding: 5px;
+    border: solid 1px #e6e6e6;
+    display: inline-block;
+    float: left;
+    font: 14px/30px arial
+}
+
+.ver_img {
+    width: 80px;
+    height: 30px;
+    margin: 1px 8px 0 10px;
+    display: inline-block;
+    float: left
+}
+
+.ver_change {
+    color: #2875cc;
+    display: inline-block;
+    font: 14px/32px 'Microsoft Yahei';
+    float: left;
+    text-decoration: none
+}
+
+.ver_change:hover {
+    text-decoration: none
+}
+
+.error_tips {
+    font: 13px/30px 'Microsoft Yahei';
+    color: #ff4c4c;
+    height: 30px
+}
+
+.continue_btn {
+    width: 100px;
+    height: 30px;
+    margin-top: 12px;
+    border-radius: 3px;
+    font: 14px/30px 'Microsoft Yahei';
+    color: #fff;
+    background: #ff4c4c;
+    display: block;
+    text-align: center;
+    text-decoration: none
+}
+
+.continue_btn:hover {
+    text-decoration: none
+}
+
+.mask {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: .2;
+    -moz-opacity: .2;
+    -webkit-opacity: .2;
+    -khtml-opacity: .2;
+    -ms-filter: "alpha(Opacity=20)";
+    filter: alpha(opacity=20);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 60
+}
+
+.pager {
+    float: right;
+    height: 32px;
+    margin: 0 0 25px;
+    position: relative
+}
+
+.pager a, .pager span, .pager label, .pager button {
+    float: left
+}
+
+.pager a, .pager span.cur {
+    position: relative;
+    min-width: 4px;
+    height: 30px;
+    margin: 0 0 0 -1px;
+    padding: 0 13px;
+    background: #FFF;
+    border: 1px solid #ddd;
+    z-index: 0;
+    font: 400 14px/30px Arial;
+    color: #5e5e5e
+}
+
+.pager span.cur {
+    background: #f8f8f8;
+    border: 1px solid #e6e6e6;
+    color: #888;
+    font-weight: 500;
+    text-decoration: none;
+    z-index: 10;
+    color: #a5a5a5
+}
+
+.pager a:hover {
+    color: #c00;
+    text-decoration: none
+}
+
+.pager a.prev:hover, .pager a.next:hover {
+    font-weight: 400;
+    color: #c00;
+    background: #fff
+}
+
+.pager s {
+    position: absolute
+}
+
+.pager .prev {
+    padding: 0 8px 0 21px;
+    font-size: 12px;
+    width: 40px
+}
+
+.pager .prev s {
+    overflow: hidden;
+    top: 10px;
+    left: 10px;
+    width: 6px;
+    height: 10px;
+    background: url(../image/juan/list_bg.png) no-repeat -107px -89px
+}
+
+.pager .disable .icon-prev {
+    background-position: -60px -25px
+}
+
+.pager .disable .icon-next {
+    background-position: -67px -25px
+}
+
+.pager .next {
+    padding: 0 21px 0 8px;
+    font-size: 12px;
+    width: 40px
+}
+
+.pager .next s {
+    overflow: hidden;
+    top: 10px;
+    right: 10px;
+    width: 6px;
+    height: 10px;
+    background: url(../image/juan/list_bg.png) no-repeat -114px -89px;
+    _background: url(../image/juan/list_bg_ie6.png) no-repeat -114px -89px
+}
+
+.pager .placeholder {
+    overflow: hidden;
+    width: 16px;
+    height: 22px;
+    margin: 0 8px;
+    background: url(../image/juan/list_bg.png) no-repeat -55px 0
+}
+
+.pager .show-more {
+    margin: 0 10px;
+    padding: 0 14px 0 0;
+    border: 0 none;
+    font-weight: 500
+}
+
+.pager .show-more:hover {
+    background: 0;
+    border: 0 none;
+    color: #ea5504;
+    text-decoration: underline
+}
+
+.pager .show-more s {
+    overflow: hidden;
+    top: 9px;
+    right: 0;
+    width: 9px;
+    height: 5px;
+    background: url(../image/juan/search_bg.png) no-repeat -20px -34px
+}
+
+.icon-coo8 {
+    background: url(../image/juan/list-ui.gif) no-repeat scroll -71px -141px transparent;
+    height: 12px;
+    width: 42px
+}
+
+.pager .show-more:hover s {
+    background-position: -30px -34px
+}
+
+.pager .txt-wrap {
+    margin: 0 5px 0 10px;
+    color: #959595;
+    line-height: 30px
+}
+
+.pager .txt {
+    width: 32px;
+    height: 18px;
+    line-height: 18px;
+    margin: 0 5px;
+    padding: 4px 0;
+    border: 1px solid #ccc;
+    text-align: center;
+    vertical-align: middle;
+    color: #5e5e5e;
+    font-family: Arial
+}
+
+.pager .btn {
+    width: 42px;
+    height: 26px;
+    padding: 0;
+    background: #FFF;
+    border: 1px solid #ddd;
+    color: #5e5e5e;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 2px;
+    background: #f8f8f8;
+    font: 400 12px/26px Simsun
+}
+
+.pager .btn:hover {
+    border: 1px solid #ccc;
+    color: #333
+}
+
+.pager .btn:active {
+    background: #f3f3f3
+}
+
+.pager .disable {
+    cursor: default;
+    background: #f8f8f8;
+    color: #ccc
+}
+
+.pager a.disable:hover {
+    color: #ccc;
+    background: #f8f8f8
+}
+
+.icon {
+    background-image: url(../image/juan/T1IkEvB_Dv1RCvBVdK.png);
+    background-repeat: no-repeat
+}
+
+.icon_warn {
+    background-position: 0 0
+}
+
+.icon_right {
+    background-position: 0 -46px
+}
+
+.icon_error {
+    background-position: 0 -92px
+}
+
+.popup {
+    display: none;
+    width: 440px;
+    box-shadow: 0 0 40px 0 #7f7f7f;
+    -moz-box-shadow: 0 0 40px 0 #7f7f7f;
+    -webkit-box-shadow: 0 0 40px 0 #7f7f7f;
+    border: 4px solid #adadad \9;
+    position: fixed;
+    top: 30% !important;
+    left: 50% !important;
+    margin-left: -220px;
+    z-index: 1000
+}
+
+.popup .verification_box {
+    display: none;
+    width: 310px !important;
+    left: 500px !important;
+    background: #FFF;
+    padding: 0 10px 0 40px !important
+}
+
+.popup-none {
+    box-shadow: 0 0;
+    -moz-box-shadow: 0 0;
+    -webkit-box-shadow: 0 0;
+    border: 0
+}
+
+.popup .icon.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    _right: 24px;
+    margin-right: 0;
+    display: block;
+    width: 12px;
+    height: 12px;
+    background-position: 0 -137px;
+    opacity: .7;
+    filter: alpha(opacity=70);
+    overflow: hidden;
+    cursor: pointer
+}
+
+.popup .close-sm {
+    width: 12px;
+    height: 12px;
+    background-position: -68px -16px
+}
+
+.popup .close-lg {
+    width: 34px;
+    height: 34px;
+    background-position: 0 0
+}
+
+.popup .close-white {
+    width: 16px;
+    height: 16px;
+    background-position: -84px 0
+}
+
+.popup .close-white-sm {
+    width: 12px;
+    height: 12px;
+    background-position: -84px -16px
+}
+
+.popup .close-white-lg {
+    width: 34px;
+    height: 34px;
+    background-position: -34px 0
+}
+
+.popup .close:hover {
+    opacity: 1;
+    filter: alpha(opacity=100)
+}
+
+.popup .popup-body {
+    padding: 70px 0 20px 50px;
+    background: #fff
+}
+
+.popup .tips, .popup .icon, .popup .tips p {
+    display: inline-block;
+    font: 16px/40px "Microsoft Yahei";
+    color: #333;
+    vertical-align: top
+}
+
+.popup .tips {
+    width: 350px;
+    font-size: 0;
+    text-align: center
+}
+
+.popup .icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px
+}
+
+.popup .num {
+    font-family: arial;
+    font-size: 16px;
+    color: #ff4c4c
+}
+
+.popup .coupons_box {
+    width: 284px;
+    height: 102px;
+    padding: 20px 0 0 30px;
+    margin-top: 30px;
+    background: url(../image/juan/T1CohvBmLT1RCvBVdK.jpg) no-repeat
+}
+
+.popup .coupons_box .title {
+    font-size: 0;
+    height: 48px;
+    line-height: 48px;
+    vertical-align: bottom
+}
+
+.symbol, .coupons_box .price, .price_point {
+    color: #ff4c4c;
+    font-family: arial;
+    margin-right: 5px
+}
+
+.symbol {
+    font-size: 18px
+}
+
+.coupons_box .price {
+    font-size: 48px
+}
+
+.price_point {
+    font-size: 16px
+}
+
+.coupon_name {
+    font-family: 'Microsoft Yahei';
+    font-size: 14px
+}
+
+.popup .tips_box {
+    font: 12px/18px 'Microsoft Yahei';
+    color: #888
+}
+
+.popup .btn_box {
+    width: 314px;
+    margin-top: 40px;
+    text-align: center;
+    font-size: 0;
+    padding-bottom: 20px
+}
+
+.popup .btn_ok, .popup .btn_no {
+    width: 100px;
+    height: 30px;
+    border-radius: 3px;
+    color: #fff;
+    font: 14px/30px 'Microsoft Yahei';
+    display: inline-block;
+    text-decoration: none
+}
+
+.btn_ok {
+    background: #f95353;
+    margin-right: 10px
+}
+
+.btn_ok:hover {
+    background: #ff4c4c
+}
+
+.btn_no {
+    background: #a5a5a5
+}
+
+.close_later {
+    width: 314px;
+    font: 13px/16px 'Microsoft Yahei';
+    padding-bottom: 4px;
+    color: #a5a5a5;
+    text-align: center
+}
+
+.close_later span {
+    font-family: arial;
+    color: #ff4c4c
+}
+
+.verification_box .popup-body {
+    width: 370px;
+    height: auto;
+    padding: 50px 0 40px 70px
+}
+
+.verification_box .tips {
+    line-height: 30px;
+    text-align: left
+}
+
+.ver_info_box {
+    vertical-align: bottom;
+    font-size: 0;
+    height: 32px;
+    line-height: 32px;
+    clear: both
+}
+
+.ver_info {
+    width: 108px;
+    height: 20px;
+    padding: 5px;
+    border: solid 1px #e6e6e6;
+    display: inline-block;
+    float: left;
+    font: 14px/30px arial
+}
+
+.ver_img {
+    width: 80px;
+    height: 30px;
+    margin: 1px 8px 0 10px;
+    display: inline-block;
+    float: left
+}
+
+.ver_change {
+    color: #2875cc;
+    display: inline-block;
+    font: 14px/32px 'Microsoft Yahei';
+    float: left;
+    text-decoration: none
+}
+
+.ver_change:hover {
+    text-decoration: none
+}
+
+.error_tips {
+    font: 13px/30px 'Microsoft Yahei';
+    color: #ff4c4c;
+    height: 30px
+}
+
+.continue_btn {
+    width: 100px;
+    height: 30px;
+    margin-top: 12px;
+    border-radius: 3px;
+    font: 14px/30px 'Microsoft Yahei';
+    color: #fff;
+    background: #ff4c4c;
+    display: block;
+    text-align: center;
+    text-decoration: none
+}
+
+.continue_btn:hover {
+    text-decoration: none
+}
+
+.mask {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: .2;
+    -moz-opacity: .2;
+    -webkit-opacity: .2;
+    -khtml-opacity: .2;
+    -ms-filter: "alpha(Opacity=20)";
+    filter: alpha(opacity=20);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 60
+}
+
+body {
+    font-family: "Microsoft YaHei"
+}
+
+.wbox {
+    width: 1200px;
+    margin: 0 auto
+}
+
+.cM_herder {
+    border-bottom: 2px solid #555;
+    position: relative;
+    height: 46px
+}
+
+.cM_herder h2 {
+    font: 24px "Microsoft YaHei";
+    color: #333;
+    position: absolute;
+    top: 0;
+    left: 0
+}
+
+.cM_herder .cM_navOne {
+    position: absolute;
+    bottom: 0;
+    right: 0
+}
+
+.cM_herder .cM_navOne a {
+    display: inline-block;
+    padding: 0 18px;
+    height: 34px;
+    line-height: 34px;
+    color: #5e5e5e;
+    font-size: 14px;
+    text-decoration: none
+}
+
+.cM_herder .cM_navOne a:hover {
+    background: #555;
+    color: #fff
+}
+
+.cM_herder .cM_navOne a.active {
+    background: #555;
+    color: #fff
+}
+
+.cM_navTwo {
+    height: 34px;
+    line-height: 34px;
+    background: #f6f6f6;
+    margin-top: 20px
+}
+
+.cM_Type {
+    padding: 0 5px
+}
+
+.cM_Type a {
+    color: #5e5e5e;
+    font-size: 14px;
+    padding: 0 17px;
+    height: 100%;
+    display: block;
+    float: left;
+    text-decoration: none
+}
+
+.cM_Type em {
+    margin: 0 23px;
+    width: 1px;
+    height: 20px;
+    border-left: 1px solid #ccc;
+    color: #ccc;
+    float: left;
+    position: relative;
+    top: 7px
+}
+
+.cM_Type a:hover {
+    color: #ff4c4c
+}
+
+.cM_Type a.active {
+    color: #ff4c4c
+}
+
+.cM_shop {
+    position: relative
+}
+
+.cM_shop .cM_shop_dropdown {
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    z-index: 999999;
+    position: absolute;
+    top: 34;
+    left: 0;
+    display: none
+}
+
+.cM_shop.on {
+    background: #fff
+}
+
+.cM_shop.on .cM_shop_dropdown {
+    display: block;
+    width: 140px;
+    height: 40px;
+    padding: 12px;
+    padding-top: 10px;
+    font-size:: 13px
+}
+
+.cM_shop.on:after {
+    content: "";
+    width: 9px;
+    height: 6px;
+    position: absolute;
+    top: 14px;
+    right: 5px;
+    background: url(../image/juan/T1_ZCvBCVg1RCvBVdK.jpg) no-repeat
+}
+
+.cM_couponWrap {
+    width: 1200px;
+    overflow: hidden;
+    min-height: 200px
+}
+
+.cM_shop_dropdown p {
+    line-height: 16px;
+    color: #888
+}
+
+.cM_shop_dropdown p:hover, .cM_shop_dropdown p.on {
+    color: #ee3b3b
+}
+
+.cM_shop_dropdown input {
+    color: #5e5e5e;
+    font-size: 13px;
+    width: 115px;
+    padding: 1px 5px;
+    padding-right: 20px;
+    border: 1px solid #e6e6e6;
+    background: url(../image/juan/T1f.JvB4Vv1RCvBVdK.jpg) no-repeat 122px 2px
+}
+
+.cM_shop_dropdown input:hover {
+    background: url(../image/juan/T1gCVvBTV_1RCvBVdK.jpg) no-repeat 122px 2px;
+    border: 1px solid #ee3b3b
+}
+
+.cM_coupon {
+    width: 1300px
+}
+
+.cM_coupon span.nodata {
+    background: url(../image/juan/T1ZkxvBTdg1RCvBVdK.png) no-repeat center left;
+    font-size: 16px;
+    color: #999;
+    position: relative;
+    left: 50%;
+    width: 450px;
+    margin-left: -225px;
+    display: inline-block;
+    padding: 100px 0 100px 60px;
+    vertical-align: middle
+}
+
+.cM_coupon li {
+    position: relative;
+    width: 228px;
+    height: 271px;
+    margin-right: 15px;
+    margin-top: 20px;
+    background: #f8f8f8;
+    float: left
+}
+
+.cM_coupon li .hasGone, .cM_coupon li .broughtout {
+    position: absolute;
+    top: 110px;
+    right: 0;
+    background: url(../image/juan/T1HCKvB4_g1RCvBVdK.png) no-repeat;
+    width: 78px;
+    height: 78px
+}
+
+.cM_coupon li .hasGone {
+    background: url(../image/juan/T1HCKvB4_g1RCvBVdK.png) no-repeat -90px 0
+}
+
+.cM_coupon .cMc_style {
+    height: 152px;
+    text-align: center;
+    color: #fff;
+    font-family: Arial
+}
+
+.cMPrice {
+    padding-top: 15px;
+    height: 48px
+}
+
+.cMPrice em, .cMPrice strong, .cMPrice span {
+    margin: 0;
+    padding: 0
+}
+
+.cMPrice em {
+    font-size: 18px
+}
+
+.cMPrice i {
+    font-size: 30px
+}
+
+.cMPrice strong {
+    font-size: 48px
+}
+
+.cMPrice span {
+    font-size: 24px
+}
+
+.cMInfo {
+    margin-top: 16px;
+    font-family: "Microsoft YaHei";
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 200px;
+    margin-left: 12px
+}
+
+.cMInfo em {
+    font-size: 12px
+}
+
+.cMInfo span {
+    font-size: 12px;
+    vertical-align: middle
+}
+
+.cMTime {
+    margin-top: 20px
+}
+
+.cmred_bg .cMInfo em {
+    color: #fff
+}
+
+.cmm_bg .cMInfo em {
+    color: #fff
+}
+
+.cmshop_bg .cMInfo em {
+    color: #fff
+}
+
+.cmlc_bg .cMInfo em {
+    color: #fff
+}
+
+.cmblue_bg .cMInfo em {
+    color: #fff
+}
+
+.cmhf_bg .cMInfo em {
+    color: #fff
+}
+
+.cmgw_bg .cMInfo em {
+    color: #fff
+}
+
+.cmgray_bg .cMInfo em {
+    color: #fff
+}
+
+.cM_text p {
+    line-height: 22px;
+    font-size: 12px;
+    color: #888;
+    text-align: left;
+    padding: 24px 20px 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 188px
+}
+
+.cM_text a {
+    text-align: center;
+    font: "Microsoft YaHei" 13px;
+    line-height: 25px;
+    color: #555;
+    border: 1px solid #ddd;
+    width: 88px;
+    height: 24px;
+    display: block;
+    margin: auto;
+    text-decoration: none;
+    background-color: #fff
+}
+
+.cM_text a:hover {
+    color: #ee3b3b;
+    border: 1px solid #ee3b3b;
+    background: #fff
+}
+
+.cmgray_bg + .cM_text a:hover {
+    color: #555;
+    border: 1px solid #ddd;
+    background: #fff;
+    cursor: default
+}
+
+.product-waiting {
+    position: relative;
+    left: 50%;
+    top: 65px;
+    margin: 0 0 -80px -40px;
+    height: 80px;
+    width: 80px;
+    background: url(../image/juan/loading.gif) no-repeat;
+    z-index: 3;
+    display: none
+}
+
+.pager .cur, .pager .placeholder {
+    float: left
+}
+
+.wbox .pager {
+    margin-top: 20px
+}
+
+.cM_coupon .cmred_bg {
+    background: #ff6a7a url(../image/juan/T1albsBvVv1RCvBVdK.png) repeat-x 0 bottom
+}
+
+.cM_coupon .cmm_bg {
+    background: #ff6a7a url(../image/juan/T1albsBvVv1RCvBVdK.png) repeat-x 0 bottom
+}
+
+.cM_coupon .cmshop_bg {
+    background: #ff6a7a url(../image/juan/T1albsBvVv1RCvBVdK.png) repeat-x 0 bottom
+}
+
+.cM_coupon .cmlc_bg {
+    background: #ff6a7a url(../image/juan/T1albsBvVv1RCvBVdK.png) repeat-x 0 bottom
+}
+
+.cM_coupon .cmblue_bg {
+    background: #ff6a7a url(../image/juan/T1albsBvVv1RCvBVdK.png) repeat-x 0 bottom
+}
+
+.cM_coupon .cmgray_bg {
+    background: #ddd url(../image/juan/T1cVbvBjZ_1RCvBVdK.png) repeat-x 0 bottom
+}
+
+.cM_coupon .cmhf_bg {
+    background: #ff6a7a url(../image/juan/T1albsBvVv1RCvBVdK.png) repeat-x 0 bottom
+}
+
+.cM_coupon .cmgw_bg {
+    background: #ff6a7a url(../image/juan/T1albsBvVv1RCvBVdK.png) repeat-x 0 bottom
+}

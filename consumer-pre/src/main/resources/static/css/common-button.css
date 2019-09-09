@@ -1,0 +1,221 @@
+@charset "utf-8";
+/* CSS Document 通用按钮*/
+
+/* 通用按钮 25px*/
+.commonbtn, .commonbtn span, .commonbtn strong {
+    background: url(../image/button.gif) repeat-x 0 -200px;
+    display: inline-block;
+    color: #FFF;
+    line-height: 24px;
+    font-size: 14px
+}
+
+.commonbtn {
+    padding-left: 10px;
+    border: 1px solid #FF7C00;
+}
+
+.commonbtn span {
+    padding-right: 10px;
+    display: block;
+    _display: inline-block;
+}
+
+.commonbtn strong {
+    padding: 0 2px;
+    line-height: 25px;
+    display: block;
+    _display: inline-block;
+}
+
+a:hover.commonbtn {
+    text-decoration: none;
+    background-position: 0 -240px;
+    color: #FFF
+}
+
+a:hover.commonbtn span {
+    background-position: right -320px
+}
+
+a:hover.commonbtn strong {
+    background-position: right -280px
+}
+
+/* 较大按钮 36px*/
+.bigbtn {
+    font: 700 20px/36px 'Microsoft YaHei';
+    text-shadow: 1px 1px 1px rgba(33, 33, 33, 1);
+    background-position: 0 0
+}
+
+.bigbtn span, .bigbtn strong {
+    background-position: 0 0;
+    line-height: 36px;
+    font-size: 20px
+}
+
+a:hover.commonbtn.bigbtn {
+    text-decoration: none;
+    background-position: 0 -100px
+}
+
+a:hover.commonbtn.bigbtn span {
+    background-position: right -150px
+}
+
+a:hover.commonbtn.bigbtn strong {
+    background-position: right -50px;
+}
+
+/* 中号按钮 31px */
+.midbtn {
+    font: 700 14px 'Microsoft YaHei';
+    text-shadow: 1px 1px 1px rgba(33, 33, 33, 1);
+    background-position: 0 -644px;
+}
+
+.midbtn span, .midbtn strong {
+    background-position: 0 -644px;
+    line-height: 29px
+}
+
+a:hover.commonbtn.midbtn {
+    text-decoration: none;
+    background-position: 0 -644px
+}
+
+a:hover.commonbtn.midbtn span {
+    background-position: right -644px
+}
+
+a:hover.commonbtn.midbtn strong {
+    background-position: right -644px;
+}
+
+/* 次要黄色按钮 31px */
+.minor {
+    background-position: 0 -780px;
+    border: 1px solid #FF7C00;
+}
+
+.minor span, .minor strong {
+    background-position: 0 -780px;
+    line-height: 25px;
+    font-weight: 700
+}
+
+.minor strong {
+    line-height: 26px;
+}
+
+a:hover.commonbtn.minor {
+    text-decoration: none;
+    background-position: 0 -830px
+}
+
+a:hover.commonbtn.minor span {
+    background-position: right -901px
+}
+
+a:hover.commonbtn.minor strong {
+    background-position: right -864px
+}
+
+/*中号 次要黄色按钮 31px */
+.midminor {
+    background-position: 0 -365px;
+    border: 1px solid #f45700;
+    font: 700 16px 'Microsoft YaHei';
+    text-shadow: 1px 1px 1px rgba(33, 33, 33, 1);
+}
+
+.midminor span, .midminor strong {
+    background-position: 0 -365px;
+    line-height: 36px;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+a:hover.commonbtn.midminor {
+    text-decoration: none;
+    background-position: 0 -424px
+}
+
+a:hover.commonbtn.midminor span {
+    background-position: right -485px
+}
+
+a:hover.commonbtn.midminor strong {
+    background-position: right -550px
+}
+
+/* 系统默认灰色色按钮 31px */
+.normalbtn {
+    background-position: 0 -608px;
+    border: 1px solid #bcbcbc;
+}
+
+.normalbtn span, .normalbtn strong {
+    background-position: 0 -608px;
+    line-height: 25px;
+    font-weight: 400;
+    color: #333;
+    font-size: 12px
+}
+
+.normalbtn strong {
+    line-height: 26px;
+}
+
+a:hover.commonbtn.normalbtn {
+    text-decoration: none;
+    background-position: 0 -599px
+}
+
+a:hover.commonbtn.normalbtn span {
+    background-position: right -599px
+}
+
+a:hover.commonbtn.normalbtn strong {
+    background-position: right -599px;
+    color: #F00
+}
+
+/* 20px高亮按钮 31px */
+.minihigh {
+    background-position: 0 -940px;
+    background-repeat: no-repeat;
+    border: 1px solid #f45700;
+    border: 0 none;
+    line-height: 20px;
+}
+
+.minihigh span {
+    background-position: right -1000px;
+    line-height: 20px;
+    background-repeat: no-repeat;
+}
+
+.minihigh strong {
+    background-position: right -970px;
+    line-height: 20px;
+    font-weight: 700
+}
+
+a:hover.commonbtn.minihigh {
+    text-decoration: none;
+    background-position: 0 -940px
+}
+
+a:hover.commonbtn.minihigh span {
+    background-position: right -1000px
+}
+
+a:hover.commonbtn.minihigh strong {
+    background-position: right -970px
+}
+
+
+
+
